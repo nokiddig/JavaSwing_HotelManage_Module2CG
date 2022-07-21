@@ -1,21 +1,57 @@
 package view;
 
+import controller.StartLoginListener;
+import model.User;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.File;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.util.ArrayList;
 
 public class StartManage extends JFrame {
     private final int FRAME_WIDTH = 900, FRAME_HIGH = 600;
-    private final Font font = new Font("Cambria", Font.BOLD, 30);
-    static Image bgImage;
-    static JTextField jtfAccount, jtfPass;
-    static JPanel JPImage, JPLogin;
-    static JLabel JLLogin;
-    static JButton JBLogin;
+
+    private HotelManagement hotelManagement;
+    private StartLoginListener listener;
+    private static Image bgImage;
+    private static JTextField jtfAccount, jtfPass;
+    private static JPanel jpLogin;
+    private static JLabel jlLogin, jlNote;
+    private static JButton jbLogin;
+
+    private ArrayList<User> listUser = new ArrayList<User>();
 
     public StartManage() {
+        this.readListUser();
         this.init();
+    }
+
+    private void readListUser() {
+        try {
+            File f = new File("fileIO\\Account\\fileAdmin.txt");
+            BufferedReader bufferedReader = Files.newBufferedReader(f.toPath(),
+                                            StandardCharsets.UTF_8);
+            do{
+                String name = bufferedReader.readLine();
+                String pass = bufferedReader.readLine();
+                if (name != null && pass != null) {
+                    User user = new User(name, pass, true);
+                    listUser.add(user);
+                }
+                else {
+                    break;
+                }
+            }
+            while (true);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void init() {
@@ -26,38 +62,46 @@ public class StartManage extends JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
 
-        this.setupJPLogin();
-        this.add(JPLogin);
+        this.setupLogin();
+        this.add(jpLogin);
         this.setVisible(true);
     }
+    private void setupLogin() {
+        listener = new StartLoginListener(this);
+        jpLogin = setBackgroundJPanel(this.jpLogin, "image\\bkGr3.jpg");
+        jpLogin.setLayout(null);
 
-    private void setupJPLogin() {
-        JPLogin = setBackgroundJPanel(this.JPLogin, "image\\bkGr3.jpg");
-        JPLogin.setLayout(null);
-
-        JLLogin = new JLabel("SG Hotel!");
-        JLLogin.setFont(font);
-        JLLogin.setSize(200, 100);
-        JLLogin.setLocation(660, 100);
+        jlLogin = new JLabel("SG Hotel!");
+        jlLogin.setFont(new Font("Cambria", Font.BOLD, 40));
+        jlLogin.setSize(250, 100);
+        jlLogin.setLocation(600, 100);
 
         jtfAccount = new JTextField("  Account...");
-        jtfAccount.setSize(180, 30);
-        jtfAccount.setLocation(650, 200);
+        jtfAccount.setSize(250, 30);
+        jtfAccount.setLocation(600, 200);
 
         jtfPass = new JTextField("  Password...");
-        jtfPass.setSize(180, 30);
-        jtfPass.setLocation(650, 250);
+        jtfPass.setSize(250, 30);
+        jtfPass.setLocation(600, 250);
 
-        JBLogin = new JButton("Log In");
-        JBLogin.setBackground(Color.LIGHT_GRAY);
-        JBLogin.setFont(new java.awt.Font("Arial", Font.BOLD, 14));
-        JBLogin.setSize(100, 30);
-        JBLogin.setLocation(675, 300);
+        jlNote = new JLabel("");
+        jlNote.setFont( new Font("arial", Font.ITALIC, 14));
+        jlNote.setForeground(Color.red);
+        jlNote.setSize(150, 30);
+        jlNote.setLocation(600, 280);
 
-        JPLogin.add(JLLogin);
-        JPLogin.add(jtfAccount);
-        JPLogin.add(jtfPass);
-        JPLogin.add(JBLogin);
+        jbLogin = new JButton("Log In");
+        jbLogin.addActionListener(listener);
+        jbLogin.setBackground(Color.LIGHT_GRAY);
+        jbLogin.setFont(new java.awt.Font("Arial", Font.BOLD, 14));
+        jbLogin.setSize(150, 30);
+        jbLogin.setLocation(650, 320);
+
+        jpLogin.add(jlLogin);
+        jpLogin.add(jtfAccount);
+        jpLogin.add(jtfPass);
+        jpLogin.add(jlNote);
+        jpLogin.add(jbLogin);
     }
 
     private JPanel setBackgroundJPanel(JPanel jp, String src) {
@@ -67,7 +111,6 @@ public class StartManage extends JFrame {
         }catch (Exception e) {
             e.printStackTrace();
         }
-
         jp = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -77,12 +120,21 @@ public class StartManage extends JFrame {
             }
         };
         return jp;
-//        Font font = new Font("Cambria", Font.BOLD, 30);
-//        if (jb instanceof JButton) {
-//            jb.setFont(font);
-//            jb.setForeground(Color.DARK_GRAY);
-//            jb.setBackground(Color.orange);
-//        }
+    }
+
+    public void requestLogin() {
+        String name = this.jtfAccount.getText(), pass = this.jtfPass.getText();
+        name = name.trim();
+        pass = pass.trim();
+
+        for (User u:listUser) {
+            if (name.equals(u.getName()) && pass.equals(u.getPass())) {
+                this.setVisible(false);
+                this.hotelManagement = new HotelManagement();
+                return;
+            }
+        }
+        this.jlNote.setText(" * Invalid account...");
     }
 
     public static void main(String[] args) {
