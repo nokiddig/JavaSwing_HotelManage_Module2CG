@@ -48,8 +48,8 @@ public class StartManage extends JFrame {
                 }
             }
             while (true);
-
         } catch (Exception e) {
+            System.out.println("Read admin account fail!");
             e.printStackTrace();
         }
     }

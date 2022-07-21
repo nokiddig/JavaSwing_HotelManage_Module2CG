@@ -1,12 +1,22 @@
 package view;
 
+import model.Room;
+import model.User;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.util.ArrayList;
 
 public class HotelManagement extends JFrame {
-    private JPanel jpRoom, jpUser, jpInfo;
-    static final int FRAME_WIDTH = 900, FRAME_HIGH = 600;
+    static final int FRAME_WIDTH = 1200, FRAME_HIGH = 600;
+    private JPanel jpRight, jpInfo;
+    private roomManagement jpRoom;
+    private userManagement jpUser;
 
     public HotelManagement() {
         this.init();
@@ -17,29 +27,29 @@ public class HotelManagement extends JFrame {
         this.setSize(FRAME_WIDTH, FRAME_HIGH);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        this.setResizable(false);
-        this.setLayout(new GridLayout(1, 3));
+        this.setLayout(new GridLayout(1, 2));
 
-        this.setupJPRooms();
-        this.setupJPEmployees();
-        this.setupJPInfo();
+        this.jpRoom = new roomManagement();
+        this.setupJPRight();
 
         this.add(jpRoom);
-        this.add(jpUser);
-        this.add(jpInfo);
+        this.add(jpRight);
 
         this.setVisible(true);
     }
 
-    private void setupJPRooms () {
-        jpRoom = new JPanel();
-    }
+    private void setupJPRight() {
+        jpRight = new JPanel(new GridLayout(1, 2));
 
-    private void setupJPEmployees () {
-        jpUser = new JPanel();
-    }
-
-    private void setupJPInfo () {
+        jpUser = new userManagement();
         jpInfo = new JPanel();
+        jpInfo.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        jpRight.add(jpUser);
+        jpRight.add(jpInfo);
+    }
+
+    public static void main(String[] args) {
+        new HotelManagement();
     }
 }
