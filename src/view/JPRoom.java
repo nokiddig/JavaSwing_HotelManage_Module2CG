@@ -1,8 +1,9 @@
 package view;
 
-import model.Room;
+import model.entity.Room;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 public class JPRoom extends JPanel {
@@ -18,16 +19,15 @@ public class JPRoom extends JPanel {
         this.room = room;
         this.init();
     }
-
     private void init() {
-        this.setBorder(BorderFactory.createLineBorder(Color.red, 1, true));
+        Border border = BorderFactory.createLineBorder(Color.black, 1, true);
+        Border border1 = BorderFactory.createEmptyBorder(10, 10,10,10);
+        Border border2 = BorderFactory.createCompoundBorder(border, border1);
+        this.setBorder(border2);
         this.setLayout(new GridLayout(6, 1));
 
-        this.jlID.setText(this.room.getRoomID());
-        this.jlLarge.setText(String.valueOf(this.room.getLarge()));
-        this.jlBed.setText(String.valueOf(this.room.getBed()));
-        this.jlPrice.setText(String.valueOf(this.room.getPrice()));
-        this.jlStatus.setText(this.room.getStatus());
+        this.showInfoRoom();
+        this.updateStatusUI();
 
         this.add(this.jlID);
         this.add(this.jlLarge);
@@ -35,5 +35,20 @@ public class JPRoom extends JPanel {
         this.add(this.jlPrice);
         this.add(this.jlStatus);
         this.add(jbBook);
+    }
+    public void showInfoRoom() {
+        this.jlID.setText("ID: " + room.getRoomID());
+        this.jlLarge.setText(String.valueOf("Large: " + room.getLarge()));
+        this.jlBed.setText(String.valueOf("Num of bed: " + room.getBed()));
+        this.jlPrice.setText(String.valueOf("Price: " + room.getPrice()));
+        this.jlStatus.setText(this.room.getStatus());
+    }
+    private void updateStatusUI() {
+        if (room.getStatus().equals("Available")) {
+            jlStatus.setForeground(Color.green);
+        }
+        else {
+            jlStatus.setForeground(Color.red);
+        }
     }
 }

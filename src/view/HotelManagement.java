@@ -1,8 +1,10 @@
 package view;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.io.File;
 
 public class HotelManagement extends JFrame {
     static final int FRAME_WIDTH = 1200, FRAME_HIGH = 600;
@@ -25,6 +27,7 @@ public class HotelManagement extends JFrame {
 
         this.setVisible(true);
     }
+
     public static void main(String[] args) {
         new HotelManagement();
     }
