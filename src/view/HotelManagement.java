@@ -1,15 +1,15 @@
 package view;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
-import java.io.File;
 
 public class HotelManagement extends JFrame {
     static final int FRAME_WIDTH = 1200, FRAME_HIGH = 600;
-    private JPanel jpSideBar = new HotelManageSideBar();
+    private JPanel jpSideBar = new JPanel(new GridLayout(1, 2));
     private JPanel jpRoom = new RoomManagement();
+
+    private JPUpdate jpUpdate = new JPUpdate();
+    private JPInformation jpInformation = new JPInformation();
 
     public HotelManagement() {
         this.init();
@@ -27,7 +27,10 @@ public class HotelManagement extends JFrame {
 
         this.setVisible(true);
     }
-
+    public void setupSidebar () {
+        jpSideBar.add(jpUpdate);
+        jpSideBar.add(jpInformation);
+    }
     public static void main(String[] args) {
         new HotelManagement();
     }

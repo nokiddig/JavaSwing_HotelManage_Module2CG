@@ -7,11 +7,7 @@ import model.fileReadWrite.ReadWriteUser;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.io.BufferedReader;
 import java.io.File;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.util.ArrayList;
 
 public class StartManage extends JFrame {
     private final int FRAME_WIDTH = 900, FRAME_HIGH = 600;
