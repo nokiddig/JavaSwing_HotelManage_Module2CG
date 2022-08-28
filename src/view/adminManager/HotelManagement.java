@@ -1,4 +1,4 @@
-package view;
+package view.adminManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,7 +7,6 @@ public class HotelManagement extends JFrame {
     static final int FRAME_WIDTH = 1200, FRAME_HIGH = 600;
     private JPanel jpSideBar = new JPanel(new GridLayout(1, 2));
     private JPanel jpRoom = new RoomManagement();
-
     private JPUpdate jpUpdate = new JPUpdate();
     private JPInformation jpInformation = new JPInformation();
 
@@ -22,6 +21,7 @@ public class HotelManagement extends JFrame {
         this.setLocationRelativeTo(null);
         this.setLayout(new GridLayout(1, 2));
 
+        this.setupSidebar();
         this.add(jpRoom);
         this.add(jpSideBar);
 

@@ -1,6 +1,7 @@
-package view;
+package view.adminManager;
 
-import model.fileReadWrite.ReadWriteRoom;
+import fileReadWrite.ReadWriteRoom;
+import view.adminManager.JPRoom;
 
 import javax.swing.*;
 import java.awt.*;

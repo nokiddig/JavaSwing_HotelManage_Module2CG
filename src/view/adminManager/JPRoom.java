@@ -1,4 +1,4 @@
-package view;
+package view.adminManager;
 
 import model.entity.Room;
 
@@ -26,6 +26,7 @@ public class JPRoom extends JPanel {
         this.setBorder(border2);
         this.setLayout(new GridLayout(6, 1));
 
+        this.setupJButtonBook();
         this.showInfoRoom();
         this.updateStatusUI();
 
@@ -50,5 +51,9 @@ public class JPRoom extends JPanel {
         else {
             jlStatus.setForeground(Color.red);
         }
+    }
+    public void setupJButtonBook () {
+        jbBook.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+        jbBook.setBackground(Color.gray);
     }
 }

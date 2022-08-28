@@ -1,8 +1,9 @@
-package view;
+package view.login;
 
 import controller.StartLoginListener;
 import model.entity.User;
-import model.fileReadWrite.ReadWriteUser;
+import fileReadWrite.ReadWriteUser;
+import view.adminManager.HotelManagement;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -17,7 +18,7 @@ public class StartManage extends JFrame {
     private static Image backgroundImage;
     private static JTextField jtfAccount, jtfPass;
     private static JPanel jpLogin;
-    private static JLabel jlLogin, jlNote;
+    private static JLabel jlLogin, jlNote, jlWelcome;
     private static JButton jbLogin;
 
     private ReadWriteUser readWriteUser = new ReadWriteUser();
@@ -50,8 +51,10 @@ public class StartManage extends JFrame {
         this.setupJTFAccount();
         this.setupJTFPass();
         this.setupJLNote();
+        this.setupJLWelcome();
         this.setupJBLogin();
 
+        jpLogin.add(jlWelcome);
         jpLogin.add(jlLogin);
         jpLogin.add(jtfAccount);
         jpLogin.add(jtfPass);
@@ -88,11 +91,17 @@ public class StartManage extends JFrame {
         jtfAccount.setLocation(600, 200);
     }
 
+    private void setupJLWelcome() {
+        jlWelcome = new JLabel("Welcome to SG Hotel!");
+        jlWelcome.setFont(new Font("Cambria", Font.BOLD, 45));
+        jlWelcome.setSize(500, 100);
+        jlWelcome.setLocation(230, 10);
+    }
     private void setupJLLogin() {
-        jlLogin = new JLabel("SG Hotel!");
-        jlLogin.setFont(new Font("Cambria", Font.BOLD, 40));
-        jlLogin.setSize(250, 100);
-        jlLogin.setLocation(600, 100);
+        jlLogin = new JLabel("Please log in to use!");
+        jlLogin.setFont(new Font("Arial", Font.PLAIN, 25));
+        jlLogin.setSize(500, 100);
+        jlLogin.setLocation(600, 120);
     }
 
     public  JPanel setBackgroundImage(JPanel jp, String src) {

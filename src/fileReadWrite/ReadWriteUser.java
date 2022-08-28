@@ -1,4 +1,4 @@
-package model.fileReadWrite;
+package fileReadWrite;
 
 import model.entity.User;
 
