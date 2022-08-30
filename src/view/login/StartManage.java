@@ -22,14 +22,9 @@ public class StartManage extends JFrame {
     private static JButton jbLogin;
 
     private ReadWriteUser readWriteUser = new ReadWriteUser();
-
     public StartManage() {
         this.init();
-        System.out.println(java.time.LocalDate.now());
     }
-
-
-
     public void init() {
         this.setTitle("Sun Gem Hotel!");
         this.setLayout(new GridLayout(1, 2));

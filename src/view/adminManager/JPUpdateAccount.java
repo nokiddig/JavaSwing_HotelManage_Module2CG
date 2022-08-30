@@ -14,7 +14,7 @@ public class JPUpdateAccount extends JPanel {
     private static JButton jbEdit = new JButton("Edit");
     private static JButton jbAdd = new JButton("Add");
     private static JButton jbDelete = new JButton("Delete");
-
+    private JRadioButton jrbAdmin = new JRadioButton("Admin"), jrbUser = new JRadioButton("User");
     public JPUpdateAccount() {
         this.setupBorder("Account");
         this.setLayout(null);
@@ -30,15 +30,20 @@ public class JPUpdateAccount extends JPanel {
         this.add(jbAdd);
         this.add(jbEdit);
         this.add(jbDelete);
+        this.add(jrbAdmin);
+        this.add(jrbUser);
     }
 
     private void setupComponent() {
         this.setupName();
         this.setupPass();
+        this.setupRadioButton();
         this.setupJBAdd();
         this.setupJBEdit();
         this.setupJBDelete();
     }
+
+
 
     private void setupName() {
         jlName.setFont(jlFont);
@@ -63,21 +68,31 @@ public class JPUpdateAccount extends JPanel {
         jbAdd.setBackground(Color.yellow);
         jbAdd.setFont(jbFont);
         jbAdd.setSize(80, 30);
-        jbAdd.setLocation(15, 200);
+        jbAdd.setLocation(15, 230);
     }
+    private void setupRadioButton() {
+        jrbAdmin.setSize(80, 20);
+        jrbAdmin.setLocation(60, 180);
 
+        jrbUser.setSize(80, 20);
+        jrbUser.setLocation(150, 180);
+
+        ButtonGroup bgTypeAcc = new ButtonGroup();
+        bgTypeAcc.add(jrbAdmin);
+        bgTypeAcc.add(jrbUser);
+    }
     private void setupJBEdit() {
         jbEdit.setBackground(Color.yellow);
         jbEdit.setFont(jbFont);
         jbEdit.setSize(80, 30);
-        jbEdit.setLocation(107, 200);
+        jbEdit.setLocation(107, 230);
     }
 
     private void setupJBDelete() {
         jbDelete.setBackground(Color.yellow);
         jbDelete.setFont(jbFont);
         jbDelete.setSize(80, 30);
-        jbDelete.setLocation(200, 200);
+        jbDelete.setLocation(200, 230);
     }
 
     private void setupBorder(String name) {

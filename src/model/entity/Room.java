@@ -33,7 +33,7 @@ public class Room {
         this.roomID = roomID;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 

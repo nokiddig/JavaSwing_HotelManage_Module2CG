@@ -6,11 +6,12 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class ReadWriteRoom {
-    private ArrayList<Room> listRooms = new ArrayList<Room>();
-    private String src = "fileIO\\Room\\roomInfo.txt";
+    private ArrayList<Room> listRooms = new ArrayList<>();
+    private final String src = "fileIO\\Room\\roomInfo.txt";
     private BufferedReader bufferedReader;
 
     public ReadWriteRoom () {
@@ -36,10 +37,50 @@ public class ReadWriteRoom {
         }
     }
 
-    public void WriteListRooms () {
-
+    public void writeListRooms () {
+        try {
+            String content = "";
+            for (Room listRoom : listRooms) {
+                content += listRoom.getRoomID() + "~";
+                content += listRoom.getLarge() + "~";
+                content += listRoom.getBed() + "~";
+                content += listRoom.getPrice() + "~";
+                content += listRoom.getStartDate();
+                content += "\n";
+            }
+            Files.write(Paths.get(src), content.getBytes(StandardCharsets.UTF_8));
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void addRoom(Room r) {
+        listRooms.add(r);
+        writeListRooms();
     }
 
+    public void deleteRoom(String ID) {
+        for (int i=0; i< listRooms.size(); i++) {
+            if (listRooms.get(i).getRoomID().equals(ID)) {
+                listRooms.remove(i);
+                break;
+            }
+        }
+        writeListRooms();
+    }
+
+    public void editRoom(Room r) {
+        for (Room listRoom : listRooms) {
+            if (listRoom.getRoomID().equals(r.getRoomID())) {
+                listRoom.setStartDate(r.getStartDate());
+                listRoom.setBed(r.getBed());
+                listRoom.setPrice(r.getPrice());
+                listRoom.setLarge(r.getLarge());
+                break;
+            }
+        }
+        writeListRooms();
+    }
     public ArrayList<Room> getListRooms() {
         return listRooms;
     }
