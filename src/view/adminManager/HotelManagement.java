@@ -6,11 +6,11 @@ import java.awt.*;
 public class HotelManagement extends JFrame {
     static final int FRAME_WIDTH = 1200, FRAME_HIGH = 600;
     private JPanel jpSideBar = new JPanel(new GridLayout(1, 2));
-    private JPanel jpRoom = new RoomManagement();
+    private RoomManagement jpRoom = new RoomManagement();
     private JPUpdate jpUpdate = new JPUpdate();
-    private JPInformation jpInformation = new JPInformation();
-
-    public HotelManagement() {
+    private JPInformation jpInformation;
+    public HotelManagement(String name) {
+        this.jpInformation = new JPInformation(name);
         this.init();
     }
 
@@ -32,6 +32,6 @@ public class HotelManagement extends JFrame {
         jpSideBar.add(jpInformation);
     }
     public static void main(String[] args) {
-        new HotelManagement();
+        new HotelManagement("none");
     }
 }

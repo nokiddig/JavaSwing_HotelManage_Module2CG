@@ -4,9 +4,10 @@ import model.entity.Room;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class ReadWriteRoom {
@@ -33,25 +34,21 @@ public class ReadWriteRoom {
             while (true);
         } catch (Exception e) {
             System.out.println("Read list room fail!");
-            //e.printStackTrace();
         }
     }
 
     public void writeListRooms () {
-        try {
-            String content = "";
+        try{
+            PrintWriter pw = new PrintWriter(src);
             for (Room listRoom : listRooms) {
-                content += listRoom.getRoomID() + "~";
-                content += listRoom.getLarge() + "~";
-                content += listRoom.getBed() + "~";
-                content += listRoom.getPrice() + "~";
-                content += listRoom.getStartDate();
-                content += "\n";
+                pw.println(listRoom.getRoomID() + "~" + listRoom.getLarge() + "~" +
+                listRoom.getBed() + "~" + listRoom.getPrice() + "~" +
+                listRoom.getStartDate());
             }
-            Files.write(Paths.get(src), content.getBytes(StandardCharsets.UTF_8));
-        }
-        catch (Exception e) {
-            throw new RuntimeException(e);
+            pw.close();
+        }catch(IOException ioe){
+            System.out.println("Exception occurred:");
+            ioe.printStackTrace();
         }
     }
     public void addRoom(Room r) {

@@ -18,6 +18,5 @@ public class StartLoginListener implements ActionListener {
         if (getAction.equals("Log In")) {
             this.startManage.requestLogin();
         }
-        System.out.println("Click");
     }
 }

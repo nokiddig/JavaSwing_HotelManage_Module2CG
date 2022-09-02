@@ -6,7 +6,6 @@ public class Room {
     private int price = 0;
     private String startDate = "00-00-0000";
     private String status = "Available";
-
     public Room (String id, int large, int nBed, int price) {
         this.roomID = id;
         this.large = large;

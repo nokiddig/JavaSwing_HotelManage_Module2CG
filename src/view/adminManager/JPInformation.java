@@ -22,8 +22,8 @@ public class JPInformation extends JPanel {
     private JLabel jlID = new JLabel("Room ID: ");
     private JTextField jtfID = new JTextField("ID");
     private JComboBox<String> jcbbService = new JComboBox<String>();
-    public JPInformation () {
-        this.setupBorder("Hello");
+    public JPInformation (String name) {
+        this.setupBorder("Hello " + name);
         this.setLayout(null);
         this.setupComponent();
         this.addComponent();
@@ -80,74 +80,61 @@ public class JPInformation extends JPanel {
     private void setupJLRep() {
         jlRep.setFont(jlFont);
         jlRep.setForeground(Color.black);
-        jlRep.setSize(150, 30);
-        jlRep.setLocation(20, 200);
+        jlRep.setBounds(20, 200, 150, 30);
     }
     private void setupJTARep() {
-        jtaRep.setSize(275, 100);
-        jtaRep.setLocation(10, 230);
+        jtaRep.setBounds(10, 230, 275,100);
         jtaRep.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }
     private void setupJBSend() {
         jbSend.setBackground(Color.blue);
         jbSend.setFont(jbFont);
-        jbSend.setSize(70, 30);
-        jbSend.setLocation(15, 340);
+        jbSend.setBounds(15, 340, 70, 30);
     }
     private void setupJBClear() {
         jbClear.setBackground(Color.yellow);
         jbClear.setFont(jbFont);
-        jbClear.setSize(95, 30);
-        jbClear.setLocation(90, 340);
+        jbClear.setBounds(90, 340,95,30);
     }
     private void setupJBRefresh() {
         jbRefresh.setBackground(Color.yellow);
         jbRefresh.setFont(jbFont);
-        jbRefresh.setSize(90, 30);
-        jbRefresh.setLocation(190, 340);
+        jbRefresh.setBounds(190, 340, 90, 30);
     }
     private void setupService() {
         jlID.setFont(jlFont);
         jlID.setForeground(Color.BLACK);
-        jlID.setSize(150, 30);
-        jlID.setLocation(20, 390);
+        jlID.setBounds(20, 390,150,30);
 
-        jtfID.setSize(70, 30);
-        jtfID.setLocation(90, 390);
+        jtfID.setBounds(90, 390, 70,30);
 
         String nameService[] = {"Service 1", "Service 2", "Service3"};
         jcbbService = new JComboBox<>(nameService);
-        jcbbService.setBounds(100, 50, 150, 20);
-        jcbbService.setSize(100, 30);
-        jcbbService.setLocation(170,390);
+        jcbbService.setBounds(170, 390, 100, 30);
     }
 
 
     private void setupJBOrder() {
         jbOrder.setBackground(Color.yellow);
         jbOrder.setFont(jbFont);
-        jbOrder.setSize(80, 30);
-        jbOrder.setLocation(60, 430);
+        jbOrder.setBounds(60, 430, 80,30);
     }
 
     private void setupJBCheckRoom() {
         jbCheckRoom.setBackground(Color.yellow);
         jbCheckRoom.setFont(jbFont);
-        jbCheckRoom.setSize(80, 30);
-        jbCheckRoom.setLocation(160, 430);
+        jbCheckRoom.setBounds(160, 430, 80, 30);
 
     }
     private void setupJBTurnover() {
         jbTurnover.setBackground(Color.yellow);
         jbTurnover.setFont(jbFont);
-        jbTurnover.setSize(100, 30);
-        jbTurnover.setLocation(20, 510);
+        jbTurnover.setBounds(20, 510, 100,30);
     }
     private void setupJBQuit() {
         jbQuit.setBackground(Color.yellow);
         jbQuit.setFont(jbFont);
-        jbQuit.setSize(80, 30);
-        jbQuit.setLocation(200, 510);
+        jbQuit.setBounds(200, 510, 80,30);
     }
     private void setupBorder(String name) {
         Border border = BorderFactory.createLineBorder(Color.black, 1);

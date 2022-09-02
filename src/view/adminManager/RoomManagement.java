@@ -8,10 +8,11 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class RoomManagement extends JPanel {
-    private ArrayList<JPRoom> listJPRooms = new ArrayList<JPRoom>();
+    private ArrayList<JPRoom> listJPRooms = new ArrayList<>();
     private ReadWriteRoom readWriteRoom = new ReadWriteRoom();
     private int numOfRooms = 0;
-    private int row = 0, col = 4;
+    private int row = 0;
+    private final int col = 4;
 
     public RoomManagement() {
         this.init();
@@ -29,6 +30,4 @@ public class RoomManagement extends JPanel {
             this.add(listJPRooms.get(i));
         }
     }
-
-
 }
