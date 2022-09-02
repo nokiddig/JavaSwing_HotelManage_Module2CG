@@ -62,15 +62,10 @@ public class JPUpdateAccount extends JPanel {
 
         jtfPass.setBounds(100, 120, 150, 30);
     }
-    private void setupJBAdd() {
-        jbAdd.setBackground(Color.yellow);
-        jbAdd.setFont(jbFont);
-        jbAdd.setBounds(15, 230, 80, 30);
-        jbAdd.addActionListener(updateAccountListener);
-    }
+
     private void setupRadioButton() {
-        jrbAdmin.setBounds(60, 180, 80,20);
-        jrbUser.setBounds(150, 180,80, 20);
+        jrbAdmin.setBounds(60, 165, 80,20);
+        jrbUser.setBounds(150, 165,80, 20);
 
         ButtonGroup bgTypeAcc = new ButtonGroup();
         bgTypeAcc.add(jrbAdmin);
@@ -81,16 +76,22 @@ public class JPUpdateAccount extends JPanel {
         jlStatus.setFont(new Font("arial", Font.ITALIC, 12));
         jlStatus.setBounds(30, 200,200, 30);
     }
+    private void setupJBAdd() {
+        jbAdd.setBackground(Color.yellow);
+        jbAdd.setFont(jbFont);
+        jbAdd.setBounds(15, 210, 80, 30);
+        jbAdd.addActionListener(updateAccountListener);
+    }
     private void setupJBEdit() {
         jbEdit.setBackground(Color.yellow);
         jbEdit.setFont(jbFont);
-        jbEdit.setBounds(107, 230,80, 30);
+        jbEdit.setBounds(107, 210,80, 30);
         jbEdit.addActionListener(updateAccountListener);
     }
     private void setupJBDelete() {
         jbDelete.setBackground(Color.yellow);
         jbDelete.setFont(jbFont);
-        jbDelete.setBounds(200, 230,80, 30);
+        jbDelete.setBounds(200, 210,80, 30);
         jbDelete.addActionListener(updateAccountListener);
     }
 

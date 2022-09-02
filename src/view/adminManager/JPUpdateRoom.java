@@ -19,8 +19,10 @@ public class JPUpdateRoom extends JPanel {
     private JButton jbAdd = new JButton("Add");
     private JButton jbDelete = new JButton("Delete");
     private UpdateRoomListener updateRoomListener = new UpdateRoomListener(this);
+    private HotelManagement HM;
 
-    public JPUpdateRoom() {
+    public JPUpdateRoom(HotelManagement HM) {
+        this.HM = HM;
         this.setupBorder("Room");
         this.setLayout(null);
         this.setupComponent();
@@ -84,21 +86,21 @@ public class JPUpdateRoom extends JPanel {
     private void setupJBAdd() {
         jbAdd.setBackground(Color.yellow);
         jbAdd.setFont(jbFont);
-        jbAdd.setBounds(15, 230, 80,30);
+        jbAdd.setBounds(15, 240, 80,30);
         jbAdd.addActionListener(updateRoomListener);
     }
 
     private void setupJBEdit() {
         jbEdit.setBackground(Color.yellow);
         jbEdit.setFont(jbFont);
-        jbEdit.setBounds(107, 230,80,30);
+        jbEdit.setBounds(107, 240,80,30);
         jbEdit.addActionListener(updateRoomListener);
     }
 
     private void setupJBDelete() {
         jbDelete.setBackground(Color.yellow);
         jbDelete.setFont(jbFont);
-        jbDelete.setBounds(200, 230,80,30);
+        jbDelete.setBounds(200, 240,80,30);
         jbDelete.addActionListener(updateRoomListener);
     }
 
@@ -122,5 +124,9 @@ public class JPUpdateRoom extends JPanel {
 
     public JTextField getJtfPrice() {
         return jtfPrice;
+    }
+
+    public HotelManagement getHM() {
+        return HM;
     }
 }

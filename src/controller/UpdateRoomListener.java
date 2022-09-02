@@ -37,5 +37,6 @@ public class UpdateRoomListener implements ActionListener {
         if (str.equals("Add")) {
             readWriteRoom.addRoom(room);
         }
+        jpUpdateRoom.getHM().refreshRoom();
     }
 }

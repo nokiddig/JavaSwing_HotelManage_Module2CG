@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class ReadWriteRoom {
     private ArrayList<Room> listRooms = new ArrayList<>();
-    private final String src = "fileIO\\Room\\roomInfo.txt";
+    private final String src = "fileIO\\roomInfo.txt";
     private BufferedReader bufferedReader;
 
     public ReadWriteRoom () {

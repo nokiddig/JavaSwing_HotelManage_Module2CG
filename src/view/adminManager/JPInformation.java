@@ -141,4 +141,8 @@ public class JPInformation extends JPanel {
         this.setBorder(BorderFactory.createTitledBorder(border, name,
                 TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION, font));
     }
+
+    public JButton getJbQuit() {
+        return jbQuit;
+    }
 }

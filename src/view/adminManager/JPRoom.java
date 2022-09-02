@@ -1,5 +1,6 @@
 package view.adminManager;
 
+import controller.RoomListener;
 import model.entity.Room;
 
 import javax.swing.*;
@@ -14,6 +15,7 @@ public class JPRoom extends JPanel {
     private JLabel jlPrice = new JLabel("0");
     private JButton jbBook = new JButton("Book");
     private Room room;
+    private RoomListener roomListener = new RoomListener(this);
 
     public JPRoom (Room room) {
         this.room = room;
@@ -28,7 +30,6 @@ public class JPRoom extends JPanel {
 
         this.setupJButtonBook();
         this.showInfoRoom();
-        this.updateStatusUI();
 
         this.add(this.jlID);
         this.add(this.jlLarge);
@@ -43,17 +44,27 @@ public class JPRoom extends JPanel {
         this.jlBed.setText(String.valueOf("Num of bed: " + room.getBed()));
         this.jlPrice.setText(String.valueOf("Price: " + room.getPrice()));
         this.jlStatus.setText(this.room.getStatus());
+        jlStatus.setForeground(room.getStatus().equals("Available")?Color.green:Color.red);
     }
-    private void updateStatusUI() {
+    public void updateStatusUI() {
         if (room.getStatus().equals("Available")) {
-            jlStatus.setForeground(Color.green);
+            room.setStatus("Not Available");
+            jlStatus.setForeground(Color.red);
+            jbBook.setText("Payment");
         }
         else {
-            jlStatus.setForeground(Color.red);
+            room.setStatus("Not Available");
+            jlStatus.setForeground(Color.green);
+            jbBook.setText("Book");
         }
     }
     public void setupJButtonBook () {
         jbBook.setBorder(BorderFactory.createLineBorder(Color.lightGray));
         jbBook.setBackground(Color.gray);
+        jbBook.addActionListener(roomListener);
+    }
+
+    public JButton getJbBook() {
+        return jbBook;
     }
 }

@@ -22,7 +22,7 @@ public class StartManage extends JFrame {
     private static JLabel jlLogin, jlNote, jlWelcome;
     private static JButton jbLogin;
 
-    private ReadWriteAccount readWriteAccount = new ReadWriteAccount();
+    private final ReadWriteAccount readWriteAccount = new ReadWriteAccount();
     public StartManage() {
         this.init();
     }
@@ -40,7 +40,7 @@ public class StartManage extends JFrame {
     }
     private void setupLogin() {
         listener = new StartLoginListener(this);
-        jpLogin = setBackgroundImage(this.jpLogin, "image\\bkGr3.jpg");
+        jpLogin = setBackgroundImage("image\\bkGr3.jpg");
         jpLogin.setLayout(null);
 
         this.setupJLLogin();
@@ -88,7 +88,7 @@ public class StartManage extends JFrame {
         jlLogin.setFont(new Font("Arial", Font.PLAIN, 25));
         jlLogin.setBounds(600, 120,500,1000);
     }
-    public  JPanel setBackgroundImage(JPanel jp, String src) {
+    public  JPanel setBackgroundImage(String src) {
         File fileImage = new File(src);
         try {
             backgroundImage = ImageIO.read(fileImage);

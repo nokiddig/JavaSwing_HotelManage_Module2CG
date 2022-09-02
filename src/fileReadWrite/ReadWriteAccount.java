@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class ReadWriteAccount {
     private ArrayList<Account> listAccount = new ArrayList<>();
-    private final String src = "fileIO\\Account\\accounts.txt";
+    private final String src = "fileIO\\accounts.txt";
     private BufferedReader bufferedReader;
 
     public ReadWriteAccount() {
