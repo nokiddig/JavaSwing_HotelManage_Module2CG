@@ -1,22 +1,25 @@
 package view.userView;
 
+import model.entity.Room;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class AllUserView extends JFrame {
     static final int FRAME_WIDTH = 800, FRAME_HIGH = 600;
-    private JPService jpService = new JPService();
+    private JPService jpService;
     private JPChatbox jpChatbox = new JPChatbox();
-
-    public AllUserView() {
+    public AllUserView(String name) {
         this.setupJFrame();
+        jpService = new JPService(name);
         this.addComponent();
         this.setVisible(true);
+
     }
 
     private void setupJFrame() {
         this.setLayout(new GridLayout(1, 3));
-        this.setTitle("Hotel");
+        this.setTitle("SG Hotel");
         this.setSize(FRAME_WIDTH, FRAME_HIGH);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -29,6 +32,6 @@ public class AllUserView extends JFrame {
     }
 
     public static void main(String[] args) {
-        new AllUserView();
+        new AllUserView("SyN");
     }
 }

@@ -114,7 +114,7 @@ public class StartManage extends JFrame {
                     this.userView = new HotelManagement(name);
                 }
                 else {
-                    this.userView = new AllUserView();
+                    this.userView = new AllUserView(name);
                 }
                 return;
             }

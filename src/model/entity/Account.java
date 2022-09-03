@@ -28,4 +28,12 @@ public class Account {
     public String getPass() {
         return pass;
     }
+
+    public void setAdminAccount(boolean adminAccount) {
+        this.adminAccount = adminAccount;
+    }
+
+    public boolean isAdminAccount() {
+        return adminAccount;
+    }
 }

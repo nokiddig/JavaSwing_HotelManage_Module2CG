@@ -26,10 +26,16 @@ public class ReadWriteRoom {
                     StandardCharsets.UTF_8);
             do{
                 String[] str = bufferedReader.readLine().split("~");
-                Room room = new Room(str[0], Integer.parseInt(str[1]),
-                        Integer.parseInt(str[2]), Integer.parseInt(str[3]));
-                room.setStartDate(str[4]);
-                listRooms.add(room);
+                if (str.length>0) {
+                    Room room = new Room(str[0], Integer.parseInt(str[1]),
+                            Integer.parseInt(str[2]), Integer.parseInt(str[3]));
+                    room.setStartDate(str[4]);
+                    room.setStatus(str[5]);
+                    listRooms.add(room);
+                }
+                else {
+                    break;
+                }
             }
             while (true);
         } catch (Exception e) {
@@ -40,10 +46,10 @@ public class ReadWriteRoom {
     public void writeListRooms () {
         try{
             PrintWriter pw = new PrintWriter(src);
-            for (Room listRoom : listRooms) {
-                pw.println(listRoom.getRoomID() + "~" + listRoom.getLarge() + "~" +
-                listRoom.getBed() + "~" + listRoom.getPrice() + "~" +
-                listRoom.getStartDate());
+            for (Room room : listRooms) {
+                pw.println(room.getRoomID() + "~" + room.getLarge() + "~" +
+                        room.getBed() + "~" + room.getPrice() + "~" +
+                        room.getStartDate() + "~" + room.getStatus());
             }
             pw.close();
         }catch(IOException ioe){
@@ -73,6 +79,7 @@ public class ReadWriteRoom {
                 listRoom.setBed(r.getBed());
                 listRoom.setPrice(r.getPrice());
                 listRoom.setLarge(r.getLarge());
+                listRoom.setStatus(r.getStatus());
                 break;
             }
         }

@@ -15,14 +15,12 @@ public class RoomListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String str = e.getActionCommand();
         boolean checkEvent = false;
-        if (str.equals("Book")) {
-
-        }
-        if (str.equals("Book")) {
-
-        }
-        if (! checkEvent) {
+        if (str.equals("Book") && jpRoom.bookRoom()) {
             jpRoom.updateStatusUI();
         }
+        if (str.equals("Payment") && jpRoom.payment()) {
+            jpRoom.updateStatusUI();
+        }
+
     }
 }

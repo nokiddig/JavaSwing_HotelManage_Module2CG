@@ -4,8 +4,9 @@ public class Room {
     private String roomID = "0";
     private int large = 0, bed = 0;
     private int price = 0;
-    private String startDate = "00-00-0000";
-    private String status = "Available";
+    private String startDate = "2022-01-01";
+    private String status = "Available"; //change about name user
+
     public Room (String id, int large, int nBed, int price) {
         this.roomID = id;
         this.large = large;

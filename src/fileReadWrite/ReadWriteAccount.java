@@ -56,6 +56,7 @@ public class ReadWriteAccount {
         for(Account account1 : listAccount) {
             if (account.getName().equals(account1.getName())) {
                 account1.setPass(account.getPass());
+                account1.setAdminAccount(account.getAdminAccount());
             }
         }
         writeListUser();
@@ -70,7 +71,14 @@ public class ReadWriteAccount {
         }
         writeListUser();
     }
-
+    public int searchAccount(String name) {
+        for (int i=0; i<listAccount.size(); i++) {
+            if (listAccount.get(i).getName().equals(name)){
+                return i;
+            }
+        }
+        return -1;
+    }
     public ArrayList<Account> getListUser() {
         return listAccount;
     }
