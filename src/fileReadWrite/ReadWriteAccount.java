@@ -32,7 +32,7 @@ public class ReadWriteAccount {
             }
             while (true);
         } catch (Exception e) {
-            System.out.println("Read admin account fail!");
+            System.out.println("");
         }
     }
     public void writeListUser() {

@@ -11,7 +11,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 
 public class ReadWriteRoom {
-    private ArrayList<Room> listRooms = new ArrayList<>();
+    private ArrayList<Room> listRooms;
     private final String src = "fileIO\\roomInfo.txt";
     private BufferedReader bufferedReader;
 
@@ -20,6 +20,7 @@ public class ReadWriteRoom {
     }
 
     private void readListRooms() {
+        listRooms = new ArrayList<>();
         try {
             File f = new File(src);
             bufferedReader = Files.newBufferedReader(f.toPath(),
@@ -39,7 +40,7 @@ public class ReadWriteRoom {
             }
             while (true);
         } catch (Exception e) {
-            System.out.println("Read list room fail!");
+            System.out.println("");
         }
     }
 
@@ -85,6 +86,7 @@ public class ReadWriteRoom {
         }
         writeListRooms();
     }
+
     public ArrayList<Room> getListRooms() {
         return listRooms;
     }

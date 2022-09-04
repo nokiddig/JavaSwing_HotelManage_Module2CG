@@ -21,7 +21,7 @@ public class JPRoom extends JPanel {
     private JButton jbBook = new JButton("Book");
     private Room room;
     private RoomListener roomListener = new RoomListener(this);
-    private ReadWriteRoom readWriteRoom = new ReadWriteRoom();
+    private ReadWriteRoom readWriteRoom;
 
     public JPRoom (Room room) {
         this.room = room;
@@ -82,6 +82,7 @@ public class JPRoom extends JPanel {
                     this.room.setStatus(userName);
                     this.updateStatusUI();
                     this.room.setStartDate(java.time.LocalDate.now().toString());
+                    readWriteRoom = new ReadWriteRoom();
                     readWriteRoom.editRoom(this.room);
                     return true;
                 }
@@ -96,6 +97,7 @@ public class JPRoom extends JPanel {
         int yes = 0;
         if (asw == yes) {
             room.setStatus("Available");
+            readWriteRoom = new ReadWriteRoom();
             readWriteRoom.editRoom(this.room);
             return true;
         }

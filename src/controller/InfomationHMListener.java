@@ -18,9 +18,13 @@ public class InfomationHMListener implements ActionListener {
             return;
         }
         if (str.equals("Send")) {
+            String mes = jpInformation.getJtaRep().getText();
+            jpInformation.getChatAdmin().sendMessage("Admin: " + mes);
             return;
         }
         if (str.equals("Clear all")) {
+            jpInformation.getJtaNoti().setText("");
+            jpInformation.getJtaRep().setText("");
             return;
         }
         if (str.equals("Refresh")) {

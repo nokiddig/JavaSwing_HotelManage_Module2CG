@@ -1,5 +1,8 @@
 package view.adminManager;
 
+import controller.InfomationHMListener;
+import model.chat.ChatAdmin;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
@@ -22,6 +25,8 @@ public class JPInformation extends JPanel {
     private JLabel jlID = new JLabel("Room ID: ");
     private JTextField jtfID = new JTextField("ID");
     private JComboBox<String> jcbbService = new JComboBox<String>();
+    private InfomationHMListener iHMListener = new InfomationHMListener(this);
+    private ChatAdmin chatAdmin = new ChatAdmin();
     public JPInformation (String name) {
         this.setupBorder("Hello " + name);
         this.setLayout(null);
@@ -42,9 +47,6 @@ public class JPInformation extends JPanel {
         this.setupJBOrder();
         this.setupJBTurnover();
     }
-
-
-
 
     private void addComponent() {
         this.add(jlNoti);
@@ -90,16 +92,19 @@ public class JPInformation extends JPanel {
         jbSend.setBackground(Color.blue);
         jbSend.setFont(jbFont);
         jbSend.setBounds(15, 340, 70, 30);
+        jbSend.addActionListener(iHMListener);
     }
     private void setupJBClear() {
         jbClear.setBackground(Color.yellow);
         jbClear.setFont(jbFont);
         jbClear.setBounds(90, 340,95,30);
+        jbClear.addActionListener(iHMListener);
     }
     private void setupJBRefresh() {
         jbRefresh.setBackground(Color.yellow);
         jbRefresh.setFont(jbFont);
         jbRefresh.setBounds(190, 340, 90, 30);
+        jbRefresh.addActionListener(iHMListener);
     }
     private void setupService() {
         jlID.setFont(jlFont);
@@ -118,23 +123,26 @@ public class JPInformation extends JPanel {
         jbOrder.setBackground(Color.yellow);
         jbOrder.setFont(jbFont);
         jbOrder.setBounds(60, 430, 80,30);
+        jbOrder.addActionListener(iHMListener);
     }
 
     private void setupJBCheckRoom() {
         jbCheckRoom.setBackground(Color.yellow);
         jbCheckRoom.setFont(jbFont);
         jbCheckRoom.setBounds(160, 430, 80, 30);
-
+        jbCheckRoom.addActionListener(iHMListener);
     }
     private void setupJBTurnover() {
         jbTurnover.setBackground(Color.yellow);
         jbTurnover.setFont(jbFont);
         jbTurnover.setBounds(20, 510, 100,30);
+        jbTurnover.addActionListener(iHMListener);
     }
     private void setupJBQuit() {
         jbQuit.setBackground(Color.yellow);
         jbQuit.setFont(jbFont);
         jbQuit.setBounds(200, 510, 80,30);
+        jbQuit.addActionListener(iHMListener);
     }
     private void setupBorder(String name) {
         Border border = BorderFactory.createLineBorder(Color.black, 1);
@@ -144,5 +152,45 @@ public class JPInformation extends JPanel {
 
     public JButton getJbQuit() {
         return jbQuit;
+    }
+
+    public JTextArea getJtaNoti() {
+        return jtaNoti;
+    }
+
+    public JTextArea getJtaRep() {
+        return jtaRep;
+    }
+
+    public JButton getJbSend() {
+        return jbSend;
+    }
+
+    public JButton getJbClear() {
+        return jbClear;
+    }
+
+    public JButton getJbRefresh() {
+        return jbRefresh;
+    }
+
+    public JButton getJbCheckRoom() {
+        return jbCheckRoom;
+    }
+
+    public JTextField getJtfID() {
+        return jtfID;
+    }
+
+    public void setJtaNoti(JTextArea jtaNoti) {
+        this.jtaNoti = jtaNoti;
+    }
+
+    public void setJtaRep(JTextArea jtaRep) {
+        this.jtaRep = jtaRep;
+    }
+
+    public ChatAdmin getChatAdmin() {
+        return chatAdmin;
     }
 }

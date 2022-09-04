@@ -1,5 +1,8 @@
 package view.userView;
 
+import controller.ChatBoxUserListener;
+import model.chat.ChatUser;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
@@ -17,7 +20,8 @@ public class JPChatbox extends JPanel {
     private JTextArea jtaRep = new JTextArea(10, 10);
 
     private JButton jbSend = new JButton("Send"), jbClear = new JButton("Clear all"), jbRefresh = new JButton("Refresh");
-
+    private ChatUser chatUser = new ChatUser();
+    private ChatBoxUserListener chatBoxUserListener = new ChatBoxUserListener(this);
     public JPChatbox() {
         this.setupBorder("Chat with admin");
         this.setLayout(null);
@@ -47,10 +51,11 @@ public class JPChatbox extends JPanel {
         jlNoti.setForeground(Color.BLACK);
         jlNoti.setBounds(20,20,150,30);
 
-
         jtaNoti.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         jtaNoti.setLineWrap(true);
         jtaNoti.setBounds(10,50,370,200);
+        chatUser.setJpChatbox(this);
+        chatUser.start();
     }
     private void setupRep() {
         jlRep.setFont(jlFont);
@@ -65,21 +70,36 @@ public class JPChatbox extends JPanel {
         jbSend.setBackground(Color.blue);
         jbSend.setFont(jbFont);
         jbSend.setBounds(30,400,70,30);
+        jbSend.addActionListener(chatBoxUserListener);
     }
     private void setupJBClear() {
         jbClear.setBackground(Color.yellow);
         jbClear.setFont(jbFont);
         jbClear.setBounds(135,400,95,30);
+        jbClear.addActionListener(chatBoxUserListener);
     }
     private void setupJBRefresh() {
         jbRefresh.setBackground(Color.yellow);
         jbRefresh.setFont(jbFont);
         jbRefresh.setBounds(265,400,90,30);
+        jbRefresh.addActionListener(chatBoxUserListener);
     }
 
     private void setupBorder(String name) {
         Border border = BorderFactory.createLineBorder(Color.black, 1);
         this.setBorder(BorderFactory.createTitledBorder(border, name,
                 TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION, font));
+    }
+
+    public JTextArea getJtaNoti() {
+        return jtaNoti;
+    }
+
+    public JTextArea getJtaRep() {
+        return jtaRep;
+    }
+
+    public ChatUser getChatUser() {
+        return chatUser;
     }
 }

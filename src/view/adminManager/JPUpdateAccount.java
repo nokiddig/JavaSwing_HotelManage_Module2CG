@@ -74,7 +74,7 @@ public class JPUpdateAccount extends JPanel {
     private void setupJLStatus() {
         jlStatus.setForeground(Color.red);
         jlStatus.setFont(new Font("arial", Font.ITALIC, 12));
-        jlStatus.setBounds(30, 200,200, 30);
+        jlStatus.setBounds(30, 180,200, 30);
     }
     private void setupJBAdd() {
         jbAdd.setBackground(Color.yellow);

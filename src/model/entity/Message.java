@@ -6,6 +6,7 @@ public class Message {
     private String content = "";
     private String sender = "", receiver = "";
     private Date time = new Date();
+    private String type;
 
     public Message(){}
 

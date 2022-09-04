@@ -19,11 +19,8 @@ public class RoomManagement extends JPanel {
     }
 
     public void init() {
-        readWriteRoom = new ReadWriteRoom();
-        listJPRooms = new ArrayList<>();
         this.setBorder(BorderFactory.createEmptyBorder(10,10, 10, 10));
         this.numOfRooms = readWriteRoom.getListRooms().size();
-        System.out.println("room: " + numOfRooms);
         row = numOfRooms / col + (numOfRooms % col == 0 ? 0 : 1);
         this.setLayout(new GridLayout(this.row, this.col, 10, 10));
 
