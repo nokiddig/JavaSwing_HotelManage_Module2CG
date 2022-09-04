@@ -77,6 +77,8 @@ public class JPInformation extends JPanel {
         jtaNoti.setLocation(10, 50);
         jtaNoti.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         jtaNoti.setLineWrap(true);
+        chatAdmin.setJpInformation(this);
+        chatAdmin.start();
     }
 
     private void setupJLRep() {
@@ -192,5 +194,14 @@ public class JPInformation extends JPanel {
 
     public ChatAdmin getChatAdmin() {
         return chatAdmin;
+    }
+
+    public void setChatAdmin(ChatAdmin chatAdmin) {
+        this.chatAdmin = chatAdmin;
+    }
+
+    public void addMessage(String mes) {
+        String allMess = jtaNoti.getText();
+        jtaNoti.setText(allMess +"\n" +mes  );
     }
 }

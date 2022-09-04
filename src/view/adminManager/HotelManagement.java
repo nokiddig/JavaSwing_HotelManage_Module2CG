@@ -48,10 +48,13 @@ public class HotelManagement extends JFrame {
         return jpRoom;
     }
     public void refreshRoom() {
-        new HotelManagement(name);
-        this.quitApp();
+        jpRoom.setVisible(false);
+        jpRoom = new RoomManagement();
+        jpRoom.setBounds(0, 0, 580, FRAME_HIGH*95/100);
+        this.add(jpRoom);
     }
     public void quitApp() {
+        jpInformation.getChatAdmin().closePort();
         this.dispose();
     }
     public static void main(String[] args) {

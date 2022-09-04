@@ -1,4 +1,4 @@
-package fileReadWrite;
+package model.input;
 
 public class ReadWriteTurnover {
 }

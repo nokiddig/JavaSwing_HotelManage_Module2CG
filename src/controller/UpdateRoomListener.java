@@ -1,10 +1,8 @@
 package controller;
 
-import fileReadWrite.ReadWriteRoom;
-import model.entity.Account;
+import model.input.ReadWriteRoom;
 import model.entity.Room;
 import view.adminManager.JPUpdateRoom;
-import view.adminManager.RoomManagement;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

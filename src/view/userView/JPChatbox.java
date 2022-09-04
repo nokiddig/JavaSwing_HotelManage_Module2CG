@@ -22,8 +22,10 @@ public class JPChatbox extends JPanel {
     private JButton jbSend = new JButton("Send"), jbClear = new JButton("Clear all"), jbRefresh = new JButton("Refresh");
     private ChatUser chatUser = new ChatUser();
     private ChatBoxUserListener chatBoxUserListener = new ChatBoxUserListener(this);
-    public JPChatbox() {
+    private String nameUser = "";
+    public JPChatbox(String name) {
         this.setupBorder("Chat with admin");
+        this.nameUser = name;
         this.setLayout(null);
         this.setupShowMess();
         this.setupRep();
@@ -101,5 +103,17 @@ public class JPChatbox extends JPanel {
 
     public ChatUser getChatUser() {
         return chatUser;
+    }
+
+    public String getNameUser() {
+        return nameUser;
+    }
+    public void addMessage(String mes) {
+        String allMess = jtaNoti.getText();
+        jtaNoti.setText(allMess+ mes + "\n");
+    }
+
+    public void setNameUser(String nameUser) {
+        this.nameUser = nameUser;
     }
 }

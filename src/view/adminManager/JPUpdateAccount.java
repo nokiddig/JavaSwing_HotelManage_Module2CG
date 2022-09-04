@@ -1,7 +1,6 @@
 package view.adminManager;
 
 import controller.UpdateAccountListener;
-import fileReadWrite.ReadWriteAccount;
 
 import javax.swing.*;
 import javax.swing.border.Border;

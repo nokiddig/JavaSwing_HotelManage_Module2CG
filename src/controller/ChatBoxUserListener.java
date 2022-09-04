@@ -19,8 +19,9 @@ public class ChatBoxUserListener implements ActionListener{
             return;
         }
         if (str.equals("Send")) {
-            String mes = jpChatbox.getJtaRep().getText();
-            jpChatbox.getChatUser().sendMessage("User: " + mes);
+            String mes = jpChatbox.getNameUser() + ": " + jpChatbox.getJtaRep().getText();
+            jpChatbox.addMessage(mes);
+            jpChatbox.getChatUser().sendMessage(mes);
             jpChatbox.getJtaRep().setText("");
             return;
         }

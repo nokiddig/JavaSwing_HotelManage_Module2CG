@@ -8,10 +8,11 @@ import java.awt.*;
 public class AllUserView extends JFrame {
     static final int FRAME_WIDTH = 800, FRAME_HIGH = 600;
     private JPService jpService;
-    private JPChatbox jpChatbox = new JPChatbox();
+    private JPChatbox jpChatbox;
     public AllUserView(String name) {
         this.setupJFrame();
         jpService = new JPService(name);
+        jpChatbox = new JPChatbox(name);
         this.addComponent();
         this.setVisible(true);
 

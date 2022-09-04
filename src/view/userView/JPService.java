@@ -1,6 +1,6 @@
 package view.userView;
 
-import fileReadWrite.ReadWriteRoom;
+import model.input.ReadWriteRoom;
 import model.entity.Room;
 
 import javax.swing.*;

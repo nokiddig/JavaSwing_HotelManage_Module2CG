@@ -1,6 +1,6 @@
 package controller;
 
-import fileReadWrite.ReadWriteAccount;
+import model.input.ReadWriteAccount;
 import model.entity.Account;
 import view.adminManager.JPUpdateAccount;
 

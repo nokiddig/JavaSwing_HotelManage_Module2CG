@@ -15,10 +15,11 @@ public class ChatUser extends Thread{
     private JPChatbox jpChatbox;
     public void init () {
         try {
-            socket = new Socket("localhost", 6543);
+            socket = new Socket("localhost", 3333);
             dataInputStream = new DataInputStream(socket.getInputStream());
             dataOutputStream = new DataOutputStream(socket.getOutputStream());
         } catch (IOException e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
     }
@@ -57,7 +58,7 @@ public class ChatUser extends Thread{
         System.out.println("thread is running...");
         this.init();
         while (true) {
-            this.jpChatbox.getJtaNoti().setText( readMessage());
+            jpChatbox.addMessage(readMessage());
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {

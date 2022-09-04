@@ -1,8 +1,8 @@
 package view.adminManager;
 
 import controller.RoomListener;
-import fileReadWrite.ReadWriteAccount;
-import fileReadWrite.ReadWriteRoom;
+import model.input.ReadWriteAccount;
+import model.input.ReadWriteRoom;
 import model.entity.Account;
 import model.entity.Room;
 
