@@ -121,8 +121,4 @@ public class StartManage extends JFrame {
         }
         this.jlNote.setText(" * Invalid account...");
     }
-
-    public static void main(String[] args) {
-        new StartManage();
-    }
 }

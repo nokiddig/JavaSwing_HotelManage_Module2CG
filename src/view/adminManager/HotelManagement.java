@@ -1,8 +1,6 @@
 package view.adminManager;
 
 import controller.HotelManagerListener;
-
-import javax.naming.Name;
 import javax.swing.*;
 import java.awt.*;
 
@@ -57,8 +55,5 @@ public class HotelManagement extends JFrame {
     public void quitApp() {
         jpInformation.getChatAdmin().closePort();
         this.dispose();
-    }
-    public static void main(String[] args) {
-        new HotelManagement("Admin");
     }
 }

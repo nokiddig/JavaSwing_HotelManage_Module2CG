@@ -1,7 +1,5 @@
 package view.userView;
 
-import model.entity.Room;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -31,9 +29,5 @@ public class AllUserView extends JFrame {
     private void addComponent() {
         this.add(jpService);
         this.add(jpChatbox);
-    }
-
-    public static void main(String[] args) {
-        new AllUserView("Sy");
     }
 }

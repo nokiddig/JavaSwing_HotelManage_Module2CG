@@ -26,8 +26,9 @@ public class UpdateAccountListener implements ActionListener {
 
         startCRUD:
         if (validate.checkAccount(name, pass)){
+            int notFound = -1;
             if (str.equals("Delete")) {
-                if (readWriteAccount.searchAccount(name) == -1) {
+                if (readWriteAccount.searchAccount(name) != notFound) {
                     JOptionPane.showMessageDialog(null, "user name not found!");
                     break startCRUD;
                 }
@@ -36,7 +37,7 @@ public class UpdateAccountListener implements ActionListener {
                 }
             }
             if (str.equals("Edit")){
-                if (readWriteAccount.searchAccount(name) == -1) {
+                if (readWriteAccount.searchAccount(name) != notFound) {
                     JOptionPane.showMessageDialog(null, "user name not found!");
                     break startCRUD;
                 }
@@ -46,7 +47,7 @@ public class UpdateAccountListener implements ActionListener {
                 }
             }
             if (str.equals("Add")) {
-                if (readWriteAccount.searchAccount(name) != -1) {
+                if (readWriteAccount.searchAccount(name) != notFound) {
                     JOptionPane.showMessageDialog(null, "user name existed!");
                     break startCRUD;
                 }
