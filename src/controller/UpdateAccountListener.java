@@ -2,15 +2,17 @@ package controller;
 
 import model.input.ReadWriteAccount;
 import model.entity.Account;
+import model.input.Validate;
 import view.adminManager.JPUpdateAccount;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class UpdateAccountListener implements ActionListener {
     private JPUpdateAccount jpUpdateAccount;
     private ReadWriteAccount readWriteAccount = new ReadWriteAccount();
-
+    private Validate validate = new Validate();
     public UpdateAccountListener(JPUpdateAccount jpUpdateAccount) {
         this.jpUpdateAccount = jpUpdateAccount;
     }
@@ -21,20 +23,42 @@ public class UpdateAccountListener implements ActionListener {
         String name = jpUpdateAccount.getJtfName().getText();
         String pass = jpUpdateAccount.getJtfPass().getText();
         boolean admin = jpUpdateAccount.getJrbAdmin().isSelected();
-        Account account = new Account(name, pass, admin);
 
-        if (name.equals("")) {
-            jpUpdateAccount.getJlStatus().setText(" * Input name to use this feature");
-            return;
+        startCRUD:
+        if (validate.checkAccount(name, pass)){
+            if (str.equals("Delete")) {
+                if (readWriteAccount.searchAccount(name) == -1) {
+                    JOptionPane.showMessageDialog(null, "user name not found!");
+                    break startCRUD;
+                }
+                else {
+                    readWriteAccount.deleteAccount(name);
+                }
+            }
+            if (str.equals("Edit")){
+                if (readWriteAccount.searchAccount(name) == -1) {
+                    JOptionPane.showMessageDialog(null, "user name not found!");
+                    break startCRUD;
+                }
+                else {
+                    Account account = new Account(name, pass, admin);
+                    readWriteAccount.editAccount(account);
+                }
+            }
+            if (str.equals("Add")) {
+                if (readWriteAccount.searchAccount(name) != -1) {
+                    JOptionPane.showMessageDialog(null, "user name existed!");
+                    break startCRUD;
+                }
+                else {
+                    Account account = new Account(name, pass, admin);
+                    readWriteAccount.addAccount(account);
+                }
+            }
+            JOptionPane.showMessageDialog(null, "Done!!");
         }
-        if (str.equals("Edit")){
-            readWriteAccount.editAccount(account);
-        }
-        if (str.equals("Delete")) {
-            readWriteAccount.deleteAccount(account);
-        }
-        if (str.equals("Add")) {
-            readWriteAccount.addAccount(account);
+        else {
+            validate.showHandleAccount();
         }
     }
 }

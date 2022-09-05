@@ -23,6 +23,7 @@ public class AllUserView extends JFrame {
         this.setTitle("SG Hotel");
         this.setSize(FRAME_WIDTH, FRAME_HIGH);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setLayout(new GridLayout(1, 2));
     }
@@ -33,6 +34,6 @@ public class AllUserView extends JFrame {
     }
 
     public static void main(String[] args) {
-        new AllUserView("SyN");
+        new AllUserView("Sy");
     }
 }

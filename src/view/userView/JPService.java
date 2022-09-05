@@ -11,7 +11,6 @@ import java.awt.*;
 public class JPService extends JPanel {
     private final Font font = new Font("Serif", Font.ITALIC|Font.BOLD, 20);
     private final Font jlFont = new Font("times new roman", Font.BOLD, 20);
-    private final Font jbFont = new Font("Arial", Font.BOLD, 14);
     private JLabel jlID, jlLarge, jlNOBed, jlPrice, jlStartDate;
     private Room room;
     private ReadWriteRoom readWriteRoom = new ReadWriteRoom();
@@ -48,7 +47,7 @@ public class JPService extends JPanel {
         jlID.setFont(jlFont);
     }
     private void setupJLLarge() {
-        jlLarge = new JLabel("Large: " + room.getLarge() + " mv");
+        jlLarge = new JLabel("Large: " + room.getLarge() + " m2");
         jlLarge.setBounds(40,150,300,40);
         jlLarge.setFont(jlFont);
     }

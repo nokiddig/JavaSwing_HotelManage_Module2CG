@@ -39,6 +39,7 @@ public class ReadWriteRoom {
                 }
             }
             while (true);
+            bufferedReader.close();
         } catch (Exception e) {
             System.out.println("");
         }
@@ -54,16 +55,17 @@ public class ReadWriteRoom {
             }
             pw.close();
         }catch(IOException ioe){
-            System.out.println("Exception occurred:");
             ioe.printStackTrace();
         }
     }
     public void addRoom(Room r) {
+        readListRooms();
         listRooms.add(r);
         writeListRooms();
     }
 
     public void deleteRoom(String ID) {
+        readListRooms();
         for (int i=0; i< listRooms.size(); i++) {
             if (listRooms.get(i).getRoomID().equals(ID)) {
                 listRooms.remove(i);
@@ -74,6 +76,7 @@ public class ReadWriteRoom {
     }
 
     public void editRoom(Room r) {
+        readListRooms();
         for (Room listRoom : listRooms) {
             if (listRoom.getRoomID().equals(r.getRoomID())) {
                 listRoom.setStartDate(r.getStartDate());
@@ -86,7 +89,14 @@ public class ReadWriteRoom {
         }
         writeListRooms();
     }
-
+    public int searchRoom(String ID) {
+        for (int i=0; i<listRooms.size(); i++) {
+            if (listRooms.get(i).equals(ID)) {
+                return i;
+            }
+        }
+        return -1;
+    }
     public ArrayList<Room> getListRooms() {
         return listRooms;
     }

@@ -59,7 +59,6 @@ public class JPRoom extends JPanel {
             jbBook.setText("Payment");
         }
         else {
-//            room.setStatus("Not Available");
             jlStatus.setText("Available");
             jlStatus.setForeground(Color.green);
             jbBook.setText("Book");
@@ -67,7 +66,7 @@ public class JPRoom extends JPanel {
     }
     public void setupJButtonBook () {
         jbBook.setBorder(BorderFactory.createLineBorder(Color.lightGray));
-        jbBook.setBackground(Color.gray);
+        jbBook.setBackground(Color.orange);
         jbBook.addActionListener(roomListener);
         this.updateStatusUI();
     }

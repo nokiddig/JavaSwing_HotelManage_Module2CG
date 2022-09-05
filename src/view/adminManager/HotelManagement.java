@@ -26,6 +26,7 @@ public class HotelManagement extends JFrame {
         this.setSize(FRAME_WIDTH, FRAME_HIGH);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
         this.setLayout(null);
 
         this.setupComponent();
@@ -58,6 +59,6 @@ public class HotelManagement extends JFrame {
         this.dispose();
     }
     public static void main(String[] args) {
-        new HotelManagement("none");
+        new HotelManagement("Admin");
     }
 }

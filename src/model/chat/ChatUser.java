@@ -55,7 +55,6 @@ public class ChatUser extends Thread{
 
     @Override
     public void run(){
-        System.out.println("thread is running...");
         this.init();
         while (true) {
             jpChatbox.addMessage(readMessage());

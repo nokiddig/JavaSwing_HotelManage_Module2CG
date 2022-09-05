@@ -1,7 +1,9 @@
 package controller;
 
+import model.input.ReadWriteTurnover;
 import view.adminManager.JPInformation;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,6 +17,10 @@ public class InfomationHMListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String str = e.getActionCommand();
         if(str.equals("Turnover")) {
+            ReadWriteTurnover readWriteTurnover = new ReadWriteTurnover();
+            String mes = "Hotel Turnover: " + readWriteTurnover.getTurnOver() + " VND.";
+            JOptionPane.showConfirmDialog(null, mes, "Turnover", JOptionPane.CANCEL_OPTION);
+
             return;
         }
         if (str.equals("Send")) {

@@ -62,9 +62,9 @@ public class ReadWriteAccount {
         writeListUser();
     }
 
-    public void deleteAccount(Account account) {
+    public void deleteAccount(String name) {
         for (int i=0; i<listAccount.size(); i++) {
-            if (account.getName().equals(listAccount.get(i).getName())) {
+            if (name.equals(listAccount.get(i).getName())) {
                 listAccount.remove(i);
                 break;
             }

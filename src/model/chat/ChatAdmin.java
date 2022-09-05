@@ -60,7 +60,6 @@ public class ChatAdmin extends Thread{
     }
     @Override
     public void run(){
-        System.out.println("thread is running...");
         this.init();
         while (true) {
             if (socket==null || socket.isClosed()) {
