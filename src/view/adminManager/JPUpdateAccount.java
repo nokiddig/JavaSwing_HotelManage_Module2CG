@@ -1,6 +1,6 @@
 package view.adminManager;
 
-import controller.UpdateAccountListener;
+import controller.adminListener.UpdateAccountListener;
 
 import javax.swing.*;
 import javax.swing.border.Border;

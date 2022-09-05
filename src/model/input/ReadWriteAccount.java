@@ -32,7 +32,7 @@ public class ReadWriteAccount {
             }
             while (true);
         } catch (Exception e) {
-            System.out.println("");
+            System.out.println("\n");
         }
     }
     public void writeListUser() {

@@ -41,7 +41,7 @@ public class ReadWriteRoom {
             while (true);
             bufferedReader.close();
         } catch (Exception e) {
-            System.out.println("");
+            System.out.println("\n");
         }
     }
 
@@ -91,7 +91,7 @@ public class ReadWriteRoom {
     }
     public int searchRoom(String ID) {
         for (int i=0; i<listRooms.size(); i++) {
-            if (listRooms.get(i).equals(ID)) {
+            if (listRooms.get(i).getRoomID().equals(ID)) {
                 return i;
             }
         }

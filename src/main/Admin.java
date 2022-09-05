@@ -1,9 +1,9 @@
 package main;
 
-import view.adminManager.HotelManagement;
+import view.adminManager.JFHotelManagement;
 
 public class Admin {
     public static void main(String[] args) {
-        new HotelManagement("Admin");
+        new JFHotelManagement("Admin");
     }
 }

@@ -1,6 +1,6 @@
 package view.adminManager;
 
-import controller.InfomationHMListener;
+import controller.adminListener.InformationListener;
 import model.chat.ChatAdmin;
 
 import javax.swing.*;
@@ -25,7 +25,7 @@ public class JPInformation extends JPanel {
     private JLabel jlID = new JLabel("Room ID: ");
     private JTextField jtfID = new JTextField("ID");
     private JComboBox<String> jcbbService = new JComboBox<String>();
-    private InfomationHMListener iHMListener = new InfomationHMListener(this);
+    private InformationListener iHMListener = new InformationListener(this);
     private ChatAdmin chatAdmin = new ChatAdmin();
     public JPInformation (String name) {
         this.setupBorder("Hello " + name);

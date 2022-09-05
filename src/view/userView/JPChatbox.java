@@ -1,6 +1,6 @@
 package view.userView;
 
-import controller.ChatBoxUserListener;
+import controller.userListener.ChatBoxUserListener;
 import model.chat.ChatUser;
 
 import javax.swing.*;
@@ -111,9 +111,5 @@ public class JPChatbox extends JPanel {
     public void addMessage(String mes) {
         String allMess = jtaNoti.getText();
         jtaNoti.setText(allMess+ mes + "\n");
-    }
-
-    public void setNameUser(String nameUser) {
-        this.nameUser = nameUser;
     }
 }

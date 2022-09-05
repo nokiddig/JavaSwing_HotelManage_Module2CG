@@ -1,4 +1,4 @@
-package controller;
+package controller.adminListener;
 
 import model.input.ReadWriteTurnover;
 import view.adminManager.JPInformation;
@@ -7,10 +7,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class InfomationHMListener implements ActionListener {
+public class InformationListener implements ActionListener {
     private final JPInformation jpInformation;
 
-    public InfomationHMListener(JPInformation jpInformation) {
+    public InformationListener(JPInformation jpInformation) {
         this.jpInformation = jpInformation;
     }
     @Override
@@ -20,7 +20,6 @@ public class InfomationHMListener implements ActionListener {
             ReadWriteTurnover readWriteTurnover = new ReadWriteTurnover();
             String mes = "Hotel Turnover: " + readWriteTurnover.getTurnOver() + " VND.";
             JOptionPane.showConfirmDialog(null, mes, "Turnover", JOptionPane.CANCEL_OPTION);
-
             return;
         }
         if (str.equals("Send")) {
@@ -33,15 +32,6 @@ public class InfomationHMListener implements ActionListener {
         if (str.equals("Clear all")) {
             jpInformation.getJtaNoti().setText("");
             jpInformation.getJtaRep().setText("");
-            return;
-        }
-        if (str.equals("Refresh")) {
-            return;
-        }
-        if (str.equals("Order")) {
-            return;
-        }
-        if (str.equals("Check")) {
             return;
         }
     }

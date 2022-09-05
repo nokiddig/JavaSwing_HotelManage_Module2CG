@@ -1,6 +1,6 @@
 package view.adminManager;
 
-import controller.UpdateRoomListener;
+import controller.adminListener.UpdateRoomListener;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -19,9 +19,9 @@ public class JPUpdateRoom extends JPanel {
     private JButton jbAdd = new JButton("Add");
     private JButton jbDelete = new JButton("Delete");
     private UpdateRoomListener updateRoomListener = new UpdateRoomListener(this);
-    private HotelManagement HM;
+    private JFHotelManagement HM;
 
-    public JPUpdateRoom(HotelManagement HM) {
+    public JPUpdateRoom(JFHotelManagement HM) {
         this.HM = HM;
         this.setupBorder("Room");
         this.setLayout(null);
@@ -126,7 +126,7 @@ public class JPUpdateRoom extends JPanel {
         return jtfPrice;
     }
 
-    public HotelManagement getHM() {
+    public JFHotelManagement getHM() {
         return HM;
     }
 }

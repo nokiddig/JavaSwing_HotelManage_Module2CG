@@ -1,4 +1,4 @@
-package controller;
+package controller.adminListener;
 
 import model.input.ReadWriteAccount;
 import model.entity.Account;
@@ -28,7 +28,7 @@ public class UpdateAccountListener implements ActionListener {
         if (validate.checkAccount(name, pass)){
             int notFound = -1;
             if (str.equals("Delete")) {
-                if (readWriteAccount.searchAccount(name) != notFound) {
+                if (readWriteAccount.searchAccount(name) == notFound) {
                     JOptionPane.showMessageDialog(null, "user name not found!");
                     break startCRUD;
                 }
@@ -37,7 +37,7 @@ public class UpdateAccountListener implements ActionListener {
                 }
             }
             if (str.equals("Edit")){
-                if (readWriteAccount.searchAccount(name) != notFound) {
+                if (readWriteAccount.searchAccount(name) == notFound) {
                     JOptionPane.showMessageDialog(null, "user name not found!");
                     break startCRUD;
                 }

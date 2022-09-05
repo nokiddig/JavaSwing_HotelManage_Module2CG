@@ -1,6 +1,6 @@
 package view.adminManager;
 
-import controller.RoomListener;
+import controller.adminListener.RoomListener;
 import model.input.ReadWriteAccount;
 import model.input.ReadWriteRoom;
 import model.entity.Account;

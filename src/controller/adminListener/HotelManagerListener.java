@@ -1,16 +1,16 @@
-package controller;
+package controller.adminListener;
 
-import view.adminManager.HotelManagement;
+import view.adminManager.JFHotelManagement;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class HotelManagerListener implements ActionListener {
-    private HotelManagement hotelManagement;
+    private JFHotelManagement JFHotelManagement;
 
-    public HotelManagerListener(HotelManagement hotelManagement) {
-        this.hotelManagement = hotelManagement;
+    public HotelManagerListener(JFHotelManagement JFHotelManagement) {
+        this.JFHotelManagement = JFHotelManagement;
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -20,7 +20,7 @@ public class HotelManagerListener implements ActionListener {
             int asw = JOptionPane.showConfirmDialog(null, mes, "Quit", JOptionPane.YES_NO_OPTION);
             final int yes = 0;
             if (asw == yes)
-                hotelManagement.quitApp();
+                JFHotelManagement.quitApp();
         }
     }
 }

@@ -1,4 +1,4 @@
-package controller;
+package controller.adminListener;
 
 import model.input.ReadWriteRoom;
 import model.entity.Room;
@@ -31,7 +31,7 @@ public class UpdateRoomListener implements ActionListener {
             int notFound = -1;
             if (str.equals("Edit")){
                 Room room = new Room(ID, Integer.parseInt(large), Integer.parseInt(nBed), Integer.parseInt(price));
-                if (readWriteRoom.searchRoom(ID) != notFound) {
+                if (readWriteRoom.searchRoom(ID) == notFound) {
                     JOptionPane.showMessageDialog(null, "ID not found!");
                     break startCRUD;
                 }
@@ -40,7 +40,7 @@ public class UpdateRoomListener implements ActionListener {
                 }
             }
             if (str.equals("Delete")) {
-                if (readWriteRoom.searchRoom(ID) != notFound) {
+                if (readWriteRoom.searchRoom(ID) == notFound) {
                     JOptionPane.showMessageDialog(null, "ID not found!");
                     break startCRUD;
                 }
@@ -64,6 +64,5 @@ public class UpdateRoomListener implements ActionListener {
         else {
             validate.showHandleRoom();
         }
-
     }
 }

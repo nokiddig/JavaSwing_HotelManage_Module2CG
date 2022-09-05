@@ -16,7 +16,7 @@ public class JPService extends JPanel {
     private ReadWriteRoom readWriteRoom = new ReadWriteRoom();
     public JPService() {
         room = new Room("000", 0,0,0);
-        this.setupBorder("Hotel service");
+        this.setupBorder("Room information");
         this.setLayout(null);
         this.setupComponent();
         this.addComponent();
@@ -29,7 +29,7 @@ public class JPService extends JPanel {
                 break;
             }
         }
-        this.setupBorder("Hotel service");
+        this.setupBorder("Room information");
         this.setLayout(null);
         this.setupComponent();
         this.addComponent();
@@ -42,7 +42,7 @@ public class JPService extends JPanel {
         this.setupJLStartDate();
     }
     private void setupJLID() {
-        jlID = new JLabel("ID: " + room.getRoomID());
+        jlID = new JLabel("Room ID: " + room.getRoomID());
         jlID.setBounds(40,50,300,40);
         jlID.setFont(jlFont);
     }

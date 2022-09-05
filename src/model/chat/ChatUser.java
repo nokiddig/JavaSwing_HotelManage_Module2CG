@@ -6,13 +6,12 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.util.Scanner;
 
 public class ChatUser extends Thread{
     private Socket socket;
+    private JPChatbox jpChatbox;
     private  DataInputStream dataInputStream;
     private DataOutputStream dataOutputStream;
-    private JPChatbox jpChatbox;
     public void init () {
         try {
             socket = new Socket("localhost", 3333);
@@ -34,7 +33,7 @@ public class ChatUser extends Thread{
     }
 
     public String readMessage() {
-        String mes = "";
+        String mes;
         try {
             mes = dataInputStream.readUTF();
         } catch (IOException e) {

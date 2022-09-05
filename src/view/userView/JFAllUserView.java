@@ -3,11 +3,11 @@ package view.userView;
 import javax.swing.*;
 import java.awt.*;
 
-public class AllUserView extends JFrame {
+public class JFAllUserView extends JFrame {
     static final int FRAME_WIDTH = 800, FRAME_HIGH = 600;
-    private JPService jpService;
-    private JPChatbox jpChatbox;
-    public AllUserView(String name) {
+    private final JPService jpService;
+    private final JPChatbox jpChatbox;
+    public JFAllUserView(String name) {
         this.setupJFrame();
         jpService = new JPService(name);
         jpChatbox = new JPChatbox(name);

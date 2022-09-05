@@ -1,4 +1,4 @@
-package controller;
+package controller.userListener;
 
 import view.adminManager.JPInformation;
 import view.userView.JPChatbox;

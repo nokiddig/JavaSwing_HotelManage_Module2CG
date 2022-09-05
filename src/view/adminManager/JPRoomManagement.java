@@ -6,14 +6,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class RoomManagement extends JPanel {
+public class JPRoomManagement extends JPanel {
     private ArrayList<JPRoom> listJPRooms = new ArrayList<>();
     private ReadWriteRoom readWriteRoom = new ReadWriteRoom();
     private int numOfRooms = 0;
     private int row = 0;
     private final int col = 4;
 
-    public RoomManagement() {
+    public JPRoomManagement() {
         this.init();
     }
 

@@ -1,21 +1,21 @@
 package view.login;
 
-import controller.StartLoginListener;
+import controller.loginListener.LoginListener;
 import model.entity.Account;
 import model.input.ReadWriteAccount;
-import view.adminManager.HotelManagement;
-import view.userView.AllUserView;
+import view.adminManager.JFHotelManagement;
+import view.userView.JFAllUserView;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 
-public class StartManage extends JFrame {
+public class Login extends JFrame {
     private final int FRAME_WIDTH = 900, FRAME_HIGH = 600;
 
     private JFrame userView;
-    private StartLoginListener listener;
+    private LoginListener listener;
     private static Image backgroundImage;
     private static JTextField jtfAccount, jtfPass;
     private static JPanel jpLogin;
@@ -23,7 +23,7 @@ public class StartManage extends JFrame {
     private static JButton jbLogin;
 
     private final ReadWriteAccount readWriteAccount = new ReadWriteAccount();
-    public StartManage() {
+    public Login() {
         this.init();
     }
     public void init() {
@@ -39,7 +39,7 @@ public class StartManage extends JFrame {
         this.setVisible(true);
     }
     private void setupLogin() {
-        listener = new StartLoginListener(this);
+        listener = new LoginListener(this);
         jpLogin = setBackgroundImage("image\\bkGr3.jpg");
         jpLogin.setLayout(null);
 
@@ -111,10 +111,10 @@ public class StartManage extends JFrame {
             if (name.equals(account.getName()) && pass.equals(account.getPass())) {
                 this.setVisible(false);
                 if (account.getAdminAccount()){
-                    this.userView = new HotelManagement(name);
+                    this.userView = new JFHotelManagement(name);
                 }
                 else {
-                    this.userView = new AllUserView(name);
+                    this.userView = new JFAllUserView(name);
                 }
                 return;
             }

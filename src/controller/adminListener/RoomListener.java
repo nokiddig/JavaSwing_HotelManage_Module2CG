@@ -1,9 +1,8 @@
-package controller;
+package controller.adminListener;
 
 import model.input.ReadWriteTurnover;
 import view.adminManager.JPRoom;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,7 +15,6 @@ public class RoomListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String str = e.getActionCommand();
-        boolean checkEvent = false;
         if (str.equals("Book") && jpRoom.bookRoom()) {
             jpRoom.updateStatusUI();
         }
@@ -25,6 +23,5 @@ public class RoomListener implements ActionListener {
             readWriteTurnover.writeTurnover();
             jpRoom.updateStatusUI();
         }
-
     }
 }

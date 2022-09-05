@@ -3,12 +3,6 @@ package model.input;
 import javax.swing.*;
 
 public class Validate {
-    private String userNameRegex = "[\\dA-Za-z]{3,7}";
-    private String passwordRegex = "[\\dA-Za-z]{3,7}";
-    private String IDRegex = "\\d{3}";
-    private String largeRegex = "\\d{1,3}";
-    private String noBedRegex = "0|1|2|3|4";
-    private String priceRegex = "[1-9]\\d{5,7}";
 
     public boolean checkAccount(String name, String pass) {
         return checkUserName(name) && checkPassword(pass);
@@ -33,21 +27,27 @@ public class Validate {
         JOptionPane.showMessageDialog(null, handleAccount);
     }
     public boolean checkPassword(String pass) {
+        String passwordRegex = "[\\dA-Za-z]{3,7}";
         return pass.matches(passwordRegex);
     }
     public boolean checkUserName(String name) {
+        String userNameRegex = "[\\dA-Za-z]{3,7}";
         return name.matches(userNameRegex);
     }
     public boolean checkLarge(String large) {
+        String largeRegex = "\\d{1,3}";
         return large.matches(largeRegex);
     }
     public boolean checkBed(String noBed) {
+        String noBedRegex = "[01234]";
         return noBed.matches(noBedRegex);
     }
     public boolean checkPrice(String price) {
+        String priceRegex = "[1-9]\\d{5,7}";
         return price.matches(priceRegex);
     }
     public boolean checkIDRoom(String ID) {
+        String IDRegex = "\\d{3}";
         return ID.matches(IDRegex);
     }
 }

@@ -1,19 +1,19 @@
 package view.adminManager;
 
-import controller.HotelManagerListener;
+import controller.adminListener.HotelManagerListener;
 import javax.swing.*;
 import java.awt.*;
 
-public class HotelManagement extends JFrame {
+public class JFHotelManagement extends JFrame {
     static final int FRAME_WIDTH = 1200, FRAME_HIGH = 600;
-    private JPanel jpSideBar = new JPanel(new GridLayout(1, 2));
-    private RoomManagement jpRoom = new RoomManagement();
-    private JPInformation jpInformation;
-    private JPUpdateRoom jpUpdateRoom = new JPUpdateRoom(this);
-    private JPUpdateAccount jpUpdateAccount = new JPUpdateAccount();
-    private String name;
-    private HotelManagerListener hotelManagerListener = new HotelManagerListener(this);
-    public HotelManagement(String name) {
+    private final JPanel jpSideBar = new JPanel(new GridLayout(1, 2));
+    private JPRoomManagement jpRoom = new JPRoomManagement();
+    private final JPInformation jpInformation;
+    private final JPUpdateRoom jpUpdateRoom = new JPUpdateRoom(this);
+    private final JPUpdateAccount jpUpdateAccount = new JPUpdateAccount();
+    private final String name;
+    private final HotelManagerListener hotelManagerListener = new HotelManagerListener(this);
+    public JFHotelManagement(String name) {
         this.name = name;
         jpInformation = new JPInformation(name);
         this.init();
@@ -42,13 +42,9 @@ public class HotelManagement extends JFrame {
         jpInformation.setBounds(880, 0, 295, 558);
         jpInformation.getJbQuit().addActionListener(hotelManagerListener);
     }
-
-    public RoomManagement getJpRoom() {
-        return jpRoom;
-    }
     public void refreshRoom() {
         jpRoom.setVisible(false);
-        jpRoom = new RoomManagement();
+        jpRoom = new JPRoomManagement();
         jpRoom.setBounds(0, 0, 580, FRAME_HIGH*95/100);
         this.add(jpRoom);
     }

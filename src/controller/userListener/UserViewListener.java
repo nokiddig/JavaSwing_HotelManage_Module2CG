@@ -1,15 +1,15 @@
-package controller;
+package controller.userListener;
 
-import view.userView.AllUserView;
+import view.userView.JFAllUserView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class UserViewListener implements ActionListener {
-    private AllUserView allUserView;
+    private JFAllUserView JFAllUserView;
 
-    public UserViewListener(AllUserView AUV) {
-        allUserView = AUV;
+    public UserViewListener(JFAllUserView AUV) {
+        JFAllUserView = AUV;
     }
 
     @Override
