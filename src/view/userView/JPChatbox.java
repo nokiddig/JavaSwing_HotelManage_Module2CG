@@ -14,15 +14,17 @@ public class JPChatbox extends JPanel {
     private final Font jbFont = new Font("Arial", Font.BOLD, 14);
 
     private JLabel jlNoti = new JLabel("Notification: ");
-    private JLabel jlRep = new JLabel("Reply: ");
+    private final JLabel jlRep = new JLabel("Reply: ");
 
-    private JTextArea jtaNoti = new JTextArea(10, 10);
-    private JTextArea jtaRep = new JTextArea(10, 10);
+    private final JTextArea jtaNoti = new JTextArea(10, 10);
+    private final JTextArea jtaRep = new JTextArea(10, 10);
 
-    private JButton jbSend = new JButton("Send"), jbClear = new JButton("Clear all"), jbRefresh = new JButton("Refresh");
-    private ChatUser chatUser = new ChatUser();
-    private ChatBoxUserListener chatBoxUserListener = new ChatBoxUserListener(this);
-    private String nameUser = "";
+    private final JButton jbSend = new JButton("Send");
+    private final JButton jbClear = new JButton("Clear all");
+    private final JButton jbRefresh = new JButton("Refresh");
+    private final ChatUser chatUser = new ChatUser();
+    private final ChatBoxUserListener chatBoxUserListener = new ChatBoxUserListener(this);
+    private String nameUser;
     public JPChatbox(String name) {
         this.setupBorder("Chat with admin");
         this.nameUser = name;
@@ -91,10 +93,6 @@ public class JPChatbox extends JPanel {
         Border border = BorderFactory.createLineBorder(Color.black, 1);
         this.setBorder(BorderFactory.createTitledBorder(border, name,
                 TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION, font));
-    }
-
-    public JTextArea getJtaNoti() {
-        return jtaNoti;
     }
 
     public JTextArea getJtaRep() {

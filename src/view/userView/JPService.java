@@ -14,13 +14,6 @@ public class JPService extends JPanel {
     private JLabel jlID, jlLarge, jlNOBed, jlPrice, jlStartDate;
     private Room room;
     private ReadWriteRoom readWriteRoom = new ReadWriteRoom();
-    public JPService() {
-        room = new Room("000", 0,0,0);
-        this.setupBorder("Room information");
-        this.setLayout(null);
-        this.setupComponent();
-        this.addComponent();
-    }
     public JPService(String name) {
         room = new Room("000", 0,0,0);
         for (Room r:readWriteRoom.getListRooms()) {
