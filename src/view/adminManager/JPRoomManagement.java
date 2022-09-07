@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class JPRoomManagement extends JPanel {
     private ArrayList<JPRoom> listJPRooms = new ArrayList<>();
-    private ReadWriteRoom readWriteRoom = new ReadWriteRoom();
+    private final ReadWriteRoom readWriteRoom = new ReadWriteRoom();
     private int numOfRooms = 0;
     private int row = 0;
     private final int col = 4;

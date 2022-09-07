@@ -3,6 +3,7 @@ package model.entity;
 public class Account {
     private String name, pass;
     private boolean adminAccount;
+
     public Account(String n, String p, boolean admin) {
         this.name = n;
         this.pass = p;

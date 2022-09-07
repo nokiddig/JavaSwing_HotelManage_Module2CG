@@ -35,6 +35,7 @@ public class ReadWriteAccount {
             System.out.println("\n");
         }
     }
+
     public void writeListUser() {
         try{
             PrintWriter pw = new PrintWriter(src);
@@ -47,6 +48,7 @@ public class ReadWriteAccount {
             ioe.printStackTrace();
         }
     }
+
     public void addAccount(Account account) {
         listAccount.add(account);
         writeListUser();
@@ -71,6 +73,7 @@ public class ReadWriteAccount {
         }
         writeListUser();
     }
+
     public int searchAccount(String name) {
         for (int i=0; i<listAccount.size(); i++) {
             if (listAccount.get(i).getName().equals(name)){
@@ -79,6 +82,7 @@ public class ReadWriteAccount {
         }
         return -1;
     }
+
     public ArrayList<Account> getListUser() {
         return listAccount;
     }

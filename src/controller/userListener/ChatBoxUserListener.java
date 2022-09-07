@@ -1,6 +1,5 @@
 package controller.userListener;
 
-import view.adminManager.JPInformation;
 import view.userView.JPChatbox;
 
 import java.awt.event.ActionEvent;
@@ -15,15 +14,18 @@ public class ChatBoxUserListener implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         String str = e.getActionCommand();
-        if(str.equals("Turnover")) {
-            return;
-        }
         if (str.equals("Send")) {
             String mes = jpChatbox.getNameUser() + ": " + jpChatbox.getJtaRep().getText();
             jpChatbox.addMessage(mes);
             jpChatbox.getChatUser().sendMessage(mes);
             jpChatbox.getJtaRep().setText("");
-            return;
+        }
+        if (str.equals("Clear all")){
+            jpChatbox.getJtaRep().setText("");
+            jpChatbox.getJtaNoti().setText("");
+        }
+        if (str.equals("Refresh")) {
+            jpChatbox.refreshJTANoti();
         }
     }
 }

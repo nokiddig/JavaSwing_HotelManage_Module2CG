@@ -22,7 +22,7 @@ public class ChatAdmin extends Thread{
             dataInputStream = new DataInputStream(socket.getInputStream());
             dataOutputStream = new DataOutputStream(socket.getOutputStream());
         }catch (IOException e) {
-            System.out.println("Socket ngu 1");
+            return;
         }
     }
 
@@ -34,6 +34,7 @@ public class ChatAdmin extends Thread{
             throw new RuntimeException(e);
         }
     }
+
     public String readMessage() {
         String mes;
         try {
@@ -43,6 +44,7 @@ public class ChatAdmin extends Thread{
         }
         return mes;
     }
+
     public void closePort(){
         try {
             if (dataOutputStream!=null)
@@ -57,6 +59,7 @@ public class ChatAdmin extends Thread{
             e.printStackTrace();
         }
     }
+
     @Override
     public void run(){
         this.init();
@@ -69,9 +72,11 @@ public class ChatAdmin extends Thread{
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 System.out.println("socket ngu");
+                return;
             }
         }
     }
+
     public void setJpInformation(JPInformation jpInformation) {
         this.jpInformation = jpInformation;
     }

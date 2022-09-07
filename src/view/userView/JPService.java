@@ -13,7 +13,8 @@ public class JPService extends JPanel {
     private final Font jlFont = new Font("times new roman", Font.BOLD, 20);
     private JLabel jlID, jlLarge, jlNOBed, jlPrice, jlStartDate;
     private Room room;
-    private ReadWriteRoom readWriteRoom = new ReadWriteRoom();
+    private final ReadWriteRoom readWriteRoom = new ReadWriteRoom();
+
     public JPService(String name) {
         room = new Room("000", 0,0,0);
         for (Room r:readWriteRoom.getListRooms()) {
@@ -27,6 +28,7 @@ public class JPService extends JPanel {
         this.setupComponent();
         this.addComponent();
     }
+
     private void setupComponent() {
         this.setupJLID();
         this.setupJLLarge();
@@ -34,31 +36,37 @@ public class JPService extends JPanel {
         this.setupJLPrice();
         this.setupJLStartDate();
     }
+
     private void setupJLID() {
         jlID = new JLabel("Room ID: " + room.getRoomID());
         jlID.setBounds(40,50,300,40);
         jlID.setFont(jlFont);
     }
+
     private void setupJLLarge() {
         jlLarge = new JLabel("Large: " + room.getLarge() + " m2");
         jlLarge.setBounds(40,150,300,40);
         jlLarge.setFont(jlFont);
     }
+
     private void setupJLNOBed() {
         jlNOBed = new JLabel("Num of bed: " + room.getBed());
         jlNOBed.setBounds(40,250,300,40);
         jlNOBed.setFont(jlFont);
     }
+
     private void setupJLPrice() {
         jlPrice = new JLabel("Price: " + room.getPrice() + " VND/Day");
         jlPrice.setBounds(40,350,300,40);
         jlPrice.setFont(jlFont);
     }
+
     private void setupJLStartDate() {
         jlStartDate = new JLabel("Start: " + room.getStartDate());
         jlStartDate.setBounds(40,450,300,40);
         jlStartDate.setFont(jlFont);
     }
+
     private void addComponent() {
         this.add(jlID);
         this.add(jlLarge);

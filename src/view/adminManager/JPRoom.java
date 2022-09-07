@@ -1,10 +1,12 @@
 package view.adminManager;
 
 import controller.adminListener.RoomListener;
+
+import model.entity.Room;
 import model.input.ReadWriteAccount;
 import model.input.ReadWriteRoom;
 import model.entity.Account;
-import model.entity.Room;
+
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -13,30 +15,38 @@ import java.sql.Date;
 import java.util.Calendar;
 
 public class JPRoom extends JPanel {
-    private JLabel jlID = new JLabel("0");
-    private JLabel jlLarge = new JLabel("0");
-    private JLabel jlBed = new JLabel("0");
-    private JLabel jlStatus = new JLabel("0");
-    private JLabel jlPrice = new JLabel("0");
-    private JButton jbBook = new JButton("Book");
-    private Room room;
-    private RoomListener roomListener = new RoomListener(this);
-    private ReadWriteRoom readWriteRoom;
+    private final JLabel jlID = new JLabel("0");
+    private final JLabel jlLarge = new JLabel("0");
+    private final JLabel jlBed = new JLabel("0");
+    private final JLabel jlStatus = new JLabel("0");
+    private final JLabel jlPrice = new JLabel("0");
+    private final JButton jbBook = new JButton("Book");
+    private final Room room;
+    private final RoomListener roomListener = new RoomListener(this);
+    private ReadWriteRoom readWriteRoom = new ReadWriteRoom();
 
     public JPRoom (Room room) {
         this.room = room;
         this.init();
     }
+
     private void init() {
-        Border border = BorderFactory.createLineBorder(Color.black, 1, true);
-        Border border1 = BorderFactory.createEmptyBorder(10, 10,10,10);
-        Border border2 = BorderFactory.createCompoundBorder(border, border1);
-        this.setBorder(border2);
+        this.setupBorder();
         this.setLayout(new GridLayout(6, 1));
 
         this.setupJButtonBook();
         this.showInfoRoom();
+        this.addComponent();
+    }
 
+    private void setupBorder() {
+        Border border = BorderFactory.createLineBorder(Color.black, 1, true);
+        Border border1 = BorderFactory.createEmptyBorder(10, 10,10,10);
+        Border border2 = BorderFactory.createCompoundBorder(border, border1);
+        this.setBorder(border2);
+    }
+
+    private void addComponent() {
         this.add(this.jlID);
         this.add(this.jlLarge);
         this.add(this.jlBed);
@@ -44,6 +54,7 @@ public class JPRoom extends JPanel {
         this.add(this.jlStatus);
         this.add(jbBook);
     }
+
     public void showInfoRoom() {
         this.jlID.setText("ID: " + room.getRoomID());
         this.jlLarge.setText("Large: " + room.getLarge());
@@ -52,6 +63,7 @@ public class JPRoom extends JPanel {
         this.jlStatus.setText(this.room.getStatus());
         jlStatus.setForeground(room.getStatus().equals("Available")?Color.green:Color.red);
     }
+
     public void updateStatusUI() {
         if (!room.getStatus().equals("Available")) {
             jlStatus.setText(room.getStatus());
@@ -64,12 +76,13 @@ public class JPRoom extends JPanel {
             jbBook.setText("Book");
         }
     }
+
     public void setupJButtonBook () {
-        jbBook.setBorder(BorderFactory.createLineBorder(Color.lightGray));
         jbBook.setBackground(Color.orange);
         jbBook.addActionListener(roomListener);
         this.updateStatusUI();
     }
+
     public boolean bookRoom() {
         String showQuestion = "Input user-name to book: ";
         String userName = (String) JOptionPane.showInputDialog(null,showQuestion,"Book Room",JOptionPane.PLAIN_MESSAGE,null,null,"syNgoc");
@@ -81,7 +94,7 @@ public class JPRoom extends JPanel {
                     this.room.setStatus(userName);
                     this.updateStatusUI();
                     this.room.setStartDate(java.time.LocalDate.now().toString());
-                    readWriteRoom = new ReadWriteRoom();
+                    readWriteRoom.readListRooms();
                     readWriteRoom.editRoom(this.room);
                     return true;
                 }
@@ -89,6 +102,7 @@ public class JPRoom extends JPanel {
         }
         return false;
     }
+
     public boolean payment() {
         String mes = "Would you want to payment " + checkBill() + " vnd for room " + this.room.getRoomID() + "?";
         mes += "\n - User: " + room.getStatus() + "\n - From: " + room.getStartDate();

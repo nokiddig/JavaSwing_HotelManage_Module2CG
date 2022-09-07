@@ -19,7 +19,8 @@ public class RoomListener implements ActionListener {
             jpRoom.updateStatusUI();
         }
         if (str.equals("Payment") && jpRoom.payment()) {
-            readWriteTurnover.setTurnOver(readWriteTurnover.getTurnOver()+jpRoom.checkBill());
+            long newTurnover = readWriteTurnover.getTurnOver()+jpRoom.checkBill();
+            readWriteTurnover.setTurnOver(newTurnover);
             readWriteTurnover.writeTurnover();
             jpRoom.updateStatusUI();
         }

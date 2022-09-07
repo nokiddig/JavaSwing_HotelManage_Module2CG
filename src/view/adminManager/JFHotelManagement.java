@@ -1,6 +1,8 @@
 package view.adminManager;
 
 import controller.adminListener.HotelManagerListener;
+import main.Login;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -15,7 +17,7 @@ public class JFHotelManagement extends JFrame {
     private final HotelManagerListener hotelManagerListener = new HotelManagerListener(this);
     public JFHotelManagement(String name) {
         this.name = name;
-        jpInformation = new JPInformation(name);
+        this.jpInformation = new JPInformation(name);
         this.init();
     }
 
@@ -28,13 +30,19 @@ public class JFHotelManagement extends JFrame {
         this.setLayout(null);
 
         this.setupComponent();
+        this.addComponent();
+
+        this.setVisible(true);
+    }
+
+    private void addComponent() {
         this.add(jpRoom);
         this.add(jpSideBar);
         this.add(jpInformation);
         this.add(jpUpdateAccount);
         this.add(jpUpdateRoom);
-        this.setVisible(true);
     }
+
     public void setupComponent () {
         jpRoom.setBounds(0, 0, 580, FRAME_HIGH*95/100);
         jpUpdateAccount.setBounds(579, 0, FRAME_WIDTH/4, FRAME_HIGH*43/100);
@@ -42,13 +50,16 @@ public class JFHotelManagement extends JFrame {
         jpInformation.setBounds(880, 0, 295, 558);
         jpInformation.getJbQuit().addActionListener(hotelManagerListener);
     }
+
     public void refreshRoom() {
         jpRoom.setVisible(false);
         jpRoom = new JPRoomManagement();
         jpRoom.setBounds(0, 0, 580, FRAME_HIGH*95/100);
         this.add(jpRoom);
     }
+
     public void quitApp() {
+        new view.login.Login();;
         jpInformation.getChatAdmin().closePort();
         this.dispose();
     }

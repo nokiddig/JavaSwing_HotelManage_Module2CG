@@ -22,9 +22,12 @@ public class JPChatbox extends JPanel {
     private final JButton jbSend = new JButton("Send");
     private final JButton jbClear = new JButton("Clear all");
     private final JButton jbRefresh = new JButton("Refresh");
+    private final JButton jbQuit = new JButton("Quit");
     private final ChatUser chatUser = new ChatUser();
     private final ChatBoxUserListener chatBoxUserListener = new ChatBoxUserListener(this);
     private String nameUser;
+    private String allMessage = "";
+
     public JPChatbox(String name) {
         this.setupBorder("Chat with admin");
         this.nameUser = name;
@@ -39,7 +42,9 @@ public class JPChatbox extends JPanel {
         this.setupJBSend();
         this.setupJBClear();
         this.setupJBRefresh();
+        this.setupJBQuit();
     }
+
     private void addComponent() {
         this.add(jlNoti);
         this.add(jtaNoti);
@@ -48,7 +53,9 @@ public class JPChatbox extends JPanel {
         this.add(jbSend);
         this.add(jbClear);
         this.add(jbRefresh);
+        this.add(jbQuit);
     }
+
     private void setupShowMess() {
         jlNoti = new JLabel("Message: ");
         jlNoti.setFont(jlFont);
@@ -61,6 +68,7 @@ public class JPChatbox extends JPanel {
         chatUser.setJpChatbox(this);
         chatUser.start();
     }
+
     private void setupRep() {
         jlRep.setFont(jlFont);
         jlRep.setForeground(Color.black);
@@ -76,17 +84,26 @@ public class JPChatbox extends JPanel {
         jbSend.setBounds(30,400,70,30);
         jbSend.addActionListener(chatBoxUserListener);
     }
+
     private void setupJBClear() {
         jbClear.setBackground(Color.yellow);
         jbClear.setFont(jbFont);
         jbClear.setBounds(135,400,95,30);
         jbClear.addActionListener(chatBoxUserListener);
     }
+
     private void setupJBRefresh() {
         jbRefresh.setBackground(Color.yellow);
         jbRefresh.setFont(jbFont);
         jbRefresh.setBounds(265,400,90,30);
         jbRefresh.addActionListener(chatBoxUserListener);
+    }
+
+    private void setupJBQuit() {
+        jbQuit.setBackground(Color.yellow);
+        jbQuit.setFont(jbFont);
+        jbQuit.setBounds(265,480,90,30);
+        jbQuit.addActionListener(chatBoxUserListener);
     }
 
     private void setupBorder(String name) {
@@ -106,8 +123,21 @@ public class JPChatbox extends JPanel {
     public String getNameUser() {
         return nameUser;
     }
+
+    public JButton getJbQuit() {
+        return jbQuit;
+    }
+
+    public JTextArea getJtaNoti() {
+        return jtaNoti;
+    }
+
     public void addMessage(String mes) {
-        String allMess = jtaNoti.getText();
-        jtaNoti.setText(allMess+ mes + "\n");
+        allMessage += mes + "\n";
+        jtaNoti.setText(allMessage);
+    }
+
+    public void refreshJTANoti() {
+        this.jtaNoti.setText(allMessage);
     }
 }

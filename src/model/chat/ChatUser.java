@@ -10,16 +10,16 @@ import java.net.Socket;
 public class ChatUser extends Thread{
     private Socket socket;
     private JPChatbox jpChatbox;
-    private  DataInputStream dataInputStream;
+    private DataInputStream dataInputStream;
     private DataOutputStream dataOutputStream;
+
     public void init () {
         try {
             socket = new Socket("localhost", 3333);
             dataInputStream = new DataInputStream(socket.getInputStream());
             dataOutputStream = new DataOutputStream(socket.getOutputStream());
         } catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
+            System.out.println("Cant connect to sever.");
         }
     }
 

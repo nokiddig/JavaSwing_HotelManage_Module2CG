@@ -12,6 +12,7 @@ public class ReadWriteTurnover {
     private long turnOver = 0;
     private BufferedReader bufferedReader;
     private PrintWriter printWriter;
+
     public ReadWriteTurnover() {
         this.readTurnover();
     }
@@ -26,6 +27,7 @@ public class ReadWriteTurnover {
             throw new RuntimeException(e);
         }
     }
+
     public void writeTurnover() {
         try{
             printWriter = new PrintWriter(src);

@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 
 public class HotelManagerListener implements ActionListener {
     private JFHotelManagement JFHotelManagement;
-
     public HotelManagerListener(JFHotelManagement JFHotelManagement) {
         this.JFHotelManagement = JFHotelManagement;
     }

@@ -19,7 +19,7 @@ public class ReadWriteRoom {
         this.readListRooms();
     }
 
-    private void readListRooms() {
+    public void readListRooms() {
         listRooms = new ArrayList<>();
         try {
             File f = new File(src);
@@ -58,6 +58,7 @@ public class ReadWriteRoom {
             ioe.printStackTrace();
         }
     }
+
     public void addRoom(Room r) {
         readListRooms();
         listRooms.add(r);
@@ -89,6 +90,7 @@ public class ReadWriteRoom {
         }
         writeListRooms();
     }
+
     public int searchRoom(String ID) {
         for (int i=0; i<listRooms.size(); i++) {
             if (listRooms.get(i).getRoomID().equals(ID)) {
@@ -97,6 +99,7 @@ public class ReadWriteRoom {
         }
         return -1;
     }
+
     public ArrayList<Room> getListRooms() {
         return listRooms;
     }

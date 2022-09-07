@@ -11,20 +11,25 @@ public class JPUpdateAccount extends JPanel {
     private final Font font = new Font("Serif", Font.ITALIC|Font.BOLD, 20);
     private final Font jlFont = new Font("arial", Font.PLAIN, 16);
     private final Font jbFont = new Font("Arial", Font.BOLD, 14);
-    private JTextField jtfName = new JTextField(), jtfPass = new JTextField();
-    private JLabel jlName = new JLabel("Username: "), jlPass = new JLabel("Password: ");
-    private JLabel jlStatus = new JLabel();
-    private JButton jbEdit = new JButton("Edit");
-    private JButton jbAdd = new JButton("Add");
-    private JButton jbDelete = new JButton("Delete");
-    private JRadioButton jrbAdmin = new JRadioButton("Admin"), jrbUser = new JRadioButton("User");
-    private UpdateAccountListener updateAccountListener = new UpdateAccountListener(this);
+    private final JTextField jtfName = new JTextField();
+    private final JTextField jtfPass = new JTextField();
+    private final JLabel jlName = new JLabel("Username: ");
+    private final JLabel jlPass = new JLabel("Password: ");
+    private final JLabel jlStatus = new JLabel();
+    private final JButton jbEdit = new JButton("Edit");
+    private final JButton jbAdd = new JButton("Add");
+    private final JButton jbDelete = new JButton("Delete");
+    private final JRadioButton jrbAdmin = new JRadioButton("Admin");
+    private final JRadioButton jrbUser = new JRadioButton("User");
+    private final UpdateAccountListener updateAccountListener = new UpdateAccountListener(this);
+
     public JPUpdateAccount() {
         this.setupBorder("Account");
         this.setLayout(null);
         this.setupComponent();
         this.addComponent();
     }
+
     private void addComponent() {
         this.add(jlName);
         this.add(jtfName);
@@ -37,6 +42,7 @@ public class JPUpdateAccount extends JPanel {
         this.add(jrbAdmin);
         this.add(jrbUser);
     }
+
     private void setupComponent() {
         this.setupName();
         this.setupPass();
@@ -54,6 +60,7 @@ public class JPUpdateAccount extends JPanel {
 
         jtfName.setBounds(100, 60,150, 30);
     }
+
     private void setupPass() {
         jlPass.setFont(jlFont);
         jlPass.setForeground(Color.black);
@@ -70,23 +77,27 @@ public class JPUpdateAccount extends JPanel {
         bgTypeAcc.add(jrbAdmin);
         bgTypeAcc.add(jrbUser);
     }
+
     private void setupJLStatus() {
         jlStatus.setForeground(Color.red);
         jlStatus.setFont(new Font("arial", Font.ITALIC, 12));
         jlStatus.setBounds(30, 180,200, 30);
     }
+
     private void setupJBAdd() {
         jbAdd.setBackground(Color.yellow);
         jbAdd.setFont(jbFont);
         jbAdd.setBounds(15, 210, 80, 30);
         jbAdd.addActionListener(updateAccountListener);
     }
+
     private void setupJBEdit() {
         jbEdit.setBackground(Color.yellow);
         jbEdit.setFont(jbFont);
         jbEdit.setBounds(107, 210,80, 30);
         jbEdit.addActionListener(updateAccountListener);
     }
+
     private void setupJBDelete() {
         jbDelete.setBackground(Color.yellow);
         jbDelete.setFont(jbFont);
@@ -112,11 +123,4 @@ public class JPUpdateAccount extends JPanel {
         return jrbAdmin;
     }
 
-    public JRadioButton getJrbUser() {
-        return jrbUser;
-    }
-
-    public JLabel getJlStatus() {
-        return jlStatus;
-    }
 }

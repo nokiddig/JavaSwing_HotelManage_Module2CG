@@ -11,15 +11,19 @@ public class JPUpdateRoom extends JPanel {
     private final Font font = new Font("Serif", Font.ITALIC|Font.BOLD, 20);
     private final Font jlFont = new Font("arial", Font.PLAIN, 16);
     private final Font jbFont = new Font("Arial", Font.BOLD, 14);
-    private JTextField jtfID = new JTextField(), jtfLarge = new JTextField();
-    private JTextField jtfBed = new JTextField(), jtfPrice = new JTextField();
-    private JLabel jlID = new JLabel("ID: "), jlLarge = new JLabel("Large: ");
-    private JLabel jlPrice = new JLabel("Price: "), jlBed = new JLabel("Num of bed: ");
-    private JButton jbEdit = new JButton("Edit");
-    private JButton jbAdd = new JButton("Add");
-    private JButton jbDelete = new JButton("Delete");
-    private UpdateRoomListener updateRoomListener = new UpdateRoomListener(this);
-    private JFHotelManagement HM;
+    private final JTextField jtfID = new JTextField();
+    private final JTextField jtfLarge = new JTextField();
+    private final JTextField jtfBed = new JTextField();
+    private final JTextField jtfPrice = new JTextField();
+    private final JLabel jlID = new JLabel("ID: ");
+    private final JLabel jlLarge = new JLabel("Large: ");
+    private final JLabel jlPrice = new JLabel("Price: ");
+    private final JLabel jlBed = new JLabel("Num of bed: ");
+    private final JButton jbEdit = new JButton("Edit");
+    private final JButton jbAdd = new JButton("Add");
+    private final JButton jbDelete = new JButton("Delete");
+    private final UpdateRoomListener updateRoomListener = new UpdateRoomListener(this);
+    private final JFHotelManagement HM;
 
     public JPUpdateRoom(JFHotelManagement HM) {
         this.HM = HM;

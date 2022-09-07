@@ -14,15 +14,14 @@ import java.io.File;
 public class Login extends JFrame {
     private final int FRAME_WIDTH = 900, FRAME_HIGH = 600;
 
-    private JFrame userView;
     private LoginListener listener;
-    private static Image backgroundImage;
-    private static JTextField jtfAccount, jtfPass;
-    private static JPanel jpLogin;
-    private static JLabel jlLogin, jlNote, jlWelcome;
-    private static JButton jbLogin;
+    private Image backgroundImage;
+    private JTextField jtfAccount;
+    private JPasswordField jPasswordField;
+    private JPanel jpLogin;
+    private JLabel jlLogin, jlNote, jlWelcome;
+    private JButton jbLogin;
 
-    private final ReadWriteAccount readWriteAccount = new ReadWriteAccount();
     public Login() {
         this.init();
     }
@@ -50,13 +49,19 @@ public class Login extends JFrame {
         this.setupJLWelcome();
         this.setupJBLogin();
 
+        this.addComponent();
+    }
+
+    private void addComponent() {
         jpLogin.add(jlWelcome);
         jpLogin.add(jlLogin);
         jpLogin.add(jtfAccount);
-        jpLogin.add(jtfPass);
+        jpLogin.add(jPasswordField);
+        //        jpLogin.add(jtfPass);
         jpLogin.add(jlNote);
         jpLogin.add(jbLogin);
     }
+
     private void setupJBLogin() {
         jbLogin = new JButton("Log In");
         jbLogin.addActionListener(listener);
@@ -64,30 +69,36 @@ public class Login extends JFrame {
         jbLogin.setFont(new java.awt.Font("Arial", Font.BOLD, 14));
         jbLogin.setBounds(650, 320,150,30);
     }
+
     private void setupJLNote() {
         jlNote = new JLabel("");
         jlNote.setFont( new Font("arial", Font.ITALIC, 14));
         jlNote.setForeground(Color.red);
         jlNote.setBounds(600, 280, 150, 30);
     }
+
     private void setupJTFPass() {
-        jtfPass = new JTextField("  Password...");
-        jtfPass.setBounds(600, 250,250,30);
+        jPasswordField = new JPasswordField("password");
+        jPasswordField.setBounds(600, 250,250,30);
     }
+
     private void setupJTFAccount() {
         jtfAccount = new JTextField("  Account...");
         jtfAccount.setBounds(600, 200,250,30);
     }
+
     private void setupJLWelcome() {
         jlWelcome = new JLabel("Welcome to SG Hotel!");
         jlWelcome.setFont(new Font("Cambria", Font.BOLD, 45));
         jlWelcome.setBounds(230, 10,500,100);
     }
+
     private void setupJLLogin() {
         jlLogin = new JLabel("Please log in to use!");
         jlLogin.setFont(new Font("Arial", Font.PLAIN, 25));
         jlLogin.setBounds(600, 120,500,1000);
     }
+
     public  JPanel setBackgroundImage(String src) {
         File fileImage = new File(src);
         try {
@@ -104,21 +115,16 @@ public class Login extends JFrame {
             }
         };
     }
-    public void requestLogin() {
-        String name = this.jtfAccount.getText().trim(), pass = this.jtfPass.getText().trim();
 
-        for (Account account : readWriteAccount.getListUser()) {
-            if (name.equals(account.getName()) && pass.equals(account.getPass())) {
-                this.setVisible(false);
-                if (account.getAdminAccount()){
-                    this.userView = new JFHotelManagement(name);
-                }
-                else {
-                    this.userView = new JFAllUserView(name);
-                }
-                return;
-            }
-        }
-        this.jlNote.setText(" * Invalid account...");
+    public JPasswordField getjPasswordField() {
+        return jPasswordField;
+    }
+
+    public JTextField getJtfAccount() {
+        return jtfAccount;
+    }
+
+    public JLabel getJlNote() {
+        return jlNote;
     }
 }

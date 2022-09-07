@@ -39,6 +39,7 @@ public class UpdateRoomListener implements ActionListener {
                     readWriteRoom.editRoom(room);
                 }
             }
+
             if (str.equals("Delete")) {
                 if (readWriteRoom.searchRoom(ID) == notFound) {
                     JOptionPane.showMessageDialog(null, "ID not found!");
@@ -48,6 +49,7 @@ public class UpdateRoomListener implements ActionListener {
                     readWriteRoom.deleteRoom(ID);
                 }
             }
+
             if (str.equals("Add")) {
                 Room room = new Room(ID, Integer.parseInt(large), Integer.parseInt(nBed), Integer.parseInt(price));
                 if (readWriteRoom.searchRoom(ID) != notFound) {

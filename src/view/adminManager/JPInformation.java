@@ -14,25 +14,33 @@ public class JPInformation extends JPanel {
     private final Font jbFont = new Font("Arial", Font.BOLD, 14);
 
     private JLabel jlNoti = new JLabel("Notification: ");
-    private JLabel jlRep = new JLabel("Reply: ");
+    private final JLabel jlRep = new JLabel("Reply: ");
 
-    private JTextArea jtaNoti = new JTextArea(10, 10);
-    private JTextArea jtaRep = new JTextArea(10, 10);
+    private final JTextArea jtaNoti = new JTextArea(10, 10);
+    private final JTextArea jtaRep = new JTextArea(10, 10);
 
-    private JButton jbSend = new JButton("Send"), jbQuit = new JButton("Quit"), jbClear = new JButton("Clear all"), jbRefresh = new JButton("Refresh");
-    private JButton jbCheckRoom = new JButton("Check"), jbOrder = new JButton("Order"), jbTurnover = new JButton("Turnover");
+    private final JButton jbSend = new JButton("Send");
+    private final JButton jbQuit = new JButton("Quit");
+    private final JButton jbClear = new JButton("Clear all");
+    private final JButton jbRefresh = new JButton("Refresh");
+    private final JButton jbCheckRoom = new JButton("Check");
+    private final JButton jbOrder = new JButton("Order");
+    private final JButton jbTurnover = new JButton("Turnover");
 
-    private JLabel jlID = new JLabel("Room ID: ");
-    private JTextField jtfID = new JTextField("ID");
-    private JComboBox<String> jcbbService = new JComboBox<String>();
-    private InformationListener iHMListener = new InformationListener(this);
-    private ChatAdmin chatAdmin = new ChatAdmin();
+    private final JLabel jlID = new JLabel("Room ID: ");
+    private final JTextField jtfID = new JTextField("ID");
+    private JComboBox<String> jcbbService = new JComboBox<>();
+    private final InformationListener iHMListener = new InformationListener(this);
+    private final ChatAdmin chatAdmin = new ChatAdmin();
+    private String allMessage = "";
+
     public JPInformation (String name) {
         this.setupBorder("Hello " + name);
         this.setLayout(null);
         this.setupComponent();
         this.addComponent();
     }
+
     private void setupComponent() {
         this.setupJLNoti();
         this.setupJTANoti();
@@ -72,6 +80,7 @@ public class JPInformation extends JPanel {
         jlNoti.setSize(150, 30);
         jlNoti.setLocation(20, 20);
     }
+
     private void setupJTANoti() {
         jtaNoti.setSize(275, 150);
         jtaNoti.setLocation(10, 50);
@@ -86,40 +95,43 @@ public class JPInformation extends JPanel {
         jlRep.setForeground(Color.black);
         jlRep.setBounds(20, 200, 150, 30);
     }
+
     private void setupJTARep() {
         jtaRep.setBounds(10, 230, 275,100);
         jtaRep.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }
+
     private void setupJBSend() {
         jbSend.setBackground(Color.blue);
         jbSend.setFont(jbFont);
         jbSend.setBounds(15, 340, 70, 30);
         jbSend.addActionListener(iHMListener);
     }
+
     private void setupJBClear() {
         jbClear.setBackground(Color.yellow);
         jbClear.setFont(jbFont);
         jbClear.setBounds(90, 340,95,30);
         jbClear.addActionListener(iHMListener);
     }
+
     private void setupJBRefresh() {
         jbRefresh.setBackground(Color.yellow);
         jbRefresh.setFont(jbFont);
         jbRefresh.setBounds(190, 340, 90, 30);
         jbRefresh.addActionListener(iHMListener);
     }
+
     private void setupService() {
         jlID.setFont(jlFont);
         jlID.setForeground(Color.BLACK);
         jlID.setBounds(20, 390,150,30);
-
         jtfID.setBounds(90, 390, 70,30);
 
         String nameService[] = {"Service 1", "Service 2", "Service3"};
         jcbbService = new JComboBox<>(nameService);
         jcbbService.setBounds(170, 390, 100, 30);
     }
-
 
     private void setupJBOrder() {
         jbOrder.setBackground(Color.yellow);
@@ -134,18 +146,21 @@ public class JPInformation extends JPanel {
         jbCheckRoom.setBounds(160, 430, 80, 30);
         jbCheckRoom.addActionListener(iHMListener);
     }
+
     private void setupJBTurnover() {
         jbTurnover.setBackground(Color.yellow);
         jbTurnover.setFont(jbFont);
         jbTurnover.setBounds(20, 510, 100,30);
         jbTurnover.addActionListener(iHMListener);
     }
+
     private void setupJBQuit() {
         jbQuit.setBackground(Color.yellow);
         jbQuit.setFont(jbFont);
         jbQuit.setBounds(200, 510, 80,30);
         jbQuit.addActionListener(iHMListener);
     }
+
     private void setupBorder(String name) {
         Border border = BorderFactory.createLineBorder(Color.black, 1);
         this.setBorder(BorderFactory.createTitledBorder(border, name,
@@ -164,44 +179,16 @@ public class JPInformation extends JPanel {
         return jtaRep;
     }
 
-    public JButton getJbSend() {
-        return jbSend;
-    }
-
-    public JButton getJbClear() {
-        return jbClear;
-    }
-
-    public JButton getJbRefresh() {
-        return jbRefresh;
-    }
-
-    public JButton getJbCheckRoom() {
-        return jbCheckRoom;
-    }
-
-    public JTextField getJtfID() {
-        return jtfID;
-    }
-
-    public void setJtaNoti(JTextArea jtaNoti) {
-        this.jtaNoti = jtaNoti;
-    }
-
-    public void setJtaRep(JTextArea jtaRep) {
-        this.jtaRep = jtaRep;
-    }
-
     public ChatAdmin getChatAdmin() {
         return chatAdmin;
     }
 
-    public void setChatAdmin(ChatAdmin chatAdmin) {
-        this.chatAdmin = chatAdmin;
+    public void addMessage(String mes) {
+        allMessage += mes + "\n";
+        jtaNoti.setText(allMessage);
     }
 
-    public void addMessage(String mes) {
-        String allMess = jtaNoti.getText();
-        jtaNoti.setText(allMess +"\n" +mes  );
+    public void refreshJTANoti() {
+        this.jtaNoti.setText(allMessage);
     }
 }
