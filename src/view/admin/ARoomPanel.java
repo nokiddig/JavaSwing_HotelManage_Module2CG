@@ -13,18 +13,18 @@ import java.awt.*;
 import java.sql.Date;
 import java.util.Calendar;
 
-public class JPRoom extends JPanel {
-    private JLabel jlID = new JLabel("0");
-    private JLabel jlLarge = new JLabel("0");
-    private JLabel jlBed = new JLabel("0");
-    private JLabel jlStatus = new JLabel("0");
-    private JLabel jlPrice = new JLabel("0");
-    private JButton jbBook = new JButton("Book");
+public class ARoomPanel extends JPanel {
+    private JLabel iDLabel = new JLabel("0");
+    private JLabel largeLabel = new JLabel("0");
+    private JLabel bedLabel = new JLabel("0");
+    private JLabel statusLabel = new JLabel("0");
+    private JLabel priceLabel = new JLabel("0");
+    private JButton bookButton = new JButton("Book");
     private Room room;
     private ReadWriteRoom readWriteRoom = new ReadWriteRoom();
     private RoomListener roomListener = new RoomListener(this);
 
-    public JPRoom (Room room) {
+    public ARoomPanel(Room room) {
         this.room = room;
         this.init();
     }
@@ -33,8 +33,8 @@ public class JPRoom extends JPanel {
         this.setupBorder();
         this.setLayout(new GridLayout(6, 1));
 
-        this.setupJButtonBook();
-        this.showInfoRoom();
+        this.setupBookButton();
+        this.showRoomInformation();
         this.addComponent();
     }
 
@@ -46,39 +46,39 @@ public class JPRoom extends JPanel {
     }
 
     private void addComponent() {
-        this.add(this.jlID);
-        this.add(this.jlLarge);
-        this.add(this.jlBed);
-        this.add(this.jlPrice);
-        this.add(this.jlStatus);
-        this.add(jbBook);
+        this.add(this.iDLabel);
+        this.add(this.largeLabel);
+        this.add(this.bedLabel);
+        this.add(this.priceLabel);
+        this.add(this.statusLabel);
+        this.add(bookButton);
     }
 
-    public void showInfoRoom() {
-        this.jlID.setText("ID: " + room.getRoomID());
-        this.jlLarge.setText("Large: " + room.getLarge());
-        this.jlBed.setText("Num of bed: " + room.getBed());
-        this.jlPrice.setText("Price: " + room.getPrice());
-        this.jlStatus.setText(this.room.getStatus());
-        jlStatus.setForeground(room.getStatus().equals("Available")?Color.green:Color.red);
+    public void showRoomInformation() {
+        this.iDLabel.setText("ID: " + room.getRoomID());
+        this.largeLabel.setText("Large: " + room.getLarge());
+        this.bedLabel.setText("Num of bed: " + room.getBed());
+        this.priceLabel.setText("Price: " + room.getPrice());
+        this.statusLabel.setText(this.room.getStatus());
+        statusLabel.setForeground(room.getStatus().equals("Available")?Color.green:Color.red);
     }
 
     public void updateStatusUI() {
         if (!room.getStatus().equals("Available")) {
-            jlStatus.setText(room.getStatus());
-            jlStatus.setForeground(Color.red);
-            jbBook.setText("Payment");
+            statusLabel.setText(room.getStatus());
+            statusLabel.setForeground(Color.red);
+            bookButton.setText("Payment");
         }
         else {
-            jlStatus.setText("Available");
-            jlStatus.setForeground(Color.green);
-            jbBook.setText("Book");
+            statusLabel.setText("Available");
+            statusLabel.setForeground(Color.green);
+            bookButton.setText("Book");
         }
     }
 
-    public void setupJButtonBook () {
-        jbBook.setBackground(Color.orange);
-        jbBook.addActionListener(roomListener);
+    public void setupBookButton() {
+        bookButton.setBackground(Color.orange);
+        bookButton.addActionListener(roomListener);
         this.updateStatusUI();
     }
 

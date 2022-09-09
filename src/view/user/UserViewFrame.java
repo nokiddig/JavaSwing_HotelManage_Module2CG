@@ -1,21 +1,20 @@
 package view.user;
 
 import controller.user.UserViewListener;
-import view.login.Login;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class JFAllUserView extends JFrame {
+public class UserViewFrame extends JFrame {
     static final int FRAME_WIDTH = 800, FRAME_HIGH = 600;
-    private JPService jpService;
-    private JPChatbox jpChatbox;
+    private ServicePanel servicePanel;
+    private ChatboxPanel chatboxPanel;
     private UserViewListener userViewListener = new UserViewListener(this);
 
-    public JFAllUserView(String name) {
+    public UserViewFrame(String name) {
         this.setupJFrame();
-        jpService = new JPService(name);
-        jpChatbox = new JPChatbox(name);
+        servicePanel = new ServicePanel(name);
+        chatboxPanel = new ChatboxPanel(name);
         this.addComponent();
         this.setVisible(true);
     }
@@ -30,14 +29,14 @@ public class JFAllUserView extends JFrame {
     }
 
     private void addComponent() {
-        this.add(jpService);
-        this.add(jpChatbox);
-        this.jpChatbox.getJbQuit().addActionListener(userViewListener);
+        this.add(servicePanel);
+        this.add(chatboxPanel);
+        this.chatboxPanel.getQuitButton().addActionListener(userViewListener);
     }
 
     public void quitApp() {
-        jpChatbox.getChatUser().setRun(false);
-        jpChatbox.getChatUser().closePort();
+        chatboxPanel.getChatUser().setRun(false);
+        chatboxPanel.getChatUser().closePort();
         this.dispose();
     }
 }

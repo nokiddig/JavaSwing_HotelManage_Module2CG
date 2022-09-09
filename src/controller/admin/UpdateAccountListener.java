@@ -3,27 +3,28 @@ package controller.admin;
 import model.input.ReadWriteAccount;
 import model.entity.Account;
 import model.input.Validate;
-import view.admin.JPUpdateAccount;
+import view.admin.UpdateAccountPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class UpdateAccountListener implements ActionListener {
-    private JPUpdateAccount jpUpdateAccount;
+    private UpdateAccountPanel updateAccountPanel;
     private ReadWriteAccount readWriteAccount = new ReadWriteAccount();
     private Validate validate = new Validate();
-    public UpdateAccountListener(JPUpdateAccount jpUpdateAccount) {
-        this.jpUpdateAccount = jpUpdateAccount;
+
+    public UpdateAccountListener(UpdateAccountPanel updateAccountPanel) {
+        this.updateAccountPanel = updateAccountPanel;
         readWriteAccount.readListUser();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String str = e.getActionCommand();
-        String name = jpUpdateAccount.getJtfName().getText();
-        String pass = jpUpdateAccount.getJtfPass().getText();
-        boolean admin = jpUpdateAccount.getJrbAdmin().isSelected();
+        String name = updateAccountPanel.getNameTextField().getText();
+        String pass = updateAccountPanel.getPasswordTextField().getText();
+        boolean admin = updateAccountPanel.getAdminRadioButton().isSelected();
 
         startCRUD:
         if (validate.checkAccount(name, pass)){

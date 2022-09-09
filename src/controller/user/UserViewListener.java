@@ -1,16 +1,16 @@
 package controller.user;
 
-import view.user.JFAllUserView;
+import view.user.UserViewFrame;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class UserViewListener implements ActionListener {
-    private JFAllUserView jfAllUserView;
+    private UserViewFrame userViewFrame;
 
-    public UserViewListener(JFAllUserView AUV) {
-        jfAllUserView = AUV;
+    public UserViewListener(UserViewFrame AUV) {
+        userViewFrame = AUV;
     }
 
     @Override
@@ -21,7 +21,7 @@ public class UserViewListener implements ActionListener {
             int asw = JOptionPane.showConfirmDialog(null, mes, "Quit", JOptionPane.YES_NO_OPTION);
             final int yes = 0;
             if (asw == yes)
-                jfAllUserView.quitApp();
+                userViewFrame.quitApp();
         }
     }
 }

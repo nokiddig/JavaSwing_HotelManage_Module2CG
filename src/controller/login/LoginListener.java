@@ -2,9 +2,9 @@ package controller.login;
 
 import model.entity.Account;
 import model.input.ReadWriteAccount;
-import view.admin.JFHotelManagement;
+import view.admin.HotelManageFrame;
 import view.login.Login;
-import view.user.JFAllUserView;
+import view.user.UserViewFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,22 +26,22 @@ public class LoginListener implements ActionListener {
     }
 
     public void requestLogin() {
-        String name = login.getJtfAccount().getText().trim(), pass = new String(login.getjPasswordField().getPassword());
+        String name = login.getAccountTextField().getText().trim(), pass = new String(login.getPasswordField().getPassword());
         readWriteAccount.readListUser();
         for (Account account : readWriteAccount.getListUser()) {
             if (name.equals(account.getName()) && pass.equals(account.getPass())) {
                 login.setVisible(false);
                 if (account.getAdminAccount()){
-                    new JFHotelManagement(name);
+                    new HotelManageFrame(name);
                     login.dispose();
                 }
                 else {
-                    new JFAllUserView(name);
+                    new UserViewFrame(name);
                     login.dispose();
                 }
                 return;
             }
         }
-        login.getJlNote().setText(" * Invalid account...");
+        login.getNoteLabel().setText(" * Invalid account...");
     }
 }

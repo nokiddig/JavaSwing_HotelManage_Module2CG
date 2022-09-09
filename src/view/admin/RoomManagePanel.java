@@ -6,14 +6,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class JPRoomManagement extends JPanel {
-    private ArrayList<JPRoom> listJPRooms = new ArrayList<>();
+public class RoomManagePanel extends JPanel {
+    private ArrayList<ARoomPanel> listARoomPanels = new ArrayList<>();
     private final ReadWriteRoom readWriteRoom = new ReadWriteRoom();
     private int numOfRooms = 0;
     private int row = 0;
     private final int col = 4;
 
-    public JPRoomManagement() {
+    public RoomManagePanel() {
         this.init();
     }
 
@@ -25,8 +25,8 @@ public class JPRoomManagement extends JPanel {
         this.setLayout(new GridLayout(this.row, this.col, 10, 10));
 
         for (int i=0; i<numOfRooms; i++) {
-            listJPRooms.add(new JPRoom(readWriteRoom.getListRooms().get(i)));
-            this.add(listJPRooms.get(i));
+            listARoomPanels.add(new ARoomPanel(readWriteRoom.getListRooms().get(i)));
+            this.add(listARoomPanels.get(i));
         }
     }
 }

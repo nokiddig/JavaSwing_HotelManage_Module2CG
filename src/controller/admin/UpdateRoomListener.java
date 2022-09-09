@@ -3,28 +3,28 @@ package controller.admin;
 import model.input.ReadWriteRoom;
 import model.entity.Room;
 import model.input.Validate;
-import view.admin.JPUpdateRoom;
+import view.admin.UpdateRoomPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class UpdateRoomListener implements ActionListener {
-    private JPUpdateRoom jpUpdateRoom;
+    private UpdateRoomPanel updateRoomPanel;
     private ReadWriteRoom readWriteRoom = new ReadWriteRoom();
     private Validate validate = new Validate();
 
-    public UpdateRoomListener(JPUpdateRoom jpUpdateRoom) {
-        this.jpUpdateRoom = jpUpdateRoom;
+    public UpdateRoomListener(UpdateRoomPanel updateRoomPanel) {
+        this.updateRoomPanel = updateRoomPanel;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String str = e.getActionCommand();
-        String ID = jpUpdateRoom.getJtfID().getText().trim();
-        String large = jpUpdateRoom.getJtfLarge().getText();
-        String nBed = jpUpdateRoom.getJtfBed().getText().trim();
-        String price = jpUpdateRoom.getJtfPrice().getText().trim();
+        String ID = updateRoomPanel.getiDTextField().getText().trim();
+        String large = updateRoomPanel.getLargeTextField().getText();
+        String nBed = updateRoomPanel.getBedTextField().getText().trim();
+        String price = updateRoomPanel.getPriceTextField().getText().trim();
 
         startCRUD:
         if (validate.checkRoom(ID, large, nBed, price) || str.equals("Delete")) {
@@ -68,7 +68,7 @@ public class UpdateRoomListener implements ActionListener {
                     readWriteRoom.addRoom(room);
                 }
             }
-            jpUpdateRoom.getHM().refreshRoom();
+            updateRoomPanel.getHM().refreshRoom();
             JOptionPane.showMessageDialog(null, "Done!!");
         }
         else {

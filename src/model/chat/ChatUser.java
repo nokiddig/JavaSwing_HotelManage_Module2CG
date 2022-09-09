@@ -1,6 +1,6 @@
 package model.chat;
 
-import view.user.JPChatbox;
+import view.user.ChatboxPanel;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -9,7 +9,7 @@ import java.net.Socket;
 
 public class ChatUser extends Thread{
     private Socket socket;
-    private JPChatbox jpChatbox;
+    private ChatboxPanel chatboxPanel;
     private DataInputStream dataInputStream;
     private DataOutputStream dataOutputStream;
     private boolean run;
@@ -64,7 +64,7 @@ public class ChatUser extends Thread{
         this.init();
         run = true;
         while (run) {
-            jpChatbox.addMessage(readMessage());
+            chatboxPanel.addMessage(readMessage());
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
@@ -77,7 +77,7 @@ public class ChatUser extends Thread{
         this.run = run;
     }
 
-    public void setJpChatbox(JPChatbox jpChatbox) {
-        this.jpChatbox = jpChatbox;
+    public void setJpChatbox(ChatboxPanel chatboxPanel) {
+        this.chatboxPanel = chatboxPanel;
     }
 }

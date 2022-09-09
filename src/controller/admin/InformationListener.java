@@ -1,17 +1,17 @@
 package controller.admin;
 
 import model.input.ReadWriteTurnover;
-import view.admin.JPInformation;
+import view.admin.InformationPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class InformationListener implements ActionListener {
-    private final JPInformation jpInformation;
+    private final InformationPanel informationPanel;
 
-    public InformationListener(JPInformation jpInformation) {
-        this.jpInformation = jpInformation;
+    public InformationListener(InformationPanel informationPanel) {
+        this.informationPanel = informationPanel;
     }
 
     @Override
@@ -27,20 +27,20 @@ public class InformationListener implements ActionListener {
             this.clearJTAText();
         }
         if (str.equals("Refresh")) {
-            jpInformation.refreshJTANoti();
+            informationPanel.refreshNotificationTextArea();
         }
     }
 
     private void clearJTAText() {
-        jpInformation.getJtaNoti().setText("");
-        jpInformation.getJtaRep().setText("");
+        informationPanel.getNotificationTextArea().setText("");
+        informationPanel.getRepTextArea().setText("");
     }
 
     private void sendAMessage() {
-        String mes = "Admin: " + jpInformation.getJtaRep().getText();
-        jpInformation.addMessage(mes);
-        jpInformation.getChatAdmin().sendMessage(mes);
-        jpInformation.getJtaRep().setText("");
+        String mes = "Admin: " + informationPanel.getRepTextArea().getText();
+        informationPanel.addMessage(mes);
+        informationPanel.getChatAdmin().sendMessage(mes);
+        informationPanel.getRepTextArea().setText("");
     }
 
     private void showTurnOver() {

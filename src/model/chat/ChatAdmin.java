@@ -1,6 +1,6 @@
 package model.chat;
 
-import view.admin.JPInformation;
+import view.admin.InformationPanel;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -13,7 +13,7 @@ public class ChatAdmin extends Thread{
     private ServerSocket serverSocket;
     private DataInputStream dataInputStream;
     private DataOutputStream dataOutputStream;
-    private JPInformation jpInformation;
+    private InformationPanel informationPanel;
     private boolean run;
 
     public void init() {
@@ -69,7 +69,7 @@ public class ChatAdmin extends Thread{
             if (socket==null || socket.isClosed()) {
                 break;
             }
-            jpInformation.addMessage(readMessage());
+            informationPanel.addMessage(readMessage());
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
@@ -83,7 +83,7 @@ public class ChatAdmin extends Thread{
         this.run = run;
     }
 
-    public void setJpInformation(JPInformation jpInformation) {
-        this.jpInformation = jpInformation;
+    public void setJpInformation(InformationPanel informationPanel) {
+        this.informationPanel = informationPanel;
     }
 }
