@@ -8,15 +8,12 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 
 public class ReadWriteAccount {
-    private ArrayList<Account> listAccount = new ArrayList<>();
+    private ArrayList<Account> listAccount;
     private final String src = "fileIO\\accounts.txt";
     private BufferedReader bufferedReader;
 
-    public ReadWriteAccount() {
-        readListUser();
-    }
-
     public void readListUser() {
+        listAccount = new ArrayList<>();
         try {
             File file = new File(src);
             bufferedReader = Files.newBufferedReader(file.toPath(),
@@ -31,6 +28,7 @@ public class ReadWriteAccount {
                 }
             }
             while (true);
+            bufferedReader.close();
         } catch (Exception e) {
             System.out.println("\n");
         }

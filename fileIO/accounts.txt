@@ -1,6 +1,9 @@
 admin~123456~admin
 Ngoc~123~user
-Ngoc1~123~user
+Ngoc1~1234~user
 sy2000~123456~admin
 kaka~123~user
 hiep~1234567~admin
+duc123~123456~user
+sy1~123~user
+sy2~123~user

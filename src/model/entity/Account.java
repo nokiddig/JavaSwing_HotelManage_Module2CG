@@ -4,9 +4,9 @@ public class Account {
     private String name, pass;
     private boolean adminAccount;
 
-    public Account(String n, String p, boolean admin) {
-        this.name = n;
-        this.pass = p;
+    public Account(String name, String pass, boolean admin) {
+        this.name = name;
+        this.pass = pass;
         this.adminAccount = admin;
     }
 

@@ -1,0 +1,28 @@
+package controller.admin;
+
+import model.input.ReadWriteTurnover;
+import view.admin.JPRoom;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class RoomListener implements ActionListener {
+    private JPRoom jpRoom;
+    private ReadWriteTurnover readWriteTurnover = new ReadWriteTurnover();
+    public RoomListener(JPRoom jpRoom) {
+        this.jpRoom = jpRoom;
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String str = e.getActionCommand();
+        if (str.equals("Book") && jpRoom.bookRoom()) {
+            jpRoom.updateStatusUI();
+        }
+        if (str.equals("Payment") && jpRoom.payment()) {
+            long newTurnover = readWriteTurnover.getTurnOver()+jpRoom.checkBill();
+            readWriteTurnover.setTurnOver(newTurnover);
+            readWriteTurnover.writeTurnover();
+            jpRoom.updateStatusUI();
+        }
+    }
+}

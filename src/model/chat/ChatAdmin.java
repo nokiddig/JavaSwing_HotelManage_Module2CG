@@ -1,6 +1,6 @@
 package model.chat;
 
-import view.adminManager.JPInformation;
+import view.admin.JPInformation;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -14,6 +14,7 @@ public class ChatAdmin extends Thread{
     private DataInputStream dataInputStream;
     private DataOutputStream dataOutputStream;
     private JPInformation jpInformation;
+    private boolean run;
 
     public void init() {
         try{
@@ -63,7 +64,8 @@ public class ChatAdmin extends Thread{
     @Override
     public void run(){
         this.init();
-        while (true) {
+        run = true;
+        while (run) {
             if (socket==null || socket.isClosed()) {
                 break;
             }
@@ -75,6 +77,10 @@ public class ChatAdmin extends Thread{
                 return;
             }
         }
+    }
+
+    public void setRun(boolean run) {
+        this.run = run;
     }
 
     public void setJpInformation(JPInformation jpInformation) {

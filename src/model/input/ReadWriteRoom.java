@@ -15,10 +15,6 @@ public class ReadWriteRoom {
     private final String src = "fileIO\\roomInfo.txt";
     private BufferedReader bufferedReader;
 
-    public ReadWriteRoom () {
-        this.readListRooms();
-    }
-
     public void readListRooms() {
         listRooms = new ArrayList<>();
         try {

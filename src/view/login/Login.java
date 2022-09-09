@@ -1,10 +1,6 @@
 package view.login;
 
-import controller.loginListener.LoginListener;
-import model.entity.Account;
-import model.input.ReadWriteAccount;
-import view.adminManager.JFHotelManagement;
-import view.userView.JFAllUserView;
+import controller.login.LoginListener;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -13,8 +9,7 @@ import java.io.File;
 
 public class Login extends JFrame {
     private final int FRAME_WIDTH = 900, FRAME_HIGH = 600;
-
-    private LoginListener listener;
+    private LoginListener loginListener;
     private Image backgroundImage;
     private JTextField jtfAccount;
     private JPasswordField jPasswordField;
@@ -38,7 +33,7 @@ public class Login extends JFrame {
         this.setVisible(true);
     }
     private void setupLogin() {
-        listener = new LoginListener(this);
+        loginListener = new LoginListener(this);
         jpLogin = setBackgroundImage("image\\bkGr3.jpg");
         jpLogin.setLayout(null);
 
@@ -57,14 +52,13 @@ public class Login extends JFrame {
         jpLogin.add(jlLogin);
         jpLogin.add(jtfAccount);
         jpLogin.add(jPasswordField);
-        //        jpLogin.add(jtfPass);
         jpLogin.add(jlNote);
         jpLogin.add(jbLogin);
     }
 
     private void setupJBLogin() {
         jbLogin = new JButton("Log In");
-        jbLogin.addActionListener(listener);
+        jbLogin.addActionListener(loginListener);
         jbLogin.setBackground(Color.yellow);
         jbLogin.setFont(new java.awt.Font("Arial", Font.BOLD, 14));
         jbLogin.setBounds(650, 320,150,30);
@@ -83,7 +77,7 @@ public class Login extends JFrame {
     }
 
     private void setupJTFAccount() {
-        jtfAccount = new JTextField("  Account...");
+        jtfAccount = new JTextField(" Account...");
         jtfAccount.setBounds(600, 200,250,30);
     }
 

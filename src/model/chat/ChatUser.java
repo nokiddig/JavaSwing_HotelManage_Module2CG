@@ -1,6 +1,6 @@
 package model.chat;
 
-import view.userView.JPChatbox;
+import view.user.JPChatbox;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -12,6 +12,7 @@ public class ChatUser extends Thread{
     private JPChatbox jpChatbox;
     private DataInputStream dataInputStream;
     private DataOutputStream dataOutputStream;
+    private boolean run;
 
     public void init () {
         try {
@@ -33,9 +34,12 @@ public class ChatUser extends Thread{
     }
 
     public String readMessage() {
-        String mes;
+        String mes = "";
         try {
-            mes = dataInputStream.readUTF();
+            if(dataOutputStream!=null){
+                mes = dataInputStream.readUTF();
+            }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -44,9 +48,12 @@ public class ChatUser extends Thread{
 
     public void closePort(){
         try {
-            dataOutputStream.close();
-            dataInputStream.close();
-            socket.close();
+            if (dataOutputStream!=null)
+                dataOutputStream.close();
+            if (dataInputStream!=null)
+                dataInputStream.close();
+            if (socket!=null)
+                socket.close();
         }catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,7 +62,8 @@ public class ChatUser extends Thread{
     @Override
     public void run(){
         this.init();
-        while (true) {
+        run = true;
+        while (run) {
             jpChatbox.addMessage(readMessage());
             try {
                 Thread.sleep(500);
@@ -63,6 +71,10 @@ public class ChatUser extends Thread{
                 throw new RuntimeException(e);
             }
         }
+    }
+
+    public void setRun(boolean run) {
+        this.run = run;
     }
 
     public void setJpChatbox(JPChatbox jpChatbox) {
