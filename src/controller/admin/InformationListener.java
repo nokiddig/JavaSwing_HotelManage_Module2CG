@@ -50,9 +50,16 @@ public class InformationListener implements ActionListener {
             JOptionPane.showConfirmDialog(null, message);
         }
         else {
-            String message = "Order complete but not payment.";
-            JOptionPane.showConfirmDialog(null, message);
-            readService.readAllService();
+            int roomServicePay = readWriteRoom.getListRooms().get(index).getServicePay();
+            int itemServicePay = readService.getServiceByName(nameService).getPrice();
+            String message = "Do you want order " + nameService + " " + itemServicePay + " for room " + iDRoom;
+
+            int answer = JOptionPane.showConfirmDialog(null, message, "Payment", JOptionPane.YES_NO_OPTION);
+            int yes = 0;
+            if (answer == yes) {
+                JOptionPane.showConfirmDialog(null, "Done!", "Payment",JOptionPane.DEFAULT_OPTION);
+                readWriteRoom.getListRooms().get(index).setServicePay(roomServicePay + itemServicePay);
+            }
 
         }
 

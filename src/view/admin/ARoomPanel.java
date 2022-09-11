@@ -126,6 +126,6 @@ public class ARoomPanel extends JPanel {
         firstDay.setTime(Date.valueOf(room.getStartDate()));
         lastDay.setTime(Date.valueOf(java.time.LocalDate.now()));
         long noDay = ((lastDay.getTime().getTime() - firstDay.getTime().getTime()) / (24 * 3600 * 1000));
-        return (noDay+1)*room.getPrice();
+        return (noDay+1)*room.getPrice() + room.getServicePay();
     }
 }
