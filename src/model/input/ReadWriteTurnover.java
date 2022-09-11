@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
 public class ReadWriteTurnover {
-    private final String src = "fileIO\\turnover.txt";
+    private final String SOURCE = "fileIO\\turnover.txt";
     private long turnOver = 0;
     private BufferedReader bufferedReader;
     private PrintWriter printWriter;
@@ -18,7 +18,7 @@ public class ReadWriteTurnover {
     }
 
     private void readTurnover() {
-        File file = new File(src);
+        File file = new File(SOURCE);
         try {
             bufferedReader = Files.newBufferedReader(file.toPath(), StandardCharsets.UTF_8);
             turnOver = Integer.parseInt(bufferedReader.readLine());
@@ -30,7 +30,7 @@ public class ReadWriteTurnover {
 
     public void writeTurnover() {
         try{
-            printWriter = new PrintWriter(src);
+            printWriter = new PrintWriter(SOURCE);
             printWriter.print(turnOver);
             printWriter.close();
         }catch(IOException ioe){

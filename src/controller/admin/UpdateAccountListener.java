@@ -1,7 +1,9 @@
 package controller.admin;
 
+import model.entity.Room;
 import model.input.ReadWriteAccount;
 import model.entity.Account;
+import model.input.ReadWriteRoom;
 import model.input.Validate;
 import view.admin.UpdateAccountPanel;
 
@@ -12,6 +14,7 @@ import java.awt.event.ActionListener;
 public class UpdateAccountListener implements ActionListener {
     private UpdateAccountPanel updateAccountPanel;
     private ReadWriteAccount readWriteAccount = new ReadWriteAccount();
+    private ReadWriteRoom readWriteRoom = new ReadWriteRoom();
     private Validate validate = new Validate();
 
     public UpdateAccountListener(UpdateAccountPanel updateAccountPanel) {
@@ -29,7 +32,15 @@ public class UpdateAccountListener implements ActionListener {
         startCRUD:
         if (validate.checkAccount(name, pass)){
             int notFound = -1;
+
             if (str.equals("Delete")) {
+                readWriteRoom.readListRooms();
+                for (Room room:readWriteRoom.getListRooms()) {
+                    if (room.getStatus().equals(name)) {
+                        JOptionPane.showMessageDialog(null, "user name being used!");
+                        break startCRUD;
+                    }
+                }
                 if (readWriteAccount.searchAccount(name) == notFound) {
                     JOptionPane.showMessageDialog(null, "user name not found!");
                     break startCRUD;
@@ -38,7 +49,15 @@ public class UpdateAccountListener implements ActionListener {
                     readWriteAccount.deleteAccount(name);
                 }
             }
+
             if (str.equals("Edit")){
+                readWriteRoom.readListRooms();
+                for (Room room:readWriteRoom.getListRooms()) {
+                    if (room.getStatus().equals(name)) {
+                        JOptionPane.showMessageDialog(null, "user name being used!");
+                        break startCRUD;
+                    }
+                }
                 if (readWriteAccount.searchAccount(name) == notFound) {
                     JOptionPane.showMessageDialog(null, "user name not found!");
                     break startCRUD;
@@ -48,6 +67,7 @@ public class UpdateAccountListener implements ActionListener {
                     readWriteAccount.editAccount(account);
                 }
             }
+
             if (str.equals("Add")) {
                 if (readWriteAccount.searchAccount(name) != notFound) {
                     JOptionPane.showMessageDialog(null, "user name existed!");

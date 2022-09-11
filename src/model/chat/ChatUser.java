@@ -39,9 +39,8 @@ public class ChatUser extends Thread{
             if(dataOutputStream!=null){
                 mes = dataInputStream.readUTF();
             }
-
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            return " ";
         }
         return mes;
     }

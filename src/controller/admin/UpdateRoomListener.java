@@ -32,7 +32,6 @@ public class UpdateRoomListener implements ActionListener {
             readWriteRoom.readListRooms();
             if (str.equals("Edit")){
                 Room room = new Room(ID, Integer.parseInt(large), Integer.parseInt(nBed), Integer.parseInt(price));
-
                 int index = readWriteRoom.searchRoom(ID);
                 if (index == notFound) {
                     JOptionPane.showMessageDialog(null, "ID not found!");
@@ -49,12 +48,19 @@ public class UpdateRoomListener implements ActionListener {
             }
 
             if (str.equals("Delete")) {
+                int index = readWriteRoom.searchRoom(ID);
                 if (readWriteRoom.searchRoom(ID) == notFound) {
                     JOptionPane.showMessageDialog(null, "ID not found!");
                     break startCRUD;
                 }
                 else {
-                    readWriteRoom.deleteRoom(ID);
+                    if(!readWriteRoom.getListRooms().get(index).getStatus().equals("Available")){
+                        JOptionPane.showMessageDialog(null, "Room being using!");
+                        break startCRUD;
+                    }else {
+                        readWriteRoom.deleteRoom(ID);
+                    }
+
                 }
             }
 

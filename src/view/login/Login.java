@@ -77,7 +77,7 @@ public class Login extends JFrame {
     }
 
     private void setupAccountTextField() {
-        accountTextField = new JTextField(" Account...");
+        accountTextField = new JTextField(" Account");
         accountTextField.setBounds(600, 200,250,30);
     }
 

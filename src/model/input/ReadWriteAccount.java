@@ -9,13 +9,13 @@ import java.util.ArrayList;
 
 public class ReadWriteAccount {
     private ArrayList<Account> listAccount;
-    private final String src = "fileIO\\accounts.txt";
+    private final String SOURCE = "fileIO\\accounts.txt";
     private BufferedReader bufferedReader;
 
     public void readListUser() {
         listAccount = new ArrayList<>();
         try {
-            File file = new File(src);
+            File file = new File(SOURCE);
             bufferedReader = Files.newBufferedReader(file.toPath(),
                     StandardCharsets.UTF_8);
             do{
@@ -36,7 +36,7 @@ public class ReadWriteAccount {
 
     public void writeListUser() {
         try{
-            PrintWriter pw = new PrintWriter(src);
+            PrintWriter pw = new PrintWriter(SOURCE);
             for (Account account : listAccount) {
                 pw.println(account.getName() + "~" + account.getPass() + "~" + (account.getAdminAccount()?"admin":"user"));
             }

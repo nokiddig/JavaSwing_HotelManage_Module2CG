@@ -12,13 +12,13 @@ import java.util.ArrayList;
 
 public class ReadWriteRoom {
     private ArrayList<Room> listRooms;
-    private final String src = "fileIO\\roomInfo.txt";
+    private final String SOURCE = "fileIO\\roomInfo.txt";
     private BufferedReader bufferedReader;
 
     public void readListRooms() {
         listRooms = new ArrayList<>();
         try {
-            File f = new File(src);
+            File f = new File(SOURCE);
             bufferedReader = Files.newBufferedReader(f.toPath(),
                     StandardCharsets.UTF_8);
             do{
@@ -43,7 +43,7 @@ public class ReadWriteRoom {
 
     public void writeListRooms () {
         try{
-            PrintWriter pw = new PrintWriter(src);
+            PrintWriter pw = new PrintWriter(SOURCE);
             for (Room room : listRooms) {
                 pw.println(room.getRoomID() + "~" + room.getLarge() + "~" +
                         room.getBed() + "~" + room.getPrice() + "~" +
