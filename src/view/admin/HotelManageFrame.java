@@ -1,6 +1,9 @@
 package view.admin;
 
 import controller.admin.HotelManagerListener;
+import model.input.ReadWriteAccount;
+import model.input.ReadWriteRoom;
+import model.input.ReadWriteTurnover;
 import view.login.Login;
 
 import javax.swing.*;
@@ -59,6 +62,9 @@ public class HotelManageFrame extends JFrame {
     }
 
     public void quitApp() {
+        ReadWriteAccount.getInstance().writeListUser();
+        ReadWriteRoom.getInstance().writeListRooms();
+        ReadWriteTurnover.getInstance().writeTurnover();
         informationPanel.getChatAdmin().setRun(false);
         informationPanel.getChatAdmin().closePort();
         new Login();

@@ -8,8 +8,9 @@ import java.awt.event.ActionListener;
 
 public class RoomListener implements ActionListener {
     private ARoomPanel aRoomPanel;
-    private ReadWriteTurnover readWriteTurnover = new ReadWriteTurnover();
+    private ReadWriteTurnover readWriteTurnover;
     public RoomListener(ARoomPanel aRoomPanel) {
+        readWriteTurnover = ReadWriteTurnover.getInstance();
         this.aRoomPanel = aRoomPanel;
     }
     @Override

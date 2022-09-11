@@ -12,11 +12,18 @@ public class ReadWriteTurnover {
     private long turnOver = 0;
     private BufferedReader bufferedReader;
     private PrintWriter printWriter;
+    private static ReadWriteTurnover instance = null;
 
-    public ReadWriteTurnover() {
+    private ReadWriteTurnover() {
         this.readTurnover();
     }
 
+    public static ReadWriteTurnover getInstance() {
+        if (instance == null) {
+            instance = new ReadWriteTurnover();
+        }
+        return instance;
+    }
     private void readTurnover() {
         File file = new File(SOURCE);
         try {

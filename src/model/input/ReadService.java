@@ -12,9 +12,21 @@ public class ReadService {
     private ArrayList<Service> listService;
     private final String SOURCE = "fileIO\\service.txt";
     private BufferedReader bufferedReader;
+    private static ReadService instance = null;
+
+    private ReadService() {
+        listService = new ArrayList<>();
+        this.readAllService();
+    }
+
+    public static ReadService getInstance() {
+        if (instance== null) {
+            instance = new ReadService();
+        }
+        return instance;
+    }
 
     public void readAllService() {
-        listService = new ArrayList<>();
         try {
             File file = new File(SOURCE);
             bufferedReader = Files.newBufferedReader(file.toPath(),

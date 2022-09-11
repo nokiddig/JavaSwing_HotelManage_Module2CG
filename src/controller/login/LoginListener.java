@@ -11,9 +11,10 @@ import java.awt.event.ActionListener;
 
 public class LoginListener implements ActionListener {
     private Login login;
-    private final ReadWriteAccount readWriteAccount = new ReadWriteAccount();
+    private final ReadWriteAccount readWriteAccount;
 
     public LoginListener(Login login) {
+        readWriteAccount = ReadWriteAccount.getInstance();
         this.login = login;
     }
 
@@ -27,7 +28,6 @@ public class LoginListener implements ActionListener {
 
     public void requestLogin() {
         String name = login.getAccountTextField().getText().trim(), pass = new String(login.getPasswordField().getPassword());
-        readWriteAccount.readListUser();
         for (Account account : readWriteAccount.getListUser()) {
             if (name.equals(account.getName()) && pass.equals(account.getPass())) {
                 login.setVisible(false);

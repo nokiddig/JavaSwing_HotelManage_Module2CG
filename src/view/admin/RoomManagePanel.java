@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class RoomManagePanel extends JPanel {
     private ArrayList<ARoomPanel> listARoomPanels = new ArrayList<>();
-    private final ReadWriteRoom readWriteRoom = new ReadWriteRoom();
+    private ReadWriteRoom readWriteRoom;
     private int numOfRooms = 0;
     private int row = 0;
     private final int col = 4;
@@ -18,8 +18,8 @@ public class RoomManagePanel extends JPanel {
     }
 
     public void init() {
+        readWriteRoom = ReadWriteRoom.getInstance();
         this.setBorder(BorderFactory.createEmptyBorder(10,10, 10, 10));
-        readWriteRoom.readListRooms();
         this.numOfRooms = readWriteRoom.getListRooms().size();
         row = numOfRooms / col + (numOfRooms % col == 0 ? 0 : 1);
         this.setLayout(new GridLayout(this.row, this.col, 10, 10));

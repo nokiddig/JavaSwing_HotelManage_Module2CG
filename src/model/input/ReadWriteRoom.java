@@ -14,9 +14,21 @@ public class ReadWriteRoom {
     private ArrayList<Room> listRooms;
     private final String SOURCE = "fileIO\\roomInfo.txt";
     private BufferedReader bufferedReader;
+    private static ReadWriteRoom instance = null;
+
+    private ReadWriteRoom() {
+        listRooms = new ArrayList<>();
+        this.readListRooms();
+    }
+
+    public static ReadWriteRoom getInstance() {
+        if (instance == null) {
+            instance = new ReadWriteRoom();
+        }
+        return instance;
+    }
 
     public void readListRooms() {
-        listRooms = new ArrayList<>();
         try {
             File f = new File(SOURCE);
             bufferedReader = Files.newBufferedReader(f.toPath(), StandardCharsets.UTF_8);
@@ -57,24 +69,19 @@ public class ReadWriteRoom {
     }
 
     public void addRoom(Room r) {
-        readListRooms();
         listRooms.add(r);
-        writeListRooms();
     }
 
     public void deleteRoom(String ID) {
-        readListRooms();
         for (int i=0; i< listRooms.size(); i++) {
             if (listRooms.get(i).getRoomID().equals(ID)) {
                 listRooms.remove(i);
                 break;
             }
         }
-        writeListRooms();
     }
 
     public void editRoom(Room r) {
-        readListRooms();
         for (Room listRoom : listRooms) {
             if (listRoom.getRoomID().equals(r.getRoomID())) {
                 listRoom.setStartDate(r.getStartDate());
@@ -85,7 +92,6 @@ public class ReadWriteRoom {
                 break;
             }
         }
-        writeListRooms();
     }
 
     public int searchRoom(String ID) {

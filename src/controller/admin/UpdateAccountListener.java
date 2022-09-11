@@ -13,13 +13,14 @@ import java.awt.event.ActionListener;
 
 public class UpdateAccountListener implements ActionListener {
     private UpdateAccountPanel updateAccountPanel;
-    private ReadWriteAccount readWriteAccount = new ReadWriteAccount();
-    private ReadWriteRoom readWriteRoom = new ReadWriteRoom();
+    private ReadWriteAccount readWriteAccount;
+    private ReadWriteRoom readWriteRoom;
     private Validate validate = new Validate();
 
     public UpdateAccountListener(UpdateAccountPanel updateAccountPanel) {
+        readWriteAccount = ReadWriteAccount.getInstance();
+        readWriteRoom = ReadWriteRoom.getInstance();
         this.updateAccountPanel = updateAccountPanel;
-        readWriteAccount.readListUser();
     }
 
     @Override
@@ -34,7 +35,6 @@ public class UpdateAccountListener implements ActionListener {
             int notFound = -1;
 
             if (str.equals("Delete")) {
-                readWriteRoom.readListRooms();
                 for (Room room:readWriteRoom.getListRooms()) {
                     if (room.getStatus().equals(name)) {
                         JOptionPane.showMessageDialog(null, "user name being used!");

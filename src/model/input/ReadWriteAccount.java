@@ -11,9 +11,21 @@ public class ReadWriteAccount {
     private ArrayList<Account> listAccount;
     private final String SOURCE = "fileIO\\accounts.txt";
     private BufferedReader bufferedReader;
+    private static ReadWriteAccount instance = null;
+
+    private ReadWriteAccount() {
+        listAccount = new ArrayList<>();
+        this.readListUser();
+    }
+
+    public static ReadWriteAccount getInstance() {
+        if (instance == null) {
+            instance = new ReadWriteAccount();
+        }
+        return instance;
+    }
 
     public void readListUser() {
-        listAccount = new ArrayList<>();
         try {
             File file = new File(SOURCE);
             bufferedReader = Files.newBufferedReader(file.toPath(),
@@ -49,7 +61,6 @@ public class ReadWriteAccount {
 
     public void addAccount(Account account) {
         listAccount.add(account);
-        writeListUser();
     }
 
     public void editAccount(Account account) {
@@ -59,7 +70,6 @@ public class ReadWriteAccount {
                 account1.setAdminAccount(account.getAdminAccount());
             }
         }
-        writeListUser();
     }
 
     public void deleteAccount(String name) {
@@ -69,7 +79,6 @@ public class ReadWriteAccount {
                 break;
             }
         }
-        writeListUser();
     }
 
     public int searchAccount(String name) {

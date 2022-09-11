@@ -11,10 +11,11 @@ import java.awt.event.ActionListener;
 
 public class UpdateRoomListener implements ActionListener {
     private UpdateRoomPanel updateRoomPanel;
-    private ReadWriteRoom readWriteRoom = new ReadWriteRoom();
+    private ReadWriteRoom readWriteRoom;
     private Validate validate = new Validate();
 
     public UpdateRoomListener(UpdateRoomPanel updateRoomPanel) {
+        readWriteRoom = ReadWriteRoom.getInstance();
         this.updateRoomPanel = updateRoomPanel;
     }
 
@@ -29,7 +30,6 @@ public class UpdateRoomListener implements ActionListener {
         startCRUD:
         if (validate.checkRoom(ID, large, nBed, price) || str.equals("Delete")) {
             int notFound = -1;
-            readWriteRoom.readListRooms();
             if (str.equals("Edit")){
                 Room room = new Room(ID, Integer.parseInt(large), Integer.parseInt(nBed), Integer.parseInt(price));
                 int index = readWriteRoom.searchRoom(ID);

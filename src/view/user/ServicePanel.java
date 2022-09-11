@@ -13,11 +13,11 @@ public class ServicePanel extends JPanel {
     private final Font FONT_LABEL = new Font("times new roman", Font.BOLD, 20);
     private JLabel IDLabel, largeLabel, nOBedLabel, priceLabel, startDateLabel;
     private Room room;
-    private final ReadWriteRoom readWriteRoom = new ReadWriteRoom();
+    private ReadWriteRoom readWriteRoom;
 
     public ServicePanel(String name) {
         room = new Room("000", 0,0,0);
-        readWriteRoom.readListRooms();
+        readWriteRoom = ReadWriteRoom.getInstance();
         for (Room r:readWriteRoom.getListRooms()) {
             if (r.getStatus().equals(name)) {
                 room = r;

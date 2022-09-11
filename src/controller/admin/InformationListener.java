@@ -11,10 +11,12 @@ import java.awt.event.ActionListener;
 
 public class InformationListener implements ActionListener {
     private final InformationPanel informationPanel;
-    private ReadWriteRoom readWriteRoom = new ReadWriteRoom();
-    private ReadService readService = new ReadService();
+    private ReadWriteRoom readWriteRoom;
+    private ReadService readService;
 
     public InformationListener(InformationPanel informationPanel) {
+        readService = ReadService.getInstance();
+        readWriteRoom = ReadWriteRoom.getInstance();
         this.informationPanel = informationPanel;
     }
 
@@ -41,7 +43,6 @@ public class InformationListener implements ActionListener {
     private void orderService() {
         String nameService = (String) informationPanel.getServiceComboBox().getSelectedItem();
         String iDRoom = informationPanel.getIDTextField().getText();
-        readWriteRoom.readListRooms();
 
         int index = readWriteRoom.searchRoom(iDRoom);
         if (index<0 || readWriteRoom.getListRooms().get(index).getStatus().equals("Available")) {
@@ -70,7 +71,7 @@ public class InformationListener implements ActionListener {
     }
 
     private void showTurnOver() {
-        ReadWriteTurnover readWriteTurnover = new ReadWriteTurnover();
+        ReadWriteTurnover readWriteTurnover = ReadWriteTurnover.getInstance();
         String mes = "Hotel Turnover: " + readWriteTurnover.getTurnOver() + " VND.";
         JOptionPane.showConfirmDialog(null, mes, "Turnover", JOptionPane.CANCEL_OPTION);
     }

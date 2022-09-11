@@ -21,7 +21,7 @@ public class ARoomPanel extends JPanel {
     private JLabel priceLabel = new JLabel("0");
     private JButton bookButton = new JButton("Book");
     private Room room;
-    private ReadWriteRoom readWriteRoom = new ReadWriteRoom();
+    private ReadWriteRoom readWriteRoom;
     private RoomListener roomListener = new RoomListener(this);
 
     public ARoomPanel(Room room) {
@@ -30,6 +30,7 @@ public class ARoomPanel extends JPanel {
     }
 
     private void init() {
+        readWriteRoom = ReadWriteRoom.getInstance();
         this.setupBorder();
         this.setLayout(new GridLayout(6, 1));
 
@@ -87,15 +88,13 @@ public class ARoomPanel extends JPanel {
         String userName = (String) JOptionPane.showInputDialog(null,showQuestion,"Book Room",JOptionPane.PLAIN_MESSAGE,null,null,"syNgoc");
 
         if ((userName != null) && (userName.length() > 0)) {
-            ReadWriteAccount readWriteAccount = new ReadWriteAccount();
-            readWriteAccount.readListUser();
+            ReadWriteAccount readWriteAccount = ReadWriteAccount.getInstance();
 
             for (Account a:readWriteAccount.getListUser()) {
                 if (a.getName().equals(userName)) {
                     this.room.setStatus(userName);
                     this.updateStatusUI();
                     this.room.setStartDate(java.time.LocalDate.now().toString());
-                    readWriteRoom.readListRooms();
                     readWriteRoom.editRoom(this.room);
                     return true;
                 }
@@ -112,7 +111,7 @@ public class ARoomPanel extends JPanel {
         int yes = 0;
         if (asw == yes) {
             room.setStatus("Available");
-            readWriteRoom = new ReadWriteRoom();
+            readWriteRoom = ReadWriteRoom.getInstance();
             readWriteRoom.editRoom(this.room);
             return true;
         }

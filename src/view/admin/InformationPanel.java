@@ -32,12 +32,12 @@ public class InformationPanel extends JPanel {
     private InformationListener informationListener = new InformationListener(this);
     private ChatAdmin chatAdmin = new ChatAdmin();
     private String allMessage = "";
-    private ReadService readService = new ReadService();
+    private ReadService readService;
 
     public InformationPanel(String name) {
         this.setupBorder("Hello " + name);
         this.setLayout(null);
-        readService.readAllService();
+        readService = ReadService.getInstance();
         this.setupComponent();
         this.addComponent();
     }
