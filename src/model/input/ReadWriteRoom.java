@@ -19,8 +19,7 @@ public class ReadWriteRoom {
         listRooms = new ArrayList<>();
         try {
             File f = new File(SOURCE);
-            bufferedReader = Files.newBufferedReader(f.toPath(),
-                    StandardCharsets.UTF_8);
+            bufferedReader = Files.newBufferedReader(f.toPath(), StandardCharsets.UTF_8);
             do{
                 String[] str = bufferedReader.readLine().split("~");
                 if (str.length>0) {
@@ -28,6 +27,7 @@ public class ReadWriteRoom {
                             Integer.parseInt(str[2]), Integer.parseInt(str[3]));
                     room.setStartDate(str[4]);
                     room.setStatus(str[5]);
+                    room.setServicePay(Integer.parseInt(str[6]));
                     listRooms.add(room);
                 }
                 else {
@@ -47,7 +47,8 @@ public class ReadWriteRoom {
             for (Room room : listRooms) {
                 pw.println(room.getRoomID() + "~" + room.getLarge() + "~" +
                         room.getBed() + "~" + room.getPrice() + "~" +
-                        room.getStartDate() + "~" + room.getStatus());
+                        room.getStartDate() + "~" + room.getStatus() + "~" +
+                        room.getServicePay());
             }
             pw.close();
         }catch(IOException ioe){

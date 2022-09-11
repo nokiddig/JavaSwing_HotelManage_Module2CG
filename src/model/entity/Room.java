@@ -2,16 +2,29 @@ package model.entity;
 
 public class Room {
     private final String roomID;
-    private int large, bed, price;
-    private String startDate = "2022-01-01";
-    private String status = "Available"; //change about name user
+    private int large, bed, price, servicePay;
+    private String startDate;
+    //status: change about name user
+    private String status;
 
     public Room (String id, int large, int nBed, int price) {
         this.roomID = id;
         this.large = large;
         this.bed = nBed;
         this.price = price;
+        this.servicePay = 0;
+        this.startDate = "2022-01-01";
+        this.status = "Available";
     }
+
+    public int getServicePay() {
+        return servicePay;
+    }
+
+    public void setServicePay(int servicePay) {
+        this.servicePay = servicePay;
+    }
+
     public void setBed(int bed) {
         this.bed = bed;
     }

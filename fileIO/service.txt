@@ -1,0 +1,3 @@
+IceCream~10000
+RedBull~15000
+Massage~100000

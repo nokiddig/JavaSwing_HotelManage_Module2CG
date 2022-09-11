@@ -9,8 +9,8 @@ import java.awt.event.ActionListener;
 public class UserViewListener implements ActionListener {
     private UserViewFrame userViewFrame;
 
-    public UserViewListener(UserViewFrame AUV) {
-        userViewFrame = AUV;
+    public UserViewListener(UserViewFrame userViewFrame) {
+        this.userViewFrame = userViewFrame;
     }
 
     @Override

@@ -3,37 +3,41 @@ package view.admin;
 import controller.admin.InformationListener;
 import model.chat.ChatAdmin;
 import model.entity.FontStyle;
+import model.input.ReadService;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class InformationPanel extends JPanel {
     private JLabel notificationLabel = new JLabel("Notification: ");
-    private final JLabel repLabel = new JLabel("Reply: ");
+    private JLabel repLabel = new JLabel("Reply: ");
 
-    private final JTextArea notificationTextArea = new JTextArea(10, 10);
-    private final JTextArea repTextArea = new JTextArea(10, 10);
+    private JTextArea notificationTextArea = new JTextArea(10, 10);
+    private JTextArea repTextArea = new JTextArea(10, 10);
 
-    private final JButton sendButton = new JButton("Send");
-    private final JButton quitButton = new JButton("Quit");
-    private final JButton clearButton = new JButton("Clear all");
-    private final JButton refreshButton = new JButton("Refresh");
-    private final JButton checkRoomButton = new JButton("Check");
-    private final JButton orderButton = new JButton("Order");
-    private final JButton turnoverButton = new JButton("Turnover");
+    private JButton sendButton = new JButton("Send");
+    private JButton quitButton = new JButton("Quit");
+    private JButton clearButton = new JButton("Clear all");
+    private JButton refreshButton = new JButton("Refresh");
+    private JButton checkRoomButton = new JButton("Check");
+    private JButton orderButton = new JButton("Order");
+    private JButton turnoverButton = new JButton("Turnover");
 
-    private final JLabel iDLabel = new JLabel("Room ID: ");
-    private final JTextField iDTextField = new JTextField("ID");
+    private JLabel iDLabel = new JLabel("Room ID: ");
+    private JTextField iDTextField = new JTextField("ID");
     private JComboBox<String> serviceComboBox = new JComboBox<>();
-    private final InformationListener informationListener = new InformationListener(this);
-    private final ChatAdmin chatAdmin = new ChatAdmin();
+    private InformationListener informationListener = new InformationListener(this);
+    private ChatAdmin chatAdmin = new ChatAdmin();
     private String allMessage = "";
+    private ReadService readService = new ReadService();
 
     public InformationPanel(String name) {
         this.setupBorder("Hello " + name);
         this.setLayout(null);
+        readService.readAllService();
         this.setupComponent();
         this.addComponent();
     }
@@ -129,8 +133,7 @@ public class InformationPanel extends JPanel {
         iDLabel.setBounds(20, 390,150,30);
         iDTextField.setBounds(90, 390, 70,30);
 
-        String nameService[] = {"Service 1", "Service 2", "Service 3"};
-        serviceComboBox = new JComboBox<>(nameService);
+        serviceComboBox = new JComboBox<>(readService.getListServiceName());
         serviceComboBox.setBounds(170, 390, 100, 30);
     }
 
@@ -184,9 +187,17 @@ public class InformationPanel extends JPanel {
         return chatAdmin;
     }
 
+    public JTextField getIDTextField() {
+        return iDTextField;
+    }
+
     public void addMessage(String mes) {
         allMessage += mes + "\n";
         notificationTextArea.setText(allMessage);
+    }
+
+    public JComboBox<String> getServiceComboBox() {
+        return serviceComboBox;
     }
 
     public void refreshNotificationTextArea() {
