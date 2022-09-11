@@ -1,6 +1,7 @@
 package view.admin;
 
 import controller.admin.UpdateAccountListener;
+import model.entity.FontStyle;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -8,9 +9,6 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 
 public class UpdateAccountPanel extends JPanel {
-    private final Font FONT_BORDER = new Font("Serif", Font.ITALIC|Font.BOLD, 20);
-    private final Font FONT_LABEL = new Font("arial", Font.PLAIN, 16);
-    private final Font FONT_BUTTON = new Font("Arial", Font.BOLD, 14);
     private final JTextField nameTextField = new JTextField();
     private final JTextField passwordTextField = new JTextField();
     private final JLabel nameLabel = new JLabel("Username: ");
@@ -54,7 +52,7 @@ public class UpdateAccountPanel extends JPanel {
     }
 
     private void setupName() {
-        nameLabel.setFont(FONT_LABEL);
+        nameLabel.setFont(FontStyle.FONT_LABEL.getFont());
         nameLabel.setForeground(Color.black);
         nameLabel.setBounds(15, 60,150, 30);
 
@@ -62,7 +60,7 @@ public class UpdateAccountPanel extends JPanel {
     }
 
     private void setupPass() {
-        passwordLabel.setFont(FONT_LABEL);
+        passwordLabel.setFont(FontStyle.FONT_LABEL.getFont());
         passwordLabel.setForeground(Color.black);
         passwordLabel.setBounds(15, 120, 150, 30);
 
@@ -86,21 +84,21 @@ public class UpdateAccountPanel extends JPanel {
 
     private void setupAddButton() {
         addButton.setBackground(Color.yellow);
-        addButton.setFont(FONT_BUTTON);
+        addButton.setFont(FontStyle.FONT_BUTTON.getFont());
         addButton.setBounds(15, 210, 80, 30);
         addButton.addActionListener(updateAccountListener);
     }
 
     private void setupEditButton() {
         editButton.setBackground(Color.yellow);
-        editButton.setFont(FONT_BUTTON);
+        editButton.setFont(FontStyle.FONT_BUTTON.getFont());
         editButton.setBounds(107, 210,80, 30);
         editButton.addActionListener(updateAccountListener);
     }
 
     private void setupDeleteButton() {
         deleteButton.setBackground(Color.yellow);
-        deleteButton.setFont(FONT_BUTTON);
+        deleteButton.setFont(FontStyle.FONT_BUTTON.getFont());
         deleteButton.setBounds(200, 210,80, 30);
         deleteButton.addActionListener(updateAccountListener);
     }
@@ -108,7 +106,7 @@ public class UpdateAccountPanel extends JPanel {
     private void setupBorder(String name) {
         Border border = BorderFactory.createLineBorder(Color.black, 1);
         this.setBorder(BorderFactory.createTitledBorder(border, name,
-                TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION, FONT_BORDER));
+                TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION, FontStyle.FONT_BORDER.getFont()));
     }
 
     public JTextField getNameTextField() {

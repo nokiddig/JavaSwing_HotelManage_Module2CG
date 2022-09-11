@@ -1,6 +1,7 @@
 package view.admin;
 
 import controller.admin.UpdateRoomListener;
+import model.entity.FontStyle;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -8,9 +9,6 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 
 public class UpdateRoomPanel extends JPanel {
-    private final Font FONT_BORDER = new Font("Serif", Font.ITALIC|Font.BOLD, 20);
-    private final Font FONT_LABEL = new Font("arial", Font.PLAIN, 16);
-    private final Font FONT_BUTTON = new Font("Arial", Font.BOLD, 14);
     private JTextField iDTextField = new JTextField();
     private JTextField largeTextField = new JTextField();
     private JTextField bedTextField = new JTextField();
@@ -62,49 +60,49 @@ public class UpdateRoomPanel extends JPanel {
     }
 
     private void setupID() {
-        iDLabel.setFont(FONT_LABEL);
+        iDLabel.setFont(FontStyle.FONT_LABEL.getFont());
         iDLabel.setForeground(Color.black);
         iDLabel.setBounds(15, 40,150,30);
         iDTextField.setBounds(110, 40,150,30);
     }
 
     private void setupLarge() {
-        largeLabel.setFont(FONT_LABEL);
+        largeLabel.setFont(FontStyle.FONT_LABEL.getFont());
         largeLabel.setForeground(Color.black);
         largeLabel.setBounds(15, 85, 150,30);
         largeTextField.setBounds(110, 85,150,30);
     }
 
     private void setupBed() {
-        bedLabel.setFont(FONT_LABEL);
+        bedLabel.setFont(FontStyle.FONT_LABEL.getFont());
         bedLabel.setForeground(Color.black);
         bedLabel.setBounds(15, 130,150,30);
         bedTextField.setBounds(110, 130, 150,30);
     }
 
     private void setupPrice() {
-        priceLabel.setFont(FONT_LABEL);
+        priceLabel.setFont(FontStyle.FONT_LABEL.getFont());
         priceLabel.setForeground(Color.black);
         priceLabel.setBounds(15, 175, 150,30);
         priceTextField.setBounds(110, 175,150,30);
     }
     private void setupJBAdd() {
         addButton.setBackground(Color.yellow);
-        addButton.setFont(FONT_BUTTON);
+        addButton.setFont(FontStyle.FONT_BUTTON.getFont());
         addButton.setBounds(15, 240, 80,30);
         addButton.addActionListener(updateRoomListener);
     }
 
     private void setupJBEdit() {
         editButton.setBackground(Color.yellow);
-        editButton.setFont(FONT_BUTTON);
+        editButton.setFont(FontStyle.FONT_BUTTON.getFont());
         editButton.setBounds(107, 240,80,30);
         editButton.addActionListener(updateRoomListener);
     }
 
     private void setupJBDelete() {
         deleteButton.setBackground(Color.yellow);
-        deleteButton.setFont(FONT_BUTTON);
+        deleteButton.setFont(FontStyle.FONT_BUTTON.getFont());
         deleteButton.setBounds(200, 240,80,30);
         deleteButton.addActionListener(updateRoomListener);
     }
@@ -112,7 +110,7 @@ public class UpdateRoomPanel extends JPanel {
     private void setupBorder(String name) {
         Border border = BorderFactory.createLineBorder(Color.black, 1);
         this.setBorder(BorderFactory.createTitledBorder(border, name,
-                TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION, FONT_BORDER));
+                TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION, FontStyle.FONT_BORDER.getFont()));
     }
 
     public JTextField getiDTextField() {

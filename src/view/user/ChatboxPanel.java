@@ -2,6 +2,7 @@ package view.user;
 
 import controller.user.ChatBoxUserListener;
 import model.chat.ChatUser;
+import model.entity.FontStyle;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -9,10 +10,6 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 
 public class ChatboxPanel extends JPanel {
-    private final Font FONT_BORDER = new Font("Serif", Font.ITALIC|Font.BOLD, 20);
-    private final Font FONT_LABEL = new Font("times new roman", Font.ITALIC, 16);
-    private final Font FONT_BUTTON = new Font("Arial", Font.BOLD, 14);
-
     private JLabel notificationLabel = new JLabel("Notification: ");
     private JLabel repLabel = new JLabel("Reply: ");
 
@@ -58,7 +55,7 @@ public class ChatboxPanel extends JPanel {
 
     private void setupShowMessage() {
         notificationLabel = new JLabel("Message: ");
-        notificationLabel.setFont(FONT_LABEL);
+        notificationLabel.setFont(FontStyle.FONT_LABEL.getFont());
         notificationLabel.setForeground(Color.BLACK);
         notificationLabel.setBounds(20,20,150,30);
 
@@ -70,7 +67,7 @@ public class ChatboxPanel extends JPanel {
     }
 
     private void setupRep() {
-        repLabel.setFont(FONT_LABEL);
+        repLabel.setFont(FontStyle.FONT_LABEL.getFont());
         repLabel.setForeground(Color.black);
         repLabel.setBounds(20, 250, 150, 30);
 
@@ -80,28 +77,28 @@ public class ChatboxPanel extends JPanel {
 
     private void setupSendButton() {
         sendButton.setBackground(Color.blue);
-        sendButton.setFont(FONT_BUTTON);
+        sendButton.setFont(FontStyle.FONT_BUTTON.getFont());
         sendButton.setBounds(30,400,70,30);
         sendButton.addActionListener(chatBoxUserListener);
     }
 
     private void setupClearButton() {
         clearButton.setBackground(Color.yellow);
-        clearButton.setFont(FONT_BUTTON);
+        clearButton.setFont(FontStyle.FONT_BUTTON.getFont());
         clearButton.setBounds(135,400,95,30);
         clearButton.addActionListener(chatBoxUserListener);
     }
 
     private void setupRefreshButton() {
         refreshButton.setBackground(Color.yellow);
-        refreshButton.setFont(FONT_BUTTON);
+        refreshButton.setFont(FontStyle.FONT_BUTTON.getFont());
         refreshButton.setBounds(265,400,90,30);
         refreshButton.addActionListener(chatBoxUserListener);
     }
 
     private void setupQuitButton() {
         quitButton.setBackground(Color.yellow);
-        quitButton.setFont(FONT_BUTTON);
+        quitButton.setFont(FontStyle.FONT_BUTTON.getFont());
         quitButton.setBounds(265,480,90,30);
         quitButton.addActionListener(chatBoxUserListener);
     }
@@ -109,7 +106,7 @@ public class ChatboxPanel extends JPanel {
     private void setupBorder(String name) {
         Border border = BorderFactory.createLineBorder(Color.black, 1);
         this.setBorder(BorderFactory.createTitledBorder(border, name,
-                TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION, FONT_BORDER));
+                TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION, FontStyle.FONT_BORDER.getFont()));
     }
 
     public JTextArea getRepTextArea() {

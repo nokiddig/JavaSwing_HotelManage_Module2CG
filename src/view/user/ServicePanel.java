@@ -1,5 +1,6 @@
 package view.user;
 
+import model.entity.FontStyle;
 import model.input.ReadWriteRoom;
 import model.entity.Room;
 
@@ -9,7 +10,6 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 
 public class ServicePanel extends JPanel {
-    private final Font FONT_BORDER = new Font("Serif", Font.ITALIC|Font.BOLD, 20);
     private final Font FONT_LABEL = new Font("times new roman", Font.BOLD, 20);
     private JLabel IDLabel, largeLabel, nOBedLabel, priceLabel, startDateLabel;
     private Room room;
@@ -79,6 +79,6 @@ public class ServicePanel extends JPanel {
     private void setupBorder(String name) {
         Border border = BorderFactory.createLineBorder(Color.black, 1);
         this.setBorder(BorderFactory.createTitledBorder(border, name,
-                TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION, FONT_BORDER));
+                TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION, FontStyle.FONT_BORDER.getFont()));
     }
 }

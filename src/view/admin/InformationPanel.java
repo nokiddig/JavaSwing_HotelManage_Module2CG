@@ -2,6 +2,7 @@ package view.admin;
 
 import controller.admin.InformationListener;
 import model.chat.ChatAdmin;
+import model.entity.FontStyle;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -9,10 +10,6 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 
 public class InformationPanel extends JPanel {
-    private final Font FONT_BORDER = new Font("Serif", Font.ITALIC|Font.BOLD, 20);
-    private final Font FONT_LABEL = new Font("times new roman", Font.ITALIC, 16);
-    private final Font FONT_BUTTON = new Font("Arial", Font.BOLD, 14);
-
     private JLabel notificationLabel = new JLabel("Notification: ");
     private final JLabel repLabel = new JLabel("Reply: ");
 
@@ -79,7 +76,7 @@ public class InformationPanel extends JPanel {
 
     private void setupNotificationLabel() {
         notificationLabel = new JLabel("Notification: ");
-        notificationLabel.setFont(FONT_LABEL);
+        notificationLabel.setFont(FontStyle.FONT_LABEL.getFont());
         notificationLabel.setForeground(Color.BLACK);
         notificationLabel.setSize(150, 30);
         notificationLabel.setLocation(20, 20);
@@ -95,7 +92,7 @@ public class InformationPanel extends JPanel {
     }
 
     private void setupRepLabel() {
-        repLabel.setFont(FONT_LABEL);
+        repLabel.setFont(FontStyle.FONT_LABEL.getFont());
         repLabel.setForeground(Color.black);
         repLabel.setBounds(20, 200, 150, 30);
     }
@@ -107,27 +104,27 @@ public class InformationPanel extends JPanel {
 
     private void setupSendButton() {
         sendButton.setBackground(Color.blue);
-        sendButton.setFont(FONT_BUTTON);
+        sendButton.setFont(FontStyle.FONT_BUTTON.getFont());
         sendButton.setBounds(15, 340, 70, 30);
         sendButton.addActionListener(informationListener);
     }
 
     private void setupClearButton() {
         clearButton.setBackground(Color.yellow);
-        clearButton.setFont(FONT_BUTTON);
+        clearButton.setFont(FontStyle.FONT_BUTTON.getFont());
         clearButton.setBounds(90, 340,95,30);
         clearButton.addActionListener(informationListener);
     }
 
     private void setupRefreshButton() {
         refreshButton.setBackground(Color.yellow);
-        refreshButton.setFont(FONT_BUTTON);
+        refreshButton.setFont(FontStyle.FONT_BUTTON.getFont());
         refreshButton.setBounds(190, 340, 90, 30);
         refreshButton.addActionListener(informationListener);
     }
 
     private void setupService() {
-        iDLabel.setFont(FONT_LABEL);
+        iDLabel.setFont(FontStyle.FONT_LABEL.getFont());
         iDLabel.setForeground(Color.BLACK);
         iDLabel.setBounds(20, 390,150,30);
         iDTextField.setBounds(90, 390, 70,30);
@@ -139,28 +136,28 @@ public class InformationPanel extends JPanel {
 
     private void setupOrderButton() {
         orderButton.setBackground(Color.yellow);
-        orderButton.setFont(FONT_BUTTON);
+        orderButton.setFont(FontStyle.FONT_BUTTON.getFont());
         orderButton.setBounds(60, 430, 80,30);
         orderButton.addActionListener(informationListener);
     }
 
     private void setupCheckRoomButton() {
         checkRoomButton.setBackground(Color.yellow);
-        checkRoomButton.setFont(FONT_BUTTON);
+        checkRoomButton.setFont(FontStyle.FONT_BUTTON.getFont());
         checkRoomButton.setBounds(160, 430, 80, 30);
         checkRoomButton.addActionListener(informationListener);
     }
 
     private void setupTurnoverButton() {
         turnoverButton.setBackground(Color.yellow);
-        turnoverButton.setFont(FONT_BUTTON);
+        turnoverButton.setFont(FontStyle.FONT_BUTTON.getFont());
         turnoverButton.setBounds(20, 510, 100,30);
         turnoverButton.addActionListener(informationListener);
     }
 
     private void setupQuitButton() {
         quitButton.setBackground(Color.yellow);
-        quitButton.setFont(FONT_BUTTON);
+        quitButton.setFont(FontStyle.FONT_BUTTON.getFont());
         quitButton.setBounds(200, 510, 80,30);
         quitButton.addActionListener(informationListener);
     }
@@ -168,7 +165,7 @@ public class InformationPanel extends JPanel {
     private void setupBorder(String name) {
         Border border = BorderFactory.createLineBorder(Color.black, 1);
         this.setBorder(BorderFactory.createTitledBorder(border, name,
-                TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION, FONT_BORDER));
+                TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION, FontStyle.FONT_BORDER.getFont()));
     }
 
     public JButton getQuitButton() {
