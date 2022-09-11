@@ -9,17 +9,9 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 
 public class UpdateRoomPanel extends JPanel {
-    private JTextField iDTextField = new JTextField();
-    private JTextField largeTextField = new JTextField();
-    private JTextField bedTextField = new JTextField();
-    private JTextField priceTextField = new JTextField();
-    private JLabel iDLabel = new JLabel("ID: ");
-    private JLabel largeLabel = new JLabel("Large: ");
-    private JLabel priceLabel = new JLabel("Price: ");
-    private JLabel bedLabel = new JLabel("Num of bed: ");
-    private JButton editButton = new JButton("Edit");
-    private JButton addButton = new JButton("Add");
-    private JButton deleteButton = new JButton("Delete");
+    private JTextField iDTextField, largeTextField, bedTextField, priceTextField;
+    private JLabel iDLabel, largeLabel, priceLabel, bedLabel;
+    private JButton editButton, addButton, deleteButton;
     private UpdateRoomListener updateRoomListener = new UpdateRoomListener(this);
     private final HotelManageFrame HM;
 
@@ -27,8 +19,23 @@ public class UpdateRoomPanel extends JPanel {
         this.HM = HM;
         this.setupBorder("Room");
         this.setLayout(null);
+        this.initializeComponent();
         this.setupComponent();
         this.addComponent();
+    }
+
+    private void initializeComponent() {
+        iDTextField = new JTextField();
+        largeTextField = new JTextField();
+        bedTextField = new JTextField();
+        priceTextField = new JTextField();
+        iDLabel =  new JLabel("ID: ");
+        largeLabel = new JLabel("Large: ");
+        priceLabel = new JLabel("Price: ");
+        bedLabel = new JLabel("Num of bed: ");
+        editButton = new JButton("Edit");
+        addButton = new JButton("Add");
+        deleteButton = new JButton("Delete");
     }
 
     private void addComponent() {
@@ -86,6 +93,7 @@ public class UpdateRoomPanel extends JPanel {
         priceLabel.setBounds(15, 175, 150,30);
         priceTextField.setBounds(110, 175,150,30);
     }
+
     private void setupJBAdd() {
         addButton.setBackground(Color.yellow);
         addButton.setFont(FontStyle.FONT_BUTTON.getFont());

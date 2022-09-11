@@ -18,23 +18,30 @@ public class Login extends JFrame {
     private JButton loginButton;
 
     public Login() {
-        this.init();
+        this.setupJFrame();
+        this.setupLoginPanel();
+        this.add(loginPanel);
+        this.setVisible(true);
     }
-    public void init() {
+
+    private void setupJFrame() {
         this.setTitle("Sun Gem Hotel!");
         this.setLayout(new GridLayout(1, 2));
         this.setSize(FRAME_WIDTH, FRAME_HIGH);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-
-        this.setupLogin();
-        this.add(loginPanel);
-        this.setVisible(true);
+        this.setupIcon();
     }
-    private void setupLogin() {
+
+    private void setupIcon() {
+        Image iconImage = Toolkit.getDefaultToolkit().createImage("image\\sImage.jpg");
+        this.setIconImage(iconImage);
+    }
+
+    private void setupLoginPanel() {
         loginListener = new LoginListener(this);
-        loginPanel = setBackgroundImage("image\\bkGr3.jpg");
+        loginPanel = setBackgroundImage("image\\background.jpg");
         loginPanel.setLayout(null);
 
         this.setupLoginLabel();
@@ -74,11 +81,13 @@ public class Login extends JFrame {
     private void setupPasswordField() {
         passwordField = new JPasswordField("password");
         passwordField.setBounds(600, 250,250,30);
+        passwordField.addKeyListener(loginListener);
     }
 
     private void setupAccountTextField() {
         accountTextField = new JTextField(" Account");
         accountTextField.setBounds(600, 200,250,30);
+        accountTextField.addKeyListener(loginListener);
     }
 
     private void setupWelcomeLabel() {

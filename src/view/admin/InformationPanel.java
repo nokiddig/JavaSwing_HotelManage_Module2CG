@@ -9,26 +9,15 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.util.ArrayList;
 
 public class InformationPanel extends JPanel {
-    private JLabel notificationLabel = new JLabel("Notification: ");
-    private JLabel repLabel = new JLabel("Reply: ");
+    private JLabel notificationLabel, repLabel;
+    private JTextArea notificationTextArea, repTextArea;
+    private JButton sendButton, quitButton, clearButton, refreshButton, dataButton, orderButton, turnoverButton;
 
-    private JTextArea notificationTextArea = new JTextArea(10, 10);
-    private JTextArea repTextArea = new JTextArea(10, 10);
-
-    private JButton sendButton = new JButton("Send");
-    private JButton quitButton = new JButton("Quit");
-    private JButton clearButton = new JButton("Clear all");
-    private JButton refreshButton = new JButton("Refresh");
-    private JButton checkRoomButton = new JButton("Check");
-    private JButton orderButton = new JButton("Order");
-    private JButton turnoverButton = new JButton("Turnover");
-
-    private JLabel iDLabel = new JLabel("Room ID: ");
-    private JTextField iDTextField = new JTextField("ID");
-    private JComboBox<String> serviceComboBox = new JComboBox<>();
+    private JLabel iDLabel;
+    private JTextField iDTextField;
+    private JComboBox<String> serviceComboBox;
     private InformationListener informationListener = new InformationListener(this);
     private ChatAdmin chatAdmin = new ChatAdmin();
     private String allMessage = "";
@@ -38,8 +27,29 @@ public class InformationPanel extends JPanel {
         this.setupBorder("Hello " + name);
         this.setLayout(null);
         readService = ReadService.getInstance();
+        this.initializeComponent();
         this.setupComponent();
         this.addComponent();
+    }
+
+    private void initializeComponent() {
+        notificationLabel = new JLabel("Notification: ");
+        repLabel = new JLabel("Reply: ");
+
+        notificationTextArea = new JTextArea(10, 10);
+        repTextArea = new JTextArea(10, 10);
+
+        sendButton = new JButton("Send");
+        quitButton = new JButton("Quit");
+        clearButton = new JButton("Clear all");
+        refreshButton = new JButton("Refresh");
+        dataButton = new JButton("Data");
+        orderButton = new JButton("Order");
+        turnoverButton = new JButton("Turnover");
+
+        iDLabel = new JLabel("Room ID: ");
+        iDTextField = new JTextField("ID");
+        serviceComboBox = new JComboBox<>();
     }
 
     private void setupComponent() {
@@ -73,7 +83,7 @@ public class InformationPanel extends JPanel {
         this.add(iDTextField);
         
         this.add(serviceComboBox);
-        this.add(checkRoomButton);
+        this.add(dataButton);
         this.add(orderButton);
         this.add(turnoverButton);
     }
@@ -145,10 +155,10 @@ public class InformationPanel extends JPanel {
     }
 
     private void setupCheckRoomButton() {
-        checkRoomButton.setBackground(Color.yellow);
-        checkRoomButton.setFont(FontStyle.FONT_BUTTON.getFont());
-        checkRoomButton.setBounds(160, 430, 80, 30);
-        checkRoomButton.addActionListener(informationListener);
+        dataButton.setBackground(Color.yellow);
+        dataButton.setFont(FontStyle.FONT_BUTTON.getFont());
+        dataButton.setBounds(160, 430, 80, 30);
+        dataButton.addActionListener(informationListener);
     }
 
     private void setupTurnoverButton() {
@@ -171,6 +181,11 @@ public class InformationPanel extends JPanel {
                 TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION, FontStyle.FONT_BORDER.getFont()));
     }
 
+    public void addMessage(String mes) {
+        allMessage += mes + "\n";
+        notificationTextArea.setText(allMessage);
+    }
+
     public JButton getQuitButton() {
         return quitButton;
     }
@@ -189,11 +204,6 @@ public class InformationPanel extends JPanel {
 
     public JTextField getIDTextField() {
         return iDTextField;
-    }
-
-    public void addMessage(String mes) {
-        allMessage += mes + "\n";
-        notificationTextArea.setText(allMessage);
     }
 
     public JComboBox<String> getServiceComboBox() {

@@ -34,15 +34,15 @@ public class ChatUser extends Thread{
     }
 
     public String readMessage() {
-        String mes = "";
+        String message = "";
         try {
             if(dataOutputStream!=null){
-                mes = dataInputStream.readUTF();
+                message = dataInputStream.readUTF();
             }
         } catch (IOException e) {
             return " ";
         }
-        return mes;
+        return message;
     }
 
     public void closePort(){

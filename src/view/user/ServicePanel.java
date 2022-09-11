@@ -15,19 +15,23 @@ public class ServicePanel extends JPanel {
     private Room room;
     private ReadWriteRoom readWriteRoom;
 
-    public ServicePanel(String name) {
-        room = new Room("000", 0,0,0);
+    public ServicePanel(String userName) {
         readWriteRoom = ReadWriteRoom.getInstance();
+        this.importRoom(userName);
+        this.setupBorder("Room information");
+        this.setLayout(null);
+        this.setupComponent();
+        this.addComponent();
+    }
+
+    private void importRoom(String name) {
+        room = new Room("000", 0,0,0);
         for (Room r:readWriteRoom.getListRooms()) {
             if (r.getStatus().equals(name)) {
                 room = r;
                 break;
             }
         }
-        this.setupBorder("Room information");
-        this.setLayout(null);
-        this.setupComponent();
-        this.addComponent();
     }
 
     private void setupComponent() {

@@ -42,17 +42,6 @@ public class ChatboxPanel extends JPanel {
         this.setupQuitButton();
     }
 
-    private void addComponent() {
-        this.add(notificationLabel);
-        this.add(notificationTextArea);
-        this.add(repLabel);
-        this.add(repTextArea);
-        this.add(sendButton);
-        this.add(clearButton);
-        this.add(refreshButton);
-        this.add(quitButton);
-    }
-
     private void setupShowMessage() {
         notificationLabel = new JLabel("Message: ");
         notificationLabel.setFont(FontStyle.FONT_LABEL.getFont());
@@ -109,6 +98,26 @@ public class ChatboxPanel extends JPanel {
                 TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION, FontStyle.FONT_BORDER.getFont()));
     }
 
+    private void addComponent() {
+        this.add(notificationLabel);
+        this.add(notificationTextArea);
+        this.add(repLabel);
+        this.add(repTextArea);
+        this.add(sendButton);
+        this.add(clearButton);
+        this.add(refreshButton);
+        this.add(quitButton);
+    }
+
+    public void addMessage(String mes) {
+        allMessage += mes + "\n";
+        notificationTextArea.setText(allMessage);
+    }
+
+    public void refreshNotificationTextArea() {
+        this.notificationTextArea.setText(allMessage);
+    }
+
     public JTextArea getRepTextArea() {
         return repTextArea;
     }
@@ -127,14 +136,5 @@ public class ChatboxPanel extends JPanel {
 
     public JTextArea getNotificationTextArea() {
         return notificationTextArea;
-    }
-
-    public void addMessage(String mes) {
-        allMessage += mes + "\n";
-        notificationTextArea.setText(allMessage);
-    }
-
-    public void refreshNotificationTextArea() {
-        this.notificationTextArea.setText(allMessage);
     }
 }

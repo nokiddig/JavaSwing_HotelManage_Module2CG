@@ -9,23 +9,31 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 
 public class UpdateAccountPanel extends JPanel {
-    private final JTextField nameTextField = new JTextField();
-    private final JTextField passwordTextField = new JTextField();
-    private final JLabel nameLabel = new JLabel("Username: ");
-    private final JLabel passwordLabel = new JLabel("Password: ");
-    private final JLabel statusLabel = new JLabel();
-    private final JButton editButton = new JButton("Edit");
-    private final JButton addButton = new JButton("Add");
-    private final JButton deleteButton = new JButton("Delete");
-    private final JRadioButton adminRadioButton = new JRadioButton("Admin");
-    private final JRadioButton userRadioButton = new JRadioButton("User");
-    private final UpdateAccountListener updateAccountListener = new UpdateAccountListener(this);
+    private JTextField nameTextField, passwordTextField;
+    private JLabel nameLabel, passwordLabel, statusLabel;
+    private JButton editButton, addButton, deleteButton;
+    private JRadioButton adminRadioButton, userRadioButton;
+    private UpdateAccountListener updateAccountListener = new UpdateAccountListener(this);
 
     public UpdateAccountPanel() {
         this.setupBorder("Account");
         this.setLayout(null);
+        this.initializeComponent();
         this.setupComponent();
         this.addComponent();
+    }
+
+    private void initializeComponent() {
+        nameTextField = new JTextField();
+        passwordTextField = new JTextField();
+        nameLabel = new JLabel("Username: ");
+        passwordLabel = new JLabel("Password: ");
+        statusLabel = new JLabel();
+        editButton = new JButton("Edit");
+        addButton = new JButton("Add");
+        deleteButton = new JButton("Delete");
+        adminRadioButton = new JRadioButton("Admin");
+        userRadioButton = new JRadioButton("User");
     }
 
     private void addComponent() {

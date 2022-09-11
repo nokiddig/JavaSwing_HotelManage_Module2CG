@@ -1,6 +1,10 @@
 package controller.admin;
 
+import model.entity.Account;
+import model.entity.Room;
+import model.entity.Service;
 import model.input.ReadService;
+import model.input.ReadWriteAccount;
 import model.input.ReadWriteRoom;
 import model.input.ReadWriteTurnover;
 import view.admin.InformationPanel;
@@ -38,6 +42,21 @@ public class InformationListener implements ActionListener {
         if (str.equals("Order")) {
             this.orderService();
         }
+        if (str.equals("Data")) {
+            String data = " ** Account ** \n";
+            for (Account account:ReadWriteAccount.getInstance().getListUser()) {
+                data += account.toString();
+            }
+            data += " ** Room ** \n";
+            for (Room room:ReadWriteRoom.getInstance().getListRooms()) {
+                data += room.toString();
+            }
+            data += " ** Service ** \n";
+            for (Service service:ReadService.getInstance().getListService()) {
+                data += service.toString();
+            }
+            JOptionPane.showConfirmDialog(null, data, "Data", JOptionPane.DEFAULT_OPTION);
+        }
     }
 
     private void orderService() {
@@ -60,9 +79,7 @@ public class InformationListener implements ActionListener {
                 JOptionPane.showConfirmDialog(null, "Done!", "Payment",JOptionPane.DEFAULT_OPTION);
                 readWriteRoom.getListRooms().get(index).setServicePay(roomServicePay + itemServicePay);
             }
-
         }
-
     }
 
     private void clearJTAText() {

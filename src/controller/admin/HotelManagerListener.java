@@ -39,5 +39,4 @@ public class HotelManagerListener implements ActionListener {
                 hotelManageFrame.quitApp();
         }
     }
-
 }

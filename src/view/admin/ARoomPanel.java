@@ -3,34 +3,34 @@ package view.admin;
 import controller.admin.RoomListener;
 
 import model.entity.Room;
-import model.input.ReadWriteAccount;
-import model.input.ReadWriteRoom;
-import model.entity.Account;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.sql.Date;
-import java.util.Calendar;
 
 public class ARoomPanel extends JPanel {
-    private JLabel iDLabel = new JLabel("0");
-    private JLabel largeLabel = new JLabel("0");
-    private JLabel bedLabel = new JLabel("0");
-    private JLabel statusLabel = new JLabel("0");
-    private JLabel priceLabel = new JLabel("0");
-    private JButton bookButton = new JButton("Book");
+    private JLabel iDLabel, largeLabel, bedLabel, statusLabel, priceLabel;
+    private JButton bookButton;
     private Room room;
-    private ReadWriteRoom readWriteRoom;
-    private RoomListener roomListener = new RoomListener(this);
+    private RoomListener roomListener;
 
     public ARoomPanel(Room room) {
         this.room = room;
+        this.initializeComponent();
         this.init();
     }
 
+    private void initializeComponent() {
+        iDLabel = new JLabel("0");
+        largeLabel = new JLabel("0");
+        bedLabel = new JLabel("0");
+        statusLabel = new JLabel("0");
+        priceLabel = new JLabel("0");
+        bookButton = new JButton("Book");
+        roomListener = new RoomListener(this);
+    }
+
     private void init() {
-        readWriteRoom = ReadWriteRoom.getInstance();
         this.setupBorder();
         this.setLayout(new GridLayout(6, 1));
 
@@ -83,49 +83,7 @@ public class ARoomPanel extends JPanel {
         this.updateStatusUI();
     }
 
-    public boolean bookRoom() {
-        String showQuestion = "Input user-name to book: ";
-        String userName = (String) JOptionPane.showInputDialog(null,showQuestion,"Book Room",JOptionPane.PLAIN_MESSAGE,null,null,"syNgoc");
-
-        if ((userName != null) && (userName.length() > 0)) {
-            ReadWriteAccount readWriteAccount = ReadWriteAccount.getInstance();
-
-            for (Account a:readWriteAccount.getListUser()) {
-                if (a.getName().equals(userName)) {
-                    this.room.setStatus(userName);
-                    this.updateStatusUI();
-                    this.room.setStartDate(java.time.LocalDate.now().toString());
-                    readWriteRoom.editRoom(this.room);
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public boolean payment() {
-        String mes = "Would you want to payment " + checkBill() + " vnd for room " + this.room.getRoomID() + "?";
-        mes += "\n - User: " + room.getStatus() + "\n - From: " + room.getStartDate();
-        int asw = JOptionPane.showConfirmDialog(null, mes, "Payment", JOptionPane.YES_NO_OPTION);
-
-        int yes = 0;
-        if (asw == yes) {
-            room.setStatus("Available");
-            readWriteRoom = ReadWriteRoom.getInstance();
-            readWriteRoom.editRoom(this.room);
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    public long checkBill() {
-        Calendar firstDay = Calendar.getInstance();
-        Calendar lastDay = Calendar.getInstance();
-        firstDay.setTime(Date.valueOf(room.getStartDate()));
-        lastDay.setTime(Date.valueOf(java.time.LocalDate.now()));
-        long noDay = ((lastDay.getTime().getTime() - firstDay.getTime().getTime()) / (24 * 3600 * 1000));
-        return (noDay+1)*room.getPrice() + room.getServicePay();
+    public Room getRoom() {
+        return room;
     }
 }

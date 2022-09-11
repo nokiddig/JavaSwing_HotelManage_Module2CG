@@ -63,4 +63,8 @@ public class ReadService {
         }
         return arrayName;
     }
+
+    public ArrayList<Service> getListService() {
+        return listService;
+    }
 }

@@ -17,6 +17,17 @@ public class Room {
         this.status = "Available";
     }
 
+    @Override
+    public String toString() {
+        return  "roomID: " + roomID +
+                ", large=" + large +
+                ", bed=" + bed +
+                ", price=" + price +
+                ", servicePay=" + servicePay +
+                ", startDate='" + startDate +
+                ", status='" + status + '\n';
+    }
+
     public int getServicePay() {
         return servicePay;
     }

@@ -11,6 +11,7 @@ public class ChatBoxUserListener implements ActionListener{
     public ChatBoxUserListener(ChatboxPanel chatboxPanel) {
         this.chatboxPanel = chatboxPanel;
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String str = e.getActionCommand();

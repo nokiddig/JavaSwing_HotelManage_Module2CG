@@ -12,10 +12,11 @@ import java.awt.event.ActionListener;
 public class UpdateRoomListener implements ActionListener {
     private UpdateRoomPanel updateRoomPanel;
     private ReadWriteRoom readWriteRoom;
-    private Validate validate = new Validate();
+    private Validate validate;
 
     public UpdateRoomListener(UpdateRoomPanel updateRoomPanel) {
-        readWriteRoom = ReadWriteRoom.getInstance();
+        this.readWriteRoom = ReadWriteRoom.getInstance();
+        this.validate = Validate.getInstance();
         this.updateRoomPanel = updateRoomPanel;
     }
 

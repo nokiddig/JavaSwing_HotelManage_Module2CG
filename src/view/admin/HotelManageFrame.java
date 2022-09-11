@@ -11,31 +11,45 @@ import java.awt.*;
 
 public class HotelManageFrame extends JFrame {
     static final int FRAME_WIDTH = 1200, FRAME_HIGH = 600;
-    private final JPanel sideBarPanel = new JPanel(new GridLayout(1, 2));
-    private RoomManagePanel roomGridPanel = new RoomManagePanel();
-    private final InformationPanel informationPanel;
-    private final UpdateRoomPanel updateRoomPanel = new UpdateRoomPanel(this);
-    private final UpdateAccountPanel updateAccountPanel = new UpdateAccountPanel();
-    private final String name;
-    private final HotelManagerListener hotelManagerListener = new HotelManagerListener(this);
+    private JPanel sideBarPanel;
+    private RoomManagePanel roomGridPanel;
+    private InformationPanel informationPanel;
+    private UpdateRoomPanel updateRoomPanel;
+    private UpdateAccountPanel updateAccountPanel;
+    private final String NAME;
+    private HotelManagerListener hotelManagerListener;
+
     public HotelManageFrame(String name) {
-        this.name = name;
-        this.informationPanel = new InformationPanel(name);
-        this.init();
+        this.NAME = name;
+        this.initializeComponent();
+        this.setupJFrame();
+        this.setupComponent();
+        this.addComponent();
+        this.setVisible(true);
     }
 
-    public void init() {
+    private void initializeComponent() {
+        this.informationPanel = new InformationPanel(NAME);
+        sideBarPanel = new JPanel(new GridLayout(1, 2));
+        roomGridPanel = new RoomManagePanel();
+        updateRoomPanel = new UpdateRoomPanel(this);
+        updateAccountPanel = new UpdateAccountPanel();
+        hotelManagerListener = new HotelManagerListener(this);
+    }
+
+    public void setupJFrame() {
         this.setTitle("Hotel Management.");
         this.setSize(FRAME_WIDTH, FRAME_HIGH);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setLayout(null);
+        this.setupIcon();
+    }
 
-        this.setupComponent();
-        this.addComponent();
-
-        this.setVisible(true);
+    private void setupIcon() {
+        Image iconImage = Toolkit.getDefaultToolkit().createImage("image\\sImage.jpg");
+        this.setIconImage(iconImage);
     }
 
     private void addComponent() {

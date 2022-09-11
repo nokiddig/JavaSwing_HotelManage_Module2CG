@@ -15,11 +15,12 @@ public class UpdateAccountListener implements ActionListener {
     private UpdateAccountPanel updateAccountPanel;
     private ReadWriteAccount readWriteAccount;
     private ReadWriteRoom readWriteRoom;
-    private Validate validate = new Validate();
+    private Validate validate;
 
     public UpdateAccountListener(UpdateAccountPanel updateAccountPanel) {
         readWriteAccount = ReadWriteAccount.getInstance();
         readWriteRoom = ReadWriteRoom.getInstance();
+        validate = Validate.getInstance();
         this.updateAccountPanel = updateAccountPanel;
     }
 

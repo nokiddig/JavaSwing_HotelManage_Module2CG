@@ -3,6 +3,17 @@ package model.input;
 import javax.swing.*;
 
 public class Validate {
+    private static Validate instance = null;
+
+    private Validate() {
+    }
+
+    public static Validate getInstance() {
+        if (instance == null) {
+            instance = new Validate();
+        }
+        return instance;
+    }
 
     public boolean checkAccount(String name, String pass) {
         return checkUserName(name) && checkPassword(pass);

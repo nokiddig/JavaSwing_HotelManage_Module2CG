@@ -7,23 +7,27 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class RoomManagePanel extends JPanel {
-    private ArrayList<ARoomPanel> listARoomPanels = new ArrayList<>();
+    private ArrayList<ARoomPanel> listARoomPanels;
     private ReadWriteRoom readWriteRoom;
-    private int numOfRooms = 0;
-    private int row = 0;
-    private final int col = 4;
+    private int numOfRooms;
+    private int row;
+    private final int COLUMN = 4;
 
     public RoomManagePanel() {
-        this.init();
+        this.setupView();
+        this.addRoomJPanel();
     }
 
-    public void init() {
+    private void setupView() {
+        listARoomPanels = new ArrayList<>();
         readWriteRoom = ReadWriteRoom.getInstance();
         this.setBorder(BorderFactory.createEmptyBorder(10,10, 10, 10));
         this.numOfRooms = readWriteRoom.getListRooms().size();
-        row = numOfRooms / col + (numOfRooms % col == 0 ? 0 : 1);
-        this.setLayout(new GridLayout(this.row, this.col, 10, 10));
+        row = numOfRooms / COLUMN + (numOfRooms % COLUMN == 0 ? 0 : 1);
+        this.setLayout(new GridLayout(this.row, this.COLUMN, 10, 10));
+    }
 
+    private void addRoomJPanel() {
         for (int i=0; i<numOfRooms; i++) {
             listARoomPanels.add(new ARoomPanel(readWriteRoom.getListRooms().get(i)));
             this.add(listARoomPanels.get(i));

@@ -10,6 +10,11 @@ public class Account {
         this.adminAccount = admin;
     }
 
+    @Override
+    public String toString() {
+        return  "name: " + name +", pass: " + pass + ", type: " + (adminAccount?"Admin":"User") + "\n";
+    }
+
     public boolean getAdminAccount() {
         return adminAccount;
     }

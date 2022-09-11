@@ -21,7 +21,13 @@ public class UserViewListener implements ActionListener {
             int asw = JOptionPane.showConfirmDialog(null, mes, "Quit", JOptionPane.YES_NO_OPTION);
             final int yes = 0;
             if (asw == yes)
-                userViewFrame.quitApp();
+                this.quitApp();
         }
+    }
+
+    public void quitApp() {
+        userViewFrame.getChatboxPanel().getChatUser().setRun(false);
+        userViewFrame.getChatboxPanel().getChatUser().closePort();
+        userViewFrame.dispose();
     }
 }
