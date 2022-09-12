@@ -1,5 +1,5 @@
 admin~123456~admin
-Ngoc~123~user
+Ngoc~123456~user
 Ngoc1~1234~user
 sy2000~123456~admin
 kaka~123~user
@@ -8,4 +8,3 @@ duc123~123456~user
 sy1~123~user
 sy2~123~user
 aaaaaaaaaaaa~123~user
-Account~password~admin

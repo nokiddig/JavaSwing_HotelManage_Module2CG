@@ -52,7 +52,6 @@ public class UpdateAccountListener implements ActionListener {
             }
 
             if (str.equals("Edit")){
-                readWriteRoom.readListRooms();
                 for (Room room:readWriteRoom.getListRooms()) {
                     if (room.getStatus().equals(name)) {
                         JOptionPane.showMessageDialog(null, "user name being used!");
